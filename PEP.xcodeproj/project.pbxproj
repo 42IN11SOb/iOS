@@ -152,6 +152,7 @@
 				TargetAttributes = {
 					53B642051C98924E00B08F3B = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = NPT7P9MQHA;
 					};
 					53B642191C98924E00B08F3B = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -339,7 +340,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PEP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-2IN11SOb.PEP";
+				PRODUCT_BUNDLE_IDENTIFIER = b42IN11SO.PEP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -351,7 +352,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PEP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-2IN11SOb.PEP";
+				PRODUCT_BUNDLE_IDENTIFIER = b42IN11SO.PEP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
