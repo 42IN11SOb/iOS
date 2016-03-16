@@ -12,10 +12,25 @@ import UIKit
 class MainController : UIViewController, UIScrollViewDelegate {
     
     @IBOutlet var scrollView: UIScrollView!
-    
+    @IBOutlet weak var passportButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var informationButton: UIButton!
+    @IBOutlet weak var scanButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "PEP 2.0"
+        self.view.backgroundColor = backgroundColor
+        self.scrollView.backgroundColor = backgroundColor 
+        scanButton.backgroundColor = blackColor
+        passportButton.backgroundColor = yellowColor
+        settingsButton.backgroundColor = blackColor
+        informationButton.backgroundColor = yellowColor
+        
+        scanButton.setTitleColor(yellowColor, forState: UIControlState.Normal)
+        passportButton.setTitleColor(textColor, forState: UIControlState.Normal)
+        settingsButton.setTitleColor(yellowColor, forState: UIControlState.Normal)
+        informationButton.setTitleColor(textColor, forState: UIControlState.Normal)
     }
     
     override func viewDidAppear(animated: Bool) {
