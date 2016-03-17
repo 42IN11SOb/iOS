@@ -10,6 +10,12 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    
+    // #TODO:
+    // - var outlets aanmaken voor alle elementen in de view
+    // - mogelijke benodigde functies aanmaken (denk aan save / discard etc. )
+    //
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "INSTELLINGEN"

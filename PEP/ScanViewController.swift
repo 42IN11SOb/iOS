@@ -10,6 +10,14 @@ import UIKit
 
 class ScanViewController: UIViewController {
 
+    // #TODO:
+    // - var outlets aanmaken voor alle elementen in de view
+    // - scan knop of continue scan?
+    // - camera koppeling (camera spul zelf in core!)
+    // - model aanmaken voor een herkende scan 
+    // - scan 'recognized' functie opzetten (al is het maar een opzet) 
+    // -
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "SCAN"
