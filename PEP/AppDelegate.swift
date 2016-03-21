@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+    
+        // #TODO: make boolean terms accepted
+        // - make terms view 
+        // - make switch for termsview or launch main. 
+        
         return true
     }
 

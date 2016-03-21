@@ -18,8 +18,8 @@ let whiteColor      = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha
 let greyColor       = UIColor(red: 67/255, green: 67/255, blue: 67/255, alpha: 1)
 
 
-let hightlightColor = yellowColor;
-let textColor       = blackColor;
-let buttonColor     = greyColor;
-let panelColor      = whiteColor;
-let backgroundColor = lightGreyColor;
+let hightlightColor = yellowColor
+let textColor       = blackColor
+let buttonColor     = greyColor
+let panelColor      = whiteColor
+let backgroundColor = lightGreyColor
