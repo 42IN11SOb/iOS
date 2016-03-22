@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wsf-S8-q5Z">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wsf-S8-q5Z">
+                                <rect key="frame" x="0.0" y="44" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuG-Qm-w2Z">
                                         <rect key="frame" x="8" y="-24" width="584" height="520"/>
@@ -34,6 +34,9 @@
                                                 <state key="normal" title="SCAN">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="mB7-h6-DpO" kind="show" id="aYV-EJ-N2a"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzj-pG-Zmw">
                                                 <rect key="frame" x="8" y="133" width="568" height="125"/>
@@ -42,6 +45,19 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <state key="normal" title="PASPOORT">
+                                                    <color key="titleColor" red="1" green="0.9069166984" blue="0.055311527819999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="7K4-wZ-t6R" kind="show" id="M20-di-swW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GI-AY-ubZ">
+                                                <rect key="frame" x="8" y="383" width="568" height="125"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="125" id="BRO-TD-2Ew"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="INFORMATIE">
                                                     <color key="titleColor" red="1" green="0.9069166984" blue="0.055311527819999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
@@ -55,16 +71,9 @@
                                                 <state key="normal" title="INSTELLINGEN">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4GI-AY-ubZ">
-                                                <rect key="frame" x="8" y="383" width="568" height="125"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="125" id="BRO-TD-2Ew"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="INFORMATIE">
-                                                    <color key="titleColor" red="1" green="0.9069166984" blue="0.055311527819999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
+                                                <connections>
+                                                    <segue destination="OJB-35-uh2" kind="show" id="tVB-eR-7ZD"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,7 +110,7 @@
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Wsf-S8-q5Z" secondAttribute="bottom" id="0y6-ws-9oK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wsf-S8-q5Z" secondAttribute="trailing" constant="-20" id="4zX-F1-w5e"/>
-                            <constraint firstItem="Wsf-S8-q5Z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aOO-Ru-nEJ"/>
+                            <constraint firstItem="Wsf-S8-q5Z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="aOO-Ru-nEJ"/>
                             <constraint firstItem="WuG-Qm-w2Z" firstAttribute="leading" secondItem="1lA-rF-TI4" secondAttribute="leadingMargin" constant="-12" id="gQe-3u-1ks"/>
                             <constraint firstItem="Wsf-S8-q5Z" firstAttribute="leading" secondItem="1lA-rF-TI4" secondAttribute="leadingMargin" constant="-20" id="gXq-6R-zQC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WuG-Qm-w2Z" secondAttribute="trailing" constant="-12" id="wMM-A3-78W"/>
@@ -139,6 +148,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOS-bA-AqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-453" y="-2"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="2Pg-Hs-Tjx">
+            <objects>
+                <viewController id="OJB-35-uh2" customClass="SettingsViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4QB-gu-Ief"/>
+                        <viewControllerLayoutGuide type="bottom" id="aC1-8H-pMb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JuH-fX-lgU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9uz-5u-AEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="920"/>
+        </scene>
+        <!--Scan View Controller-->
+        <scene sceneID="3ER-Ph-Pax">
+            <objects>
+                <viewController id="mB7-h6-DpO" customClass="ScanViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xzL-g3-659"/>
+                        <viewControllerLayoutGuide type="bottom" id="btw-57-qeV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KGX-56-Vb5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jwA-aA-jJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="-417"/>
+        </scene>
+        <!--Passport View Controller-->
+        <scene sceneID="7dt-15-6nR">
+            <objects>
+                <viewController id="7K4-wZ-t6R" customClass="PassportViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="40Y-2o-wpx"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Hr-Nk-2AY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RAI-Z6-xWo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bnw-Q2-VAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="240"/>
         </scene>
     </scenes>
 </document>
