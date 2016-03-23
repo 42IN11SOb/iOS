@@ -10,6 +10,13 @@
 		5206C4171CA2A11F005BCAC1 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206C4161CA2A11F005BCAC1 /* InformationViewController.swift */; };
 		533CF0821CA085A400A1EC05 /* splash_bottomrightcorner.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CF0801CA085A400A1EC05 /* splash_bottomrightcorner.png */; };
 		533CF0831CA085A400A1EC05 /* splash_topleftcorner.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CF0811CA085A400A1EC05 /* splash_topleftcorner.png */; };
+		53512D361CA2ACFD00E81676 /* more_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53512D321CA2ACFD00E81676 /* more_icon.png */; };
+		53512D371CA2ACFD00E81676 /* pass_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53512D331CA2ACFD00E81676 /* pass_icon.png */; };
+		53512D381CA2ACFD00E81676 /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53512D341CA2ACFD00E81676 /* settings_icon.png */; };
+		53512D391CA2ACFD00E81676 /* scan_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53512D351CA2ACFD00E81676 /* scan_icon.png */; };
+		53512D3E1CA2BC2900E81676 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53512D3B1CA2BC2900E81676 /* Roboto-Bold.ttf */; };
+		53512D3F1CA2BC2900E81676 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53512D3C1CA2BC2900E81676 /* Roboto-Italic.ttf */; };
+		53512D401CA2BC2900E81676 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53512D3D1CA2BC2900E81676 /* Roboto-Regular.ttf */; };
 		5396D0E61C9B074B0010B3E1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5396D0E51C9B074B0010B3E1 /* SettingsViewController.swift */; };
 		5396D0E81C9B07670010B3E1 /* PassportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5396D0E71C9B07670010B3E1 /* PassportViewController.swift */; };
 		53B6420A1C98924E00B08F3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B642091C98924E00B08F3B /* AppDelegate.swift */; };
@@ -36,6 +43,13 @@
 		5206C4161CA2A11F005BCAC1 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		533CF0801CA085A400A1EC05 /* splash_bottomrightcorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_bottomrightcorner.png; sourceTree = "<group>"; };
 		533CF0811CA085A400A1EC05 /* splash_topleftcorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_topleftcorner.png; sourceTree = "<group>"; };
+		53512D321CA2ACFD00E81676 /* more_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_icon.png; sourceTree = "<group>"; };
+		53512D331CA2ACFD00E81676 /* pass_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pass_icon.png; sourceTree = "<group>"; };
+		53512D341CA2ACFD00E81676 /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_icon.png; sourceTree = "<group>"; };
+		53512D351CA2ACFD00E81676 /* scan_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_icon.png; sourceTree = "<group>"; };
+		53512D3B1CA2BC2900E81676 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		53512D3C1CA2BC2900E81676 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		53512D3D1CA2BC2900E81676 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		5396D0E51C9B074B0010B3E1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5396D0E71C9B07670010B3E1 /* PassportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassportViewController.swift; sourceTree = "<group>"; };
 		53B642061C98924E00B08F3B /* PEP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PEP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,11 +95,26 @@
 		533CF07B1CA084F600A1EC05 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				53512D3A1CA2BC0E00E81676 /* types */,
+				53512D321CA2ACFD00E81676 /* more_icon.png */,
+				53512D331CA2ACFD00E81676 /* pass_icon.png */,
+				53512D341CA2ACFD00E81676 /* settings_icon.png */,
+				53512D351CA2ACFD00E81676 /* scan_icon.png */,
 				533CF0801CA085A400A1EC05 /* splash_bottomrightcorner.png */,
 				533CF0811CA085A400A1EC05 /* splash_topleftcorner.png */,
 			);
 			name = res;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		53512D3A1CA2BC0E00E81676 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				53512D3B1CA2BC2900E81676 /* Roboto-Bold.ttf */,
+				53512D3C1CA2BC2900E81676 /* Roboto-Italic.ttf */,
+				53512D3D1CA2BC2900E81676 /* Roboto-Regular.ttf */,
+			);
+			name = types;
 			sourceTree = "<group>";
 		};
 		5396D0E91C9B076E0010B3E1 /* settings */ = {
@@ -266,9 +295,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				53B642141C98924E00B08F3B /* LaunchScreen.storyboard in Resources */,
+				53512D391CA2ACFD00E81676 /* scan_icon.png in Resources */,
+				53512D3E1CA2BC2900E81676 /* Roboto-Bold.ttf in Resources */,
+				53512D371CA2ACFD00E81676 /* pass_icon.png in Resources */,
 				533CF0821CA085A400A1EC05 /* splash_bottomrightcorner.png in Resources */,
 				53B642111C98924E00B08F3B /* Assets.xcassets in Resources */,
+				53512D401CA2BC2900E81676 /* Roboto-Regular.ttf in Resources */,
+				53512D361CA2ACFD00E81676 /* more_icon.png in Resources */,
+				53512D381CA2ACFD00E81676 /* settings_icon.png in Resources */,
 				533CF0831CA085A400A1EC05 /* splash_topleftcorner.png in Resources */,
+				53512D3F1CA2BC2900E81676 /* Roboto-Italic.ttf in Resources */,
 				53B6420F1C98924E00B08F3B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

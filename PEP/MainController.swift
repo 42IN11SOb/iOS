@@ -11,26 +11,41 @@ import UIKit
 
 class MainController : UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet var mainView: UIView!
     @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet weak var passportButton: UIButton!
-    @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var informationButton: UIButton!
-    @IBOutlet weak var scanButton: UIButton!
 
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scanViewButton: UIView!
+    @IBOutlet weak var passportViewButton: UIView!
+    @IBOutlet weak var settingsViewButton: UIView!
+    @IBOutlet weak var informationViewButton: UIView!
+    
+    @IBOutlet weak var scanViewHeightContstraint: NSLayoutConstraint!
+    @IBOutlet weak var passportHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var settingsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var informationHeightConstraint: NSLayoutConstraint!
+    
+    override func loadView() {
+        super.loadView()
+        
+        let buttonHeight = SCREENHEIGHT/4
+        
+        scanViewHeightContstraint.constant = buttonHeight
+        passportHeightConstraint.constant = buttonHeight
+        settingsHeightConstraint.constant = buttonHeight
+        informationHeightConstraint.constant = buttonHeight
+        scrollView.contentSize.height = buttonHeight*4
+        scrollView.needsUpdateConstraints()
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "PEP 2.0"
         self.view.backgroundColor = backgroundColor
-        self.scrollView.backgroundColor = backgroundColor 
-        scanButton.backgroundColor = blackColor
-        passportButton.backgroundColor = yellowColor
-        settingsButton.backgroundColor = blackColor
-        informationButton.backgroundColor = yellowColor
-        
-        scanButton.setTitleColor(yellowColor, forState: UIControlState.Normal)
-        passportButton.setTitleColor(textColor, forState: UIControlState.Normal)
-        settingsButton.setTitleColor(yellowColor, forState: UIControlState.Normal)
-        informationButton.setTitleColor(textColor, forState: UIControlState.Normal)
+        self.scrollView.backgroundColor = backgroundColor
+        self.mainView.backgroundColor = backgroundColor
+        self.contentView.backgroundColor = backgroundColor
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -47,6 +62,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         scrollView.scrollEnabled = true
     }
+    
     
     
     
