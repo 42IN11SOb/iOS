@@ -24,20 +24,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuG-Qm-w2Z">
                                         <rect key="frame" x="8" y="-24" width="584" height="520"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6F-9k-1hM">
-                                                <rect key="frame" x="8" y="8" width="568" height="125"/>
-                                                <color key="backgroundColor" red="1" green="0.90691669842172296" blue="0.055311527818724393" alpha="0.61233931737588654" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="125" id="ABz-LS-ujj"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <state key="normal" title="SCAN">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="mB7-h6-DpO" kind="show" id="aYV-EJ-N2a"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzj-pG-Zmw">
                                                 <rect key="frame" x="8" y="133" width="568" height="125"/>
                                                 <constraints>
@@ -60,6 +46,9 @@
                                                 <state key="normal" title="INFORMATIE">
                                                     <color key="titleColor" red="1" green="0.9069166984" blue="0.055311527819999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="LMD-TJ-5YC" kind="show" id="ELP-D4-csd"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4J-bt-f5R">
                                                 <rect key="frame" x="8" y="258" width="568" height="125"/>
@@ -73,6 +62,20 @@
                                                 </state>
                                                 <connections>
                                                     <segue destination="OJB-35-uh2" kind="show" id="tVB-eR-7ZD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6F-9k-1hM">
+                                                <rect key="frame" x="8" y="8" width="568" height="125"/>
+                                                <color key="backgroundColor" red="1" green="0.90691669842172296" blue="0.055311527818724393" alpha="0.61233931737588654" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="125" id="ABz-LS-ujj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="SCAN">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="mB7-h6-DpO" kind="show" id="aYV-EJ-N2a"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -129,6 +132,24 @@
             </objects>
             <point key="canvasLocation" x="294" y="17"/>
         </scene>
+        <!--Information View Controller-->
+        <scene sceneID="TiJ-Pd-7jU">
+            <objects>
+                <viewController id="LMD-TJ-5YC" customClass="InformationViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dpA-6I-Rrz"/>
+                        <viewControllerLayoutGuide type="bottom" id="dam-cJ-oX5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b2c-Og-aSl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EDv-Eh-yq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="1150"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="bU5-Oh-oFR">
             <objects>
@@ -165,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uz-5u-AEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="920"/>
+            <point key="canvasLocation" x="1073" y="348"/>
         </scene>
         <!--Scan View Controller-->
         <scene sceneID="3ER-Ph-Pax">
@@ -183,7 +204,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jwA-aA-jJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973" y="-417"/>
+            <point key="canvasLocation" x="1073" y="-1133"/>
         </scene>
         <!--Passport View Controller-->
         <scene sceneID="7dt-15-6nR">
@@ -201,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bnw-Q2-VAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="240"/>
+            <point key="canvasLocation" x="1073" y="-408"/>
         </scene>
     </scenes>
 </document>
