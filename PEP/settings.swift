@@ -22,4 +22,8 @@ let hightlightColor = yellowColor
 let textColor       = blackColor
 let buttonColor     = greyColor
 let panelColor      = whiteColor
-let backgroundColor = lightGreyColor
+let backgroundColor = greyColor
+
+let SCREENHEIGHT = UIScreen.mainScreen().bounds.size.height
+let SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
+
