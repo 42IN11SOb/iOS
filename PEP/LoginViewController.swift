@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var panelView: UIView!
     @IBOutlet weak var nameField: UITextField!
+    
     @IBOutlet weak var passField: UITextField!
     
     @IBOutlet weak var nonLoginButton: UIButton!
@@ -56,14 +57,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool // called when 'return' key pressed. return NO to ignore.
+    // called when 'return' key pressed. return NO to ignore.
+    func textFieldShouldReturn(textField: UITextField) -> Bool
     {
-        if(textField == self.nameField)
-        {
+        if(textField == self.nameField){
             self.passField.becomeFirstResponder()
-        }
-        else
-        {
+        } else {
             login()
         }
         return true;
@@ -77,6 +76,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let alertController = UIAlertController(title:"Login Mislukt", message: "Beide velden zijn verplicht, vul beide velden in en probeer het opniew", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
+            //clear both fields
             nameField.text = ""
             passField.text = ""
         }
@@ -85,7 +85,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         {
             let request = NSMutableURLRequest(URL: NSURL(string: requestLogin)!)
             request.HTTPMethod = "POST"
-            let postString = "username=\(nameField.text)&password=\(passField.text!)"
+            let postString = "username=\(nameField.text!)&password=\(passField.text!)"
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
                 guard error == nil && data != nil else {                                                          // check for fundamental networking error
@@ -96,7 +96,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
                     print("response = \(response)")
-                } else if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 401 {
+                } else if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode == 401 {
                     print("Request failed, on authorisation")
                     print("response = \(response)")
                 }
@@ -105,6 +105,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print("responseString = \(responseString)")
             }
             task.resume()
+        
         }
         
     }

@@ -29,5 +29,5 @@ let SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
 
 
 // API INFO
-let baseURL: String  = ""
-let requestLogin: String = baseURL + "/user/login"
+let baseURL: String  = "https://bartimeus-temp.herokuapp.com"
+let requestLogin: String = baseURL + "/users/login"
