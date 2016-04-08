@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n7C-Yl-xU0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n7C-Yl-xU0">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -119,6 +119,13 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="pass_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="GlU-8Q-EGL">
+                                                        <rect key="frame" x="25" y="38" width="75" height="75"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="75" id="2yv-WQ-mYA"/>
+                                                            <constraint firstAttribute="width" constant="75" id="G57-MF-DF1"/>
+                                                        </constraints>
+                                                    </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0p-vg-WaX">
                                                         <rect key="frame" x="0.0" y="0.0" width="568" height="150"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -129,13 +136,6 @@
                                                             <segue destination="7K4-wZ-t6R" kind="show" id="dZ0-1j-P0O"/>
                                                         </connections>
                                                     </button>
-                                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="pass_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="GlU-8Q-EGL">
-                                                        <rect key="frame" x="25" y="38" width="75" height="75"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="2yv-WQ-mYA"/>
-                                                            <constraint firstAttribute="width" constant="75" id="G57-MF-DF1"/>
-                                                        </constraints>
-                                                    </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -312,7 +312,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="WuG-Qm-w2Z" secondAttribute="trailing" constant="-12" id="wMM-A3-78W"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hwe-js-Ruu"/>
+                    <navigationItem key="navigationItem" id="hwe-js-Ruu">
+                        <barButtonItem key="backBarButtonItem" title="BACK" id="QaI-uF-2Kt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="WuG-Qm-w2Z" id="kaE-Zm-hWw"/>
                         <outlet property="informationHeightConstraint" destination="eua-KS-Yog" id="Kpu-qc-jxK"/>
@@ -486,6 +488,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeQ-fP-Cd0">
                                         <rect key="frame" x="170" y="332" width="180" height="30"/>
                                         <state key="normal" title="doorgaan zonder inloggen"/>
+                                        <connections>
+                                            <segue destination="SEl-se-fmp" kind="show" id="Mca-Vv-aKc"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
