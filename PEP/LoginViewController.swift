@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         else
         {
-            let request = NSMutableURLRequest(URL: NSURL(string: "https://145.48.127.48/users/login")!)
+            let request = NSMutableURLRequest(URL: NSURL(string: requestLogin)!)
             request.HTTPMethod = "POST"
             let postString = "username=\(nameField.text)&password=\(passField.text!)"
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
@@ -95,6 +95,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    print("response = \(response)")
+                } else if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 401 {
+                    print("Request failed, on authorisation")
                     print("response = \(response)")
                 }
                 
