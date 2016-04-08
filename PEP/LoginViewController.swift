@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         else
         {
-            let request = NSMutableURLRequest(URL: NSURL(string: "http://10.0.1.161/users/login")!)
+            let request = NSMutableURLRequest(URL: NSURL(string: "https://145.48.127.48/users/login")!)
             request.HTTPMethod = "POST"
             let postString = "username=\(nameField.text)&password=\(passField.text!)"
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
