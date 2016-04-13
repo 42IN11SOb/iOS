@@ -23,3 +23,5 @@
 "NoNetwork" = "Geen netwerk";
 "LoginFailed" = "Inloggen mislukt";
 "BothFields" = "Vul beiden velden in. ";
+"BACK" = "TERUG";
+
