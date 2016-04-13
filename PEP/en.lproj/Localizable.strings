@@ -19,3 +19,7 @@
 "Error" = "Error";
 "SomethingWrong" = "Something went wrong";
 "OK" = "OK";
+"NetworkNotAvailable" = "Network not available, you will need a internetconnection to login.";
+"NoNetwork" = "No network";
+"LoginFailed" = "Login failed";
+"BothFields" = "Fill in both fields. ";

@@ -19,3 +19,7 @@
 "Error" = "Fout";
 "SomethingWrong" = "Er is iets fouts gegaan";
 "OK" = "Oke";
+"NetworkNotAvailable" = "Geen netwerk beschikbaar, je hebt een internetverbinding nodig om in te kunnen loggen.";
+"NoNetwork" = "Geen netwerk";
+"LoginFailed" = "Inloggen mislukt";
+"BothFields" = "Vul beiden velden in. ";

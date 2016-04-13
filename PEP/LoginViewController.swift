@@ -88,7 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if(nameField.text == "" || passField.text == "")
         {
             
-            let alertController = UIAlertController(title:"Login Mislukt", message: "Beide velden zijn verplicht, vul beide velden in en probeer het opnieuw", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title:NSLocalizedString("LoginFailed", comment:"Login Failed alert title"), message: NSLocalizedString("BothFields", comment:"Fill in both fields") + NSLocalizedString("TryAgain", comment:"Try Again"), preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
             
@@ -103,7 +103,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 guard error == nil && data != nil else {                                                          // check for fundamental networking error
                     print("error=\(error)")
                     
-                    self.error("Geen netwerk", message: "Er is geen netwerk verbinding. Inloggen vereist een werkende netwerkverbinding.")
+                    self.error(NSLocalizedString("NoNetwork", comment:"No network alert"), message: NSLocalizedString("NetworkNotAvailable", comment:"No network available message, please login"))
                     return
                 }
                 
