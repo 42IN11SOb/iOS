@@ -18,6 +18,14 @@ class User {
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    func saveUser(){
+        
+        defaults.setObject(name, forKey: "nameKey")
+        defaults.setObject(email, forKey: "emailKey")
+        defaults.setObject(token, forKey: "apiToken")
+        
+    }
+    
     func saveUser(_id: String, name: String, email: String, token: String){
     
         defaults.setObject(name, forKey: "nameKey")

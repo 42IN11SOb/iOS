@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n7C-Yl-xU0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n7C-Yl-xU0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -473,7 +473,8 @@
                                         <rect key="frame" x="230" y="294" width="60" height="30"/>
                                         <state key="normal" title="Inloggen"/>
                                         <connections>
-                                            <segue destination="SEl-se-fmp" kind="show" identifier="login" id="OXM-ih-Qs2"/>
+                                            <action selector="loginTapped:" destination="n7C-Yl-xU0" eventType="touchUpInside" id="KFP-L0-hit"/>
+                                            <segue destination="SEl-se-fmp" kind="show" identifier="login" id="6gt-uY-lpA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeQ-fP-Cd0">
@@ -483,8 +484,8 @@
                                             <segue destination="SEl-se-fmp" kind="show" id="Mca-Vv-aKc"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="46X-fd-YB6">
-                                        <rect key="frame" x="210" y="172" width="100" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="46X-fd-YB6">
+                                        <rect key="frame" x="210" y="168" width="100" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="oo4-Ob-cgK"/>
                                             <constraint firstAttribute="width" constant="100" id="qRL-71-B5L"/>
@@ -492,8 +493,8 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                     </textField>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BGy-EY-NzY">
-                                        <rect key="frame" x="250" y="177" width="20" height="20"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BGy-EY-NzY">
+                                        <rect key="frame" x="250" y="182" width="20" height="20"/>
                                         <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                         <color key="color" red="1" green="0.87074370620846941" blue="0.24981068600271861" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
@@ -504,6 +505,7 @@
                                     <constraint firstAttribute="bottom" secondItem="IeQ-fP-Cd0" secondAttribute="bottom" constant="22" id="9yC-cb-0lG"/>
                                     <constraint firstItem="9lg-Uc-PM6" firstAttribute="centerX" secondItem="kFQ-Du-qBH" secondAttribute="centerX" id="HT6-CO-afW"/>
                                     <constraint firstItem="IeQ-fP-Cd0" firstAttribute="top" secondItem="cWJ-Ch-8OG" secondAttribute="bottom" constant="8" id="KYM-u4-R2k"/>
+                                    <constraint firstItem="BGy-EY-NzY" firstAttribute="centerY" secondItem="kFQ-Du-qBH" secondAttribute="centerY" id="XNe-Wy-3De"/>
                                     <constraint firstItem="46X-fd-YB6" firstAttribute="centerX" secondItem="kFQ-Du-qBH" secondAttribute="centerX" id="XXk-f4-K8s"/>
                                     <constraint firstItem="9lg-Uc-PM6" firstAttribute="top" secondItem="qJq-5b-7hd" secondAttribute="bottom" constant="8" id="Ztt-4C-QpX"/>
                                     <constraint firstItem="46X-fd-YB6" firstAttribute="top" secondItem="fYy-tl-3w4" secondAttribute="bottom" constant="22" id="bT0-QC-vIG"/>
@@ -511,6 +513,7 @@
                                     <constraint firstItem="fYy-tl-3w4" firstAttribute="top" secondItem="9lg-Uc-PM6" secondAttribute="bottom" constant="18" id="ij7-hD-ZPf"/>
                                     <constraint firstItem="qJq-5b-7hd" firstAttribute="top" secondItem="kFQ-Du-qBH" secondAttribute="top" constant="48" id="p4l-fD-nbq"/>
                                     <constraint firstItem="qJq-5b-7hd" firstAttribute="centerX" secondItem="kFQ-Du-qBH" secondAttribute="centerX" id="u5U-IR-u0y"/>
+                                    <constraint firstItem="BGy-EY-NzY" firstAttribute="centerX" secondItem="kFQ-Du-qBH" secondAttribute="centerX" id="wig-18-53P"/>
                                     <constraint firstItem="IeQ-fP-Cd0" firstAttribute="centerX" secondItem="kFQ-Du-qBH" secondAttribute="centerX" id="yyW-sn-mIx"/>
                                 </constraints>
                             </view>
@@ -518,7 +521,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SYD-zd-qNP" firstAttribute="leading" secondItem="CXY-AM-nan" secondAttribute="leadingMargin" constant="-20" id="9lA-bm-Pqe"/>
-                            <constraint firstItem="BGy-EY-NzY" firstAttribute="centerY" secondItem="CXY-AM-nan" secondAttribute="centerY" id="DBq-sg-s8N"/>
                             <constraint firstItem="SYD-zd-qNP" firstAttribute="top" secondItem="CXY-AM-nan" secondAttribute="topMargin" id="NjN-Sp-dwh"/>
                             <constraint firstItem="KhV-8C-f5b" firstAttribute="top" secondItem="kFQ-Du-qBH" secondAttribute="bottom" constant="102" id="OBx-3Z-bbD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SYD-zd-qNP" secondAttribute="trailing" constant="-20" id="QBA-q9-geH"/>
@@ -547,6 +549,6 @@
         <image name="settings_icon.png" width="250" height="238"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OXM-ih-Qs2"/>
+        <segue reference="6gt-uY-lpA"/>
     </inferredMetricsTieBreakers>
 </document>
