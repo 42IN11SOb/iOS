@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var panelView: UIView!
     @IBOutlet weak var nameField: UITextField!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var passField: UITextField!
     
     @IBOutlet weak var nonLoginButton: UIButton!
@@ -51,6 +52,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if(identifier == "login")
+        {
+            //return false if login fails and true if login succeed.
+            print("login")
+            login()
+            return false
+        }
+        else
+        {
+            return true
+        }
+
+    }
+    
+
+
+    
     
     //removes keyboard when touching elsewhere than a textbox
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -70,10 +89,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func login()
     {
+        activityIndicatorView.startAnimating()
         if(nameField.text == "" || passField.text == "")
         {
             print("signin tapped")
-            let alertController = UIAlertController(title:"Login Mislukt", message: "Beide velden zijn verplicht, vul beide velden in en probeer het opniew", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title:"Login Mislukt", message: "Beide velden zijn verplicht, vul beide velden in en probeer het opnieuw", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
             //clear both fields
@@ -96,9 +116,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
                     print("response = \(response)")
+                    
+                    //geef message terug er ging iets fouts
+                    
                 } else if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode == 401 {
                     print("Request failed, on authorisation")
                     print("response = \(response)")
+                    
+                    //geef message terug wachtwoord en username onjuist
                 }
                 
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -107,6 +132,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             task.resume()
         
         }
+        activityIndicatorView.stopAnimating()
         
     }
     
