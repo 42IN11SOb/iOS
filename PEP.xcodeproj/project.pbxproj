@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5206C4171CA2A11F005BCAC1 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206C4161CA2A11F005BCAC1 /* InformationViewController.swift */; };
+		5334ED0A1CA95C0800C16912 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5334ED091CA95C0800C16912 /* LoginViewController.swift */; };
 		533CF0821CA085A400A1EC05 /* splash_bottomrightcorner.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CF0801CA085A400A1EC05 /* splash_bottomrightcorner.png */; };
 		533CF0831CA085A400A1EC05 /* splash_topleftcorner.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CF0811CA085A400A1EC05 /* splash_topleftcorner.png */; };
 		53512D361CA2ACFD00E81676 /* more_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53512D321CA2ACFD00E81676 /* more_icon.png */; };
@@ -27,6 +28,8 @@
 		53B6421F1C98924E00B08F3B /* PEPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6421E1C98924E00B08F3B /* PEPTests.swift */; };
 		53B6422A1C989BA100B08F3B /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B642291C989BA100B08F3B /* MainController.swift */; };
 		53B6422C1C98BF3300B08F3B /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6422B1C98BF3300B08F3B /* settings.swift */; };
+		53BF79F21CB79FBC0070EC3E /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF79F11CB79FBC0070EC3E /* user.swift */; };
+		53BF79F81CB7C41B0070EC3E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53BF79FA1CB7C41B0070EC3E /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		5206C4161CA2A11F005BCAC1 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		5334ED091CA95C0800C16912 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		533CF0801CA085A400A1EC05 /* splash_bottomrightcorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_bottomrightcorner.png; sourceTree = "<group>"; };
 		533CF0811CA085A400A1EC05 /* splash_topleftcorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_topleftcorner.png; sourceTree = "<group>"; };
 		53512D321CA2ACFD00E81676 /* more_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_icon.png; sourceTree = "<group>"; };
@@ -64,6 +68,14 @@
 		53B642201C98924F00B08F3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53B642291C989BA100B08F3B /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		53B6422B1C98BF3300B08F3B /* settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
+		53BF79F11CB79FBC0070EC3E /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		53BF79F31CB7C30F0070EC3E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
+		53BF79F41CB7C30F0070EC3E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		53BF79F91CB7C41B0070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		53BF79FB1CB7C4210070EC3E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		53BF79FC1CB7C4250070EC3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		53BF79FE1CB7C4800070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		53BF7A001CB7C48A0070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,20 +163,9 @@
 		5396D0ED1C9B07C20010B3E1 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				53BF79F11CB79FBC0070EC3E /* user.swift */,
 			);
 			name = models;
-			sourceTree = "<group>";
-		};
-		5396D0EE1C9B07C80010B3E1 /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				5206C4151CA2A0F7005BCAC1 /* information */,
-				53B642291C989BA100B08F3B /* MainController.swift */,
-				5396D0E91C9B076E0010B3E1 /* settings */,
-				5396D0EA1C9B07960010B3E1 /* scanning */,
-				5396D0EB1C9B07A50010B3E1 /* passport */,
-			);
-			name = ui;
 			sourceTree = "<group>";
 		};
 		53B641FD1C98924E00B08F3B = {
@@ -188,8 +189,9 @@
 		53B642081C98924E00B08F3B /* PEP */ = {
 			isa = PBXGroup;
 			children = (
+				53BF79F51CB7C3A30070EC3E /* Supporting Files */,
+				53BF79F01CB79F0C0070EC3E /* controllers */,
 				533CF07B1CA084F600A1EC05 /* res */,
-				5396D0EE1C9B07C80010B3E1 /* ui */,
 				5396D0ED1C9B07C20010B3E1 /* models */,
 				5396D0EC1C9B07BC0010B3E1 /* core */,
 				53B642091C98924E00B08F3B /* AppDelegate.swift */,
@@ -209,6 +211,27 @@
 				53B642201C98924F00B08F3B /* Info.plist */,
 			);
 			path = PEPTests;
+			sourceTree = "<group>";
+		};
+		53BF79F01CB79F0C0070EC3E /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5334ED091CA95C0800C16912 /* LoginViewController.swift */,
+				53B642291C989BA100B08F3B /* MainController.swift */,
+				5396D0EA1C9B07960010B3E1 /* scanning */,
+				5396D0EB1C9B07A50010B3E1 /* passport */,
+				5396D0E91C9B076E0010B3E1 /* settings */,
+				5206C4151CA2A0F7005BCAC1 /* information */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		53BF79F51CB7C3A30070EC3E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53BF79FA1CB7C41B0070EC3E /* Localizable.strings */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +300,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = 53B641FD1C98924E00B08F3B;
 			productRefGroup = 53B642071C98924E00B08F3B /* Products */;
@@ -303,6 +327,7 @@
 				53512D401CA2BC2900E81676 /* Roboto-Regular.ttf in Resources */,
 				53512D361CA2ACFD00E81676 /* more_icon.png in Resources */,
 				53512D381CA2ACFD00E81676 /* settings_icon.png in Resources */,
+				53BF79F81CB7C41B0070EC3E /* Localizable.strings in Resources */,
 				533CF0831CA085A400A1EC05 /* splash_topleftcorner.png in Resources */,
 				53512D3F1CA2BC2900E81676 /* Roboto-Italic.ttf in Resources */,
 				53B6420F1C98924E00B08F3B /* Main.storyboard in Resources */,
@@ -327,6 +352,8 @@
 				5396D0E61C9B074B0010B3E1 /* SettingsViewController.swift in Sources */,
 				5206C4171CA2A11F005BCAC1 /* InformationViewController.swift in Sources */,
 				53B6422A1C989BA100B08F3B /* MainController.swift in Sources */,
+				5334ED0A1CA95C0800C16912 /* LoginViewController.swift in Sources */,
+				53BF79F21CB79FBC0070EC3E /* user.swift in Sources */,
 				53B6422C1C98BF3300B08F3B /* settings.swift in Sources */,
 				53B6420A1C98924E00B08F3B /* AppDelegate.swift in Sources */,
 				5396D0E81C9B07670010B3E1 /* PassportViewController.swift in Sources */,
@@ -356,6 +383,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				53B6420E1C98924E00B08F3B /* Base */,
+				53BF79F31CB7C30F0070EC3E /* nl */,
+				53BF79FE1CB7C4800070EC3E /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -364,8 +393,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				53B642131C98924E00B08F3B /* Base */,
+				53BF79F41CB7C30F0070EC3E /* nl */,
+				53BF7A001CB7C48A0070EC3E /* en */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		53BF79FA1CB7C41B0070EC3E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53BF79F91CB7C41B0070EC3E /* en */,
+				53BF79FB1CB7C4210070EC3E /* nl */,
+				53BF79FC1CB7C4250070EC3E /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

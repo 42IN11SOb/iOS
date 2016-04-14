@@ -25,6 +25,8 @@ class MainController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var settingsHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var informationHeightConstraint: NSLayoutConstraint!
     
+    var user: User!
+    
     override func loadView() {
         super.loadView()
         
@@ -46,6 +48,11 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.scrollView.backgroundColor = backgroundColor
         self.mainView.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
+        
+        user = User()
+        user.getUserInformation()
+        print(user.name)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
