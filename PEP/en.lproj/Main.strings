@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Uw persoonlijke assistent bij het herkennen van de kleur."; ObjectID = "42V-Eg-c6d"; */
+"42V-Eg-c6d.text" = "Uw persoonlijke assistent bij het herkennen van de kleur.";
+
+/* Class = "UITextField"; placeholder = "wachtwoord"; ObjectID = "46X-fd-YB6"; */
+"46X-fd-YB6.placeholder" = "wachtwoord";
+
+/* Class = "UITextField"; placeholder = "naam"; ObjectID = "9lg-Uc-PM6"; */
+"9lg-Uc-PM6.placeholder" = "naam";
+
+/* Class = "UIButton"; normalTitle = "doorgaan zonder inloggen"; ObjectID = "IeQ-fP-Cd0"; */
+"IeQ-fP-Cd0.normalTitle" = "doorgaan zonder inloggen";
+
+/* Class = "UILabel"; text = "Scanner"; ObjectID = "Ks8-2I-Q8l"; */
+"Ks8-2I-Q8l.text" = "Scanner";
+
+/* Class = "UILabel"; text = "Paspoort"; ObjectID = "MST-ya-5z2"; */
+"MST-ya-5z2.text" = "Paspoort";
+
+/* Class = "UIButton"; normalTitle = "paspoort"; ObjectID = "O0p-vg-WaX"; */
+"O0p-vg-WaX.normalTitle" = "paspoort";
+
+/* Class = "UIBarButtonItem"; title = "BACK"; ObjectID = "QaI-uF-2Kt"; */
+"QaI-uF-2Kt.title" = "BACK";
+
+/* Class = "UILabel"; text = "Uw persoonlijke kleding paspoort."; ObjectID = "SYH-Hi-nN9"; */
+"SYH-Hi-nN9.text" = "Uw persoonlijke kleding paspoort.";
+
+/* Class = "UIButton"; normalTitle = "instellingen"; ObjectID = "Sn2-9m-kFH"; */
+"Sn2-9m-kFH.normalTitle" = "instellingen";
+
+/* Class = "UIButton"; normalTitle = "Inloggen"; ObjectID = "cWJ-Ch-8OG"; */
+"cWJ-Ch-8OG.normalTitle" = "Inloggen";
+
+/* Class = "UILabel"; text = "Wachtwoord"; ObjectID = "fYy-tl-3w4"; */
+"fYy-tl-3w4.text" = "Wachtwoord";
+
+/* Class = "UILabel"; text = "Overige"; ObjectID = "jjl-Tc-caN"; */
+"jjl-Tc-caN.text" = "Overige";
+
+/* Class = "UIButton"; normalTitle = "overige"; ObjectID = "mPd-2x-IcQ"; */
+"mPd-2x-IcQ.normalTitle" = "overige";
+
+/* Class = "UIButton"; normalTitle = "SCANNER"; ObjectID = "mof-LN-ejC"; */
+"mof-LN-ejC.normalTitle" = "SCANNER";
+
+/* Class = "UILabel"; text = "Naam"; ObjectID = "qJq-5b-7hd"; */
+"qJq-5b-7hd.text" = "Naam";
+
+/* Class = "UILabel"; text = "Instellingen"; ObjectID = "wA1-wT-wux"; */
+"wA1-wT-wux.text" = "Instellingen";

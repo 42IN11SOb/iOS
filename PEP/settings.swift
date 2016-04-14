@@ -27,3 +27,7 @@ let backgroundColor = greyColor
 let SCREENHEIGHT = UIScreen.mainScreen().bounds.size.height
 let SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
 
+
+// API INFO
+let baseURL: String  = "https://bartimeus-temp.herokuapp.com"
+let requestLogin: String = baseURL + "/users/login"
