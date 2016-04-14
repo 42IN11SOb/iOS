@@ -32,20 +32,76 @@ class ScanViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        loadCamera()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ==  AVAuthorizationStatus.Authorized{
+        previewLayer!.frame = previewView.bounds
+        previewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
+        }
+        else
+        {
+            let alertController = UIAlertController(
+                title: "Geen camera toegang",
+                message: "De app heeft toegang nodig tot uw camera om gebruik te kunnen maken van deze functie",
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            
+            let settingsAction = UIAlertAction(
+                title: "Instellingen",
+                style: UIAlertActionStyle.Default) { (action) in
+                    UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                    self.navigationController?.popViewControllerAnimated(true)
+            }
+            
+            let confirmAction = UIAlertAction(
+            title: "Terug", style: UIAlertActionStyle.Default) { (action) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            
+            alertController.addAction(confirmAction)
+            alertController.addAction(settingsAction)
+
+            self.presentViewController(alertController, animated: true, completion: nil)
+
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        // code to handle rotation details
+        let orientation = UIDevice.currentDevice().orientation
+        print("rotate landscape =", orientation.isLandscape)
+    }
+    
+    func loadCamera(){
+        
         captureSession = AVCaptureSession()
         captureSession!.sessionPreset = AVCaptureSessionPresetPhoto
         
         let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        let videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
-        var captureDevice:AVCaptureDevice = backCamera
-        
-        for dev in videoDevices{
-            let dev = dev as! AVCaptureDevice
-            if dev.position == AVCaptureDevicePosition.Front {
-                captureDevice = dev
-                break
-            }
-        }
+        //let videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+        let captureDevice:AVCaptureDevice = backCamera
+        //
+        //        for dev in videoDevices{
+        //            let dev = dev as! AVCaptureDevice
+        //            if dev.position == AVCaptureDevicePosition.Front {
+        //                captureDevice = dev
+        //                break
+        //            }
+        //        }
         
         var error: NSError?
         var input: AVCaptureDeviceInput!
@@ -72,25 +128,9 @@ class ScanViewController: UIViewController {
                 captureSession!.startRunning()
             }
         }
-        
+
     }
+
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        previewLayer!.frame = previewView.bounds
-        previewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 

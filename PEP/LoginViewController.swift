@@ -87,7 +87,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         activityIndicatorView.startAnimating()
         if(nameField.text == "" || passField.text == "")
         {
-            
             let alertController = UIAlertController(title:NSLocalizedString("LoginFailed", comment:"Login Failed alert title"), message: NSLocalizedString("BothFields", comment:"Fill in both fields") + NSLocalizedString("TryAgain", comment:"Try Again"), preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
