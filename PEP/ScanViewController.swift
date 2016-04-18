@@ -23,11 +23,13 @@ class ScanViewController: UIViewController {
     var captureSession: AVCaptureSession?
     var stillImageOutput: AVCaptureStillImageOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
+    let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("SCANTITLE", comment:"Scan title")
         self.view.backgroundColor = backgroundColor
+        previewView.backgroundColor = backgroundColor
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -79,11 +81,15 @@ class ScanViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        // code to handle rotation details
-        let orientation = UIDevice.currentDevice().orientation
-        print("rotate landscape =", orientation.isLandscape)
+    //zodra het cherm veranderd (rotate) dan word de previewlayer ook aangepast
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ (context) -> Void in
+            self.previewLayer?.connection.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
+            self.previewLayer?.frame.size = self.previewView.frame.size
+            }, completion: { (context) -> Void in
+                
+        })
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
     func loadCamera(){
@@ -91,17 +97,8 @@ class ScanViewController: UIViewController {
         captureSession = AVCaptureSession()
         captureSession!.sessionPreset = AVCaptureSessionPresetPhoto
         
-        let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        //let videoDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
         let captureDevice:AVCaptureDevice = backCamera
-        //
-        //        for dev in videoDevices{
-        //            let dev = dev as! AVCaptureDevice
-        //            if dev.position == AVCaptureDevicePosition.Front {
-        //                captureDevice = dev
-        //                break
-        //            }
-        //        }
+        
         
         var error: NSError?
         var input: AVCaptureDeviceInput!
@@ -122,7 +119,7 @@ class ScanViewController: UIViewController {
                 
                 previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
                 previewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
-                previewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.Portrait
+                previewLayer!.connection?.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
                 previewView.layer.addSublayer(previewLayer!)
                 
                 captureSession!.startRunning()
@@ -131,6 +128,38 @@ class ScanViewController: UIViewController {
 
     }
 
+    //deze methode veranderd de orientatie van de camera op dezelfde orientatie als van de UIview
+    func transformOrientation(orientation: UIInterfaceOrientation) -> AVCaptureVideoOrientation {
+        switch orientation {
+        case .LandscapeLeft:
+            return .LandscapeLeft
+        case .LandscapeRight:
+            return .LandscapeRight
+        case .PortraitUpsideDown:
+            return .PortraitUpsideDown
+        default:
+            return .Portrait
+        }
+    }
+    
+    //deze methode zet het camera lampje aan of weer uit
+    func toggleFlash()
+    {
+        if (backCamera.hasTorch) {
+            do {
+                try backCamera.lockForConfiguration()
+                if (backCamera.torchMode == AVCaptureTorchMode.On) {
+                    backCamera.torchMode = AVCaptureTorchMode.Off
+                } else {
+                    try backCamera.setTorchModeOnWithLevel(1.0)
+                }
+                backCamera.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
+
+    }
     
 }
 
