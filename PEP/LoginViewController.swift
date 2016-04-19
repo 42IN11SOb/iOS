@@ -83,13 +83,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login (){
-        
         self.loginSuccesfull = false
         activityIndicatorView.startAnimating()
         if(nameField.text == "" || passField.text == "")
         {
-            
-            let alertController = UIAlertController(title:"Login Mislukt", message: "Beide velden zijn verplicht, vul beide velden in en probeer het opnieuw", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title:NSLocalizedString("LoginFailed", comment:"Login Failed alert title"), message: NSLocalizedString("BothFields", comment:"Fill in both fields") + NSLocalizedString("TryAgain", comment:"Try Again"), preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
             
@@ -104,7 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 guard error == nil && data != nil else {                                                          // check for fundamental networking error
                     print("error=\(error)")
                     
-                    self.error("Geen netwerk", message: "Er is geen netwerk verbinding. Inloggen vereist een werkende netwerkverbinding.")
+                    self.error(NSLocalizedString("NoNetwork", comment:"No network alert"), message: NSLocalizedString("NetworkNotAvailable", comment:"No network available message, please login"))
                     return
                 }
                 
@@ -116,14 +114,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     //geef message terug er ging iets fouts
                     
-                    self.error("Error", message: "Er is iets fout gegaan probeer het opnieuw.")
+                    self.error(NSLocalizedString("Error", comment:"Error"), message: NSLocalizedString("SomethingWrong", comment:"Something went wrong text") + NSLocalizedString("TryAgain", comment:"Please try again"))
                     
                 } else if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode == 401 {
                     print("Request failed, on authorisation")
                     print("response = \(response)")
                                 //geef message terug wachtwoord en username onjuist
                     
-                    self.error("Onjuiste inlog", message: "De ingevoegde gebruikersnaam en wachtwoord combinatie is fout.")
+                    self.error(NSLocalizedString("WrongLogin", comment:"error message title"), message: NSLocalizedString("WrongUsernamePassword", comment:"error message wrong username and/or password") + NSLocalizedString("TryAgain", comment:"Please try again"))
                 }
                 
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
@@ -181,7 +179,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NSOperationQueue.mainQueue().addOperationWithBlock {
 
             let alertController = UIAlertController(title:title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:"Ok"), style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alertController, animated: true, completion: nil)
         }
     

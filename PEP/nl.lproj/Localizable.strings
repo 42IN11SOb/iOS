@@ -5,6 +5,23 @@
   Created by Corina Nibbering on 08-04-16.
   Copyright © 2016 42IN11SOb. All rights reserved.
 */
+//View Titles
+"PASSPORTTITLE" = "PASPOORT";
+"SETTINGSTITLE" = "INSTELLINGEN";
+"MISCELLANEOUSTITLE" = "OVERIGE";
+"SCANTITLE" = "SCANNER";
+//
 
 "LOGIN" = "Inloggen";
+"WrongLogin" = "Login onjuist";
+"WrongUsernamePassword" = "De ingevoegde gebruikersnaam en wachtwoord combinatie is fout.";
+"TryAgain" = "Probeer het opnieuw";
+"Error" = "Fout";
+"SomethingWrong" = "Er is iets fouts gegaan";
+"OK" = "Oke";
+"NetworkNotAvailable" = "Geen netwerk beschikbaar, je hebt een internetverbinding nodig om in te kunnen loggen.";
+"NoNetwork" = "Geen netwerk";
+"LoginFailed" = "Inloggen mislukt";
+"BothFields" = "Vul beiden velden in. ";
+"BACK" = "TERUG";
 
