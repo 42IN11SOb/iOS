@@ -510,10 +510,10 @@
             </objects>
             <point key="canvasLocation" x="2654" y="402"/>
         </scene>
-        <!--Color View Controller-->
+        <!--Color Page View Controller-->
         <scene sceneID="YhL-GO-LQj">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="enY-oQ-TL6" customClass="ColorViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="enY-oQ-TL6" customClass="ColorPageViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLf-J0-RNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3414" y="402"/>
@@ -972,10 +972,14 @@
             </objects>
             <point key="canvasLocation" x="-1213" y="732"/>
         </scene>
-        <!--View Controller-->
+        <!--Color View Controller-->
         <scene sceneID="Ir7-JM-Bxq">
             <objects>
-                <viewController id="9Mr-eA-f0s" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColorViewController" id="9Mr-eA-f0s" customClass="ColorViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="04P-fR-doS"/>
+                        <viewControllerLayoutGuide type="bottom" id="oZV-Z1-Gh6"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="w7m-qz-6XO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -984,6 +988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iaB-Df-1GJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="3414" y="1146"/>
         </scene>
     </scenes>
     <resources>

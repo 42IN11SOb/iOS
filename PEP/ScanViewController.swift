@@ -96,7 +96,7 @@ class ScanViewController: UIViewController {
         
         captureSession = AVCaptureSession()
         captureSession!.sessionPreset = AVCaptureSessionPresetPhoto
-        
+   
         let captureDevice:AVCaptureDevice = backCamera
         
         

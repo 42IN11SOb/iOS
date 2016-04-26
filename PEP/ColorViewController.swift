@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColorViewController: UIPageViewController {
+class ColorViewController: UIViewController {
     
     var selectedColor: PassportColor? {
         didSet{
@@ -16,16 +16,17 @@ class ColorViewController: UIPageViewController {
         }
     }
     
+    var pageIndex: Int?
+    
     func configureView(){
         if let selectedColor = selectedColor {
             self.view.backgroundColor = selectedColor.color
-            self.title = selectedColor.colorName
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("COLORTITLE", comment:"Color title")
+
         self.view.backgroundColor = backgroundColor
         
         configureView()
@@ -50,5 +51,8 @@ class ColorViewController: UIPageViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+
     
 }
+
+

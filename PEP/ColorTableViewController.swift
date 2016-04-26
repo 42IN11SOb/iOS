@@ -19,33 +19,11 @@ class ColorTableViewController: UITableViewController {
         self.tableView.backgroundColor = backgroundColor
         
         
-        let color : PassportColor = PassportColor()
-        color.color = UIColor.redColor()
-        color.colorName = "Red"
+        let p: Passport = Passport()
         
-        let color1 : PassportColor = PassportColor()
-        color1.color = UIColor.greenColor()
-        color1.colorName = "Green"
+        p.downloadSeason()
+        colors = p.seasonColors
         
-        let color2 : PassportColor = PassportColor()
-        color2.color = UIColor.blueColor()
-        color2.colorName = "Blue"
-        
-        let color3 : PassportColor = PassportColor()
-        color3.color = UIColor.yellowColor()
-        color3.colorName = "Yellow"
-        
-        let color4 : PassportColor = PassportColor()
-        color4.color = UIColor.purpleColor()
-        color4.colorName = "Purple"
-        
-        
-        for _ in 0..<10 {
-            colors.append(color)
-            colors.append(color2)
-            colors.append(color3)
-            colors.append(color4)
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -88,8 +66,13 @@ class ColorTableViewController: UITableViewController {
         if segue.identifier == "colorSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let color: PassportColor  = colors[indexPath.row]
-                let controller:ColorViewController = segue.destinationViewController as! ColorViewController
+                let controller:ColorPageViewController = segue.destinationViewController as! ColorPageViewController
                 controller.selectedColor = color
+                
+                let coloring : [PassportColor] = self.colors
+                
+                controller.pageColors = coloring
+                controller.selectedIndex = indexPath.row
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

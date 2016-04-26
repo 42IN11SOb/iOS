@@ -13,6 +13,7 @@ class PassportColor {
     var colorName: String!
     var rgbCode: String!
     var color: UIColor!
+    var index: Int?
     
     func getColorFromRGB(){
         
