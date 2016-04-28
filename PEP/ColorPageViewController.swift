@@ -70,8 +70,8 @@ class ColorPageViewController: UIPageViewController, UIPageViewControllerDataSou
         let pageControl = UIPageControl.appearanceWhenContainedInInstancesOfClasses([self.dynamicType])
         
         pageControl.currentPageIndicatorTintColor = hightlightColor
-        pageControl.pageIndicatorTintColor = UIColor.whiteColor()
-        pageControl.backgroundColor = backgroundColor
+        pageControl.pageIndicatorTintColor = whiteColor
+        pageControl.backgroundColor = blackColor
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
@@ -81,7 +81,6 @@ class ColorPageViewController: UIPageViewController, UIPageViewControllerDataSou
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         
         self.title = self.pageColors[selectedIndex!].colorName
-        
         return selectedIndex!
     }
     

@@ -21,9 +21,13 @@ class ColorTableViewController: UITableViewController {
         
         let p: Passport = Passport()
         
-        p.downloadSeason()
-        colors = p.seasonColors
-        
+        p.downloadSeason { (loaded) in
+            if loaded {
+                self.colors = p.seasonColors
+                self.tableView.reloadData()
+            }
+        }
+      
     }
     
     override func viewDidAppear(animated: Bool) {

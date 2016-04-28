@@ -15,40 +15,34 @@ class Passport {
     var does = ""
     var donts = ""
     var seasonColors: [PassportColor] = []
+//    var requestController: RequestController = RequestController()
     
 
-    func downloadSeason(){
-        let color : PassportColor = PassportColor()
-        color.color = UIColor.redColor()
-        color.colorName = "Red"
+    func downloadSeason(completion: (loaded: Bool) ->()){
         
-        let color1 : PassportColor = PassportColor()
-        color1.color = UIColor.greenColor()
-        color1.colorName = "Green"
+       RequestController.requestPassportColors { (result, error) in
         
-        let color2 : PassportColor = PassportColor()
-        color2.color = UIColor.blueColor()
-        color2.colorName = "Blue"
-        
-        let color3 : PassportColor = PassportColor()
-        color3.color = UIColor.yellowColor()
-        color3.colorName = "Yellow"
-        
-        let color4 : PassportColor = PassportColor()
-        color4.color = UIColor.purpleColor()
-        color4.colorName = "Purple"
-        
-        
-        for _ in 0..<10 {
-            seasonColors.append(color)
-            seasonColors.append(color2)
-            seasonColors.append(color3)
-            seasonColors.append(color4)
+            if(result != nil){
+                for object in result! {
+                        
+                        let r = object["r"] as! CGFloat
+                        let g = object["g"] as! CGFloat
+                        let b = object["b"] as! CGFloat
+                        let color = UIColor(red: r/255, green: g/255, blue: b/255, alpha: 1)
+                    
+                        let passColor : PassportColor = PassportColor()
+                        passColor.color = color
+                        passColor.colorName = "Color name"
+
+                        self.seasonColors.append(passColor)
+                    }
+                
+                completion(loaded: true)
+            } else {
+                completion(loaded: false)
+            }
         }
-        
     }
-    
-   
-    
+
     
 }
