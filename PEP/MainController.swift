@@ -31,7 +31,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
         super.loadView()
         
         let buttonHeight = SCREENHEIGHT/4
-        
         scanViewHeightContstraint.constant = buttonHeight
         passportHeightConstraint.constant = buttonHeight
         settingsHeightConstraint.constant = buttonHeight
@@ -48,8 +47,14 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.scrollView.backgroundColor = backgroundColor
         self.mainView.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
-                user = User()
+        
+        
+        user = User()
         user.getUserInformation()
+        downloadSeason { (loaded) in
+            print("Season download complete")
+            
+        }
         print(user.name)
         
         
@@ -72,6 +77,36 @@ class MainController : UIViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
         scrollView.scrollEnabled = true
+    }
+    
+    func downloadSeason(completion: (loaded: Bool) ->()){
+        
+        DatabaseController.sharedControl.deleteAll()
+    
+        
+        RequestController.requestPassportColors { (result, error) in
+            
+            if(result != nil){
+                let pass: Passport = Passport()
+                DatabaseController.sharedControl.savePassport(pass)
+                for object in result! {
+                    
+                    let passColor : PassportColor = PassportColor()
+                    passColor.name = "Colr name"
+                    passColor.redColor = object["r"] as! Float
+                    passColor.greenColor = object["g"] as! Float
+                    passColor.blueColor = object["b"] as! Float
+
+                    passColor.passport_id = pass.id
+                    DatabaseController.sharedControl.savePassColor(passColor)
+                    DatabaseController.sharedControl.addColorToPassport( passColor)
+                }
+                
+                completion(loaded: true)
+            } else {
+                completion(loaded: false)
+            }
+        }
     }
     
     

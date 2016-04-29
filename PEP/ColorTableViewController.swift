@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ColorTableViewController: UITableViewController {
 
@@ -17,15 +18,11 @@ class ColorTableViewController: UITableViewController {
         self.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title")
         self.view.backgroundColor = backgroundColor
         self.tableView.backgroundColor = backgroundColor
-        
-        
-        let p: Passport = Passport()
-        
-        p.downloadSeason { (loaded) in
-            if loaded {
-                self.colors = p.seasonColors
-                self.tableView.reloadData()
-            }
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        let pass = DatabaseController.sharedControl.getPassport()
+
+        for color in pass.season {
+           colors.append(color as PassportColor)
         }
       
     }
@@ -34,7 +31,6 @@ class ColorTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         self.tableView.reloadData()
-        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -55,11 +51,10 @@ class ColorTableViewController: UITableViewController {
         let cell =  tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath) as! ColorTableCell
         
         let color: PassportColor = self.colors[indexPath.row]
-        cell.headingLabel?.text = color.colorName
-    
-        cell.backgroundColor = color.color
-        cell.contentView.backgroundColor = color.color
-        
+
+        cell.layer.backgroundColor = color.getColorFromRGB().CGColor
+        cell.headingLabel?.text = color.name
+        cell.contentView.backgroundColor = color.getColorFromRGB()
     
         return cell
     }
@@ -74,7 +69,6 @@ class ColorTableViewController: UITableViewController {
                 controller.selectedColor = color
                 
                 let coloring : [PassportColor] = self.colors
-                
                 controller.pageColors = coloring
                 controller.selectedIndex = indexPath.row
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()

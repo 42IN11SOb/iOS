@@ -20,7 +20,7 @@ class ColorViewController: UIViewController {
     
     func configureView(){
         if let selectedColor = selectedColor {
-            self.view.backgroundColor = selectedColor.color
+            self.view.backgroundColor = selectedColor.getColorFromRGB()
         }
     }
     
