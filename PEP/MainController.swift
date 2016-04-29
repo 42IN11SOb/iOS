@@ -48,10 +48,14 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.scrollView.backgroundColor = backgroundColor
         self.mainView.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
-        
-        user = User()
+                user = User()
         user.getUserInformation()
         print(user.name)
+        
+        
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            self.scanViewButton.userInteractionEnabled = false
+        #endif
         
     }
     

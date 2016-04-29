@@ -124,9 +124,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.error(NSLocalizedString("WrongLogin", comment:"error message title"), message: NSLocalizedString("WrongUsernamePassword", comment:"error message wrong username and/or password") + NSLocalizedString("TryAgain", comment:"Please try again"))
                 }
                 
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("responseString = \(responseString)")
-                
+//                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("responseString = \(responseString)")
                 
                 do {
                     let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
@@ -144,7 +143,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                 } catch {
                     print("Error in parsing JSON")
-               
                 }
                 
             }
