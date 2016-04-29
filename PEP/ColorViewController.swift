@@ -10,17 +10,20 @@ import UIKit
 
 class ColorViewController: UIViewController {
     
+    
+    @IBOutlet weak var colorLabel: UILabel!
     var selectedColor: PassportColor? {
         didSet{
             configureView()
         }
     }
-    
+
     var pageIndex: Int?
     
     func configureView(){
         if let selectedColor = selectedColor {
             self.view.backgroundColor = selectedColor.getColorFromRGB()
+            self.colorLabel.text = selectedColor.name
         }
     }
     
