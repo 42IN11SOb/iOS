@@ -13,6 +13,7 @@ class StyleViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

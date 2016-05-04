@@ -88,19 +88,32 @@ class MainController : UIViewController, UIScrollViewDelegate {
             
             if(result != nil){
                 let pass: Passport = Passport()
-                DatabaseController.sharedControl.savePassport(pass)
-                for object in result! {
+                if ((result?.objectForKey("success")) != nil) {
+//                   print(result?.objectForKey("user"))
                     
-                    let passColor : PassportColor = PassportColor()
-                    passColor.name = "Colr name"
-                    passColor.redColor = object["r"] as! Float
-                    passColor.greenColor = object["g"] as! Float
-                    passColor.blueColor = object["b"] as! Float
-
-                    passColor.passport_id = pass.id
-                    DatabaseController.sharedControl.savePassColor(passColor)
-                    DatabaseController.sharedControl.addColorToPassport( passColor)
+                    if((result?.objectForKey("user")?.objectForKey("passport")) != nil){
+                        print(result?.objectForKey("user")?.objectForKey("passport"))
+                        let passport = result?.objectForKey("user")?.objectForKey("passport")
+                        let season = passport!.objectForKey("season")
+                        pass.season_title = season!.objectForKey("name") as! String
+                    }
                 }
+                
+                DatabaseController.sharedControl.savePassport(pass)
+                
+                
+//                for object in result! {
+//                    
+//                    let passColor : PassportColor = PassportColor()
+//                    passColor.name = "Colr name"
+//                    passColor.redColor = object["r"] as! Float
+//                    passColor.greenColor = object["g"] as! Float
+//                    passColor.blueColor = object["b"] as! Float
+//
+//                    passColor.passport_id = pass.id
+//                    DatabaseController.sharedControl.savePassColor(passColor)
+//                    DatabaseController.sharedControl.addColorToPassport( passColor)
+//                }
                 
                 completion(loaded: true)
             } else {
