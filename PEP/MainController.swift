@@ -89,17 +89,40 @@ class MainController : UIViewController, UIScrollViewDelegate {
             if(result != nil){
                 let pass: Passport = Passport()
                 if ((result?.objectForKey("success")) != nil) {
-//                   print(result?.objectForKey("user"))
                     
                     if((result?.objectForKey("user")?.objectForKey("passport")) != nil){
                         print(result?.objectForKey("user")?.objectForKey("passport"))
                         let passport = result?.objectForKey("user")?.objectForKey("passport")
                         let season = passport!.objectForKey("season")
                         pass.season_title = season!.objectForKey("name") as! String
+                        let figure = passport!.objectForKey("figure")
+                        
+                        pass.figure_title = figure!.objectForKey("title") as! String
+                        
+                        
+                        DatabaseController.sharedControl.savePassport(pass)
+                        
+                        let colors = season!.objectForKey("colors") as! NSArray
+                        
+                        for color in colors {
+                            let col = color.objectForKey("color")
+                            let passColor : PassportColor = PassportColor()
+                            
+                            passColor.name = col!["name"] as! String
+                            passColor.redColor = col!["r"] as! Float
+                            passColor.greenColor = col!["g"] as! Float
+                            passColor.blueColor = col!["b"] as! Float
+                            
+                            passColor.passport_id = pass.id
+                            DatabaseController.sharedControl.savePassColor(passColor)
+                            DatabaseController.sharedControl.addColorToPassport( passColor)
+                        }
+                        
                     }
+                    
                 }
                 
-                DatabaseController.sharedControl.savePassport(pass)
+                
                 
                 
 //                for object in result! {
