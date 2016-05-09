@@ -51,12 +51,10 @@ class MainController : UIViewController, UIScrollViewDelegate {
         
         user = User()
         user.getUserInformation()
-        downloadSeason { (loaded) in
-            print("Season download complete")
+        downloadPassport { (loaded) in
+            print("Download passport complete")
             
         }
-        print(user.name)
-        
         
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             self.scanViewButton.userInteractionEnabled = false
@@ -72,14 +70,13 @@ class MainController : UIViewController, UIScrollViewDelegate {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
     }
     
     override func viewDidLayoutSubviews() {
         scrollView.scrollEnabled = true
     }
     
-    func downloadSeason(completion: (loaded: Bool) ->()){
+    func downloadPassport(completion: (loaded: Bool) ->()){
         
         DatabaseController.sharedControl.deleteAll()
     
@@ -95,12 +92,41 @@ class MainController : UIViewController, UIScrollViewDelegate {
                         let passport = result?.objectForKey("user")?.objectForKey("passport")
                         let season = passport!.objectForKey("season")
                         pass.season_title = season!.objectForKey("name") as! String
-                        let figure = passport!.objectForKey("figure")
+                        let figureObj = passport!.objectForKey("figure")
                         
-                        pass.figure_title = figure!.objectForKey("title") as! String
+                        pass.figure_title = figureObj!.objectForKey("title") as! String
                         
+                        let figure = Figure()
+                        figure.title = figureObj!.objectForKey("title") as! String
+                        figure.advice = figureObj!.objectForKey("advice") as! String
+                        figure.img = figureObj!.objectForKey("img") as! String
+                        figure.info = figureObj!.objectForKey("info") as! String
                         
+                        DatabaseController.sharedControl.saveFigure(figure)
+                        pass.figure = figure
                         DatabaseController.sharedControl.savePassport(pass)
+
+                        let figureRulesDoObj = figureObj!.objectForKey("dos") as! NSArray
+                        
+                        for does in figureRulesDoObj {
+                            let rule = FigureRules()
+                            rule.do_or_dont = true
+                            rule.text = does as! String
+                            DatabaseController.sharedControl.saveFigureRule(rule)
+                            DatabaseController.sharedControl.addRuleToFigure(rule)
+                        }
+                        
+                        let figureRulesDontObj = figureObj!.objectForKey("donts") as! NSArray
+                        
+                        for dont in figureRulesDontObj {
+                            let rule = FigureRules()
+                            rule.do_or_dont = false
+                            rule.text = dont as! String
+                            DatabaseController.sharedControl.saveFigureRule(rule)
+                            DatabaseController.sharedControl.addRuleToFigure(rule)
+                        }
+                        
+                        
                         
                         let colors = season!.objectForKey("colors") as! NSArray
                         
@@ -121,22 +147,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
                     }
                     
                 }
-                
-                
-                
-                
-//                for object in result! {
-//                    
-//                    let passColor : PassportColor = PassportColor()
-//                    passColor.name = "Colr name"
-//                    passColor.redColor = object["r"] as! Float
-//                    passColor.greenColor = object["g"] as! Float
-//                    passColor.blueColor = object["b"] as! Float
-//
-//                    passColor.passport_id = pass.id
-//                    DatabaseController.sharedControl.savePassColor(passColor)
-//                    DatabaseController.sharedControl.addColorToPassport( passColor)
-//                }
                 
                 completion(loaded: true)
             } else {

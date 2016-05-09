@@ -10,6 +10,6 @@ import Foundation
 import RealmSwift
 
 class MakeUp: Object {
-    dynamic var passport: Passport? = nil
+    dynamic var passport_id = 0
     dynamic var tip = ""
 }

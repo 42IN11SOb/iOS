@@ -7,18 +7,28 @@
 //
 
 import UIKit
+import ImageLoader
 
 class StyleViewController: UIViewController {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    
+    @IBOutlet weak var figureImgView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("STYLETITLE", comment:"Style title")
         self.view.backgroundColor = backgroundColor
+        
+        let pass = DatabaseController.sharedControl.getPassport()
+
+        for rule in (pass.figure?.figureRules)! {
+            print(rule)
+        }
+        
+        figureImgView.load((pass.figure?.img)!)
+        
     }
     
     override func viewDidAppear(animated: Bool) {

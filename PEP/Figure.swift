@@ -10,10 +10,11 @@ import Foundation
 import RealmSwift
 
 class Figure: Object {
-    dynamic var passport: Passport? = nil
+    dynamic var passport_id = 0
     dynamic var title = ""
     dynamic var advice = ""
     dynamic var img = ""
+    dynamic var info = ""
     let figureRules = List<FigureRules>()
     
 }

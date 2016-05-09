@@ -476,6 +476,7 @@ Doel: het figuur laten uitkomen de taille accent geven en lengte creëren.</stri
                     </view>
                     <connections>
                         <outlet property="contentView" destination="hqH-6s-zEh" id="oYD-Ke-AUm"/>
+                        <outlet property="figureImgView" destination="mdY-pu-NQA" id="0zT-fe-BiF"/>
                         <outlet property="scrollView" destination="T2c-9L-bc8" id="bAg-Aa-Xzc"/>
                     </connections>
                 </viewController>
