@@ -30,6 +30,8 @@ let SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
 
 // API INFO
 let baseURL: String  = "https://projectpep.herokuapp.com"
+//let baseURL: String  = "http://localhost:3000"
 let requestLogin: String = baseURL + "/users/login"
-let requestProfile: String = baseURL + "/seasons?token="
+//let requestProfile: String = baseURL + "/seasons?token="
+let requestProfile: String = baseURL + "/users/profile?token="
 

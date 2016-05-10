@@ -43,12 +43,9 @@ class DatabaseController {
     
     func deleteAll(){
         dataRealm()
-        let pass = database.objects(Passport).filter("user_id = 0").first
 
         try! database.write({
             database.deleteAll()
-           
-//            database.delete(pass!)
         })
     }
     
@@ -64,6 +61,15 @@ class DatabaseController {
         let pass = getPassport()
         try! database.write({
             pass.season.append(color)
+            database.add(pass, update: true)
+        })
+    }
+    
+    func addRuleToFigure( rule: FigureRules){
+        dataRealm()
+        let pass = getPassport()
+        try! database.write({
+            pass.figure!.figureRules.append(rule)
             database.add(pass, update: true)
         })
     }

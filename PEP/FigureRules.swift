@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class FigureRules: Object {
-    dynamic var passport: Passport? = nil
+    dynamic var passport_id = 0
     dynamic var do_or_dont = false
     dynamic var text = ""
     

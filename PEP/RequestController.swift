@@ -11,13 +11,15 @@ import UIKit
 
 class RequestController {
     
-    static func requestPassportColors(completion: (result: NSArray?, error: NSError?)->()){
+    static func requestPassportColors(completion: (result: NSDictionary?, error: NSError?)->()){
         
         let user = User()
         user.getUserInformation()
         let requestProfwithToken = requestProfile + user.token
         let request = NSMutableURLRequest(URL: NSURL(string: requestProfwithToken)!)
         request.HTTPMethod = "GET"
+        
+        print(requestProfwithToken)
 
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request){
@@ -27,7 +29,7 @@ class RequestController {
             } else {
                 do {
                     
-                    let result:NSArray = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                    let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                         completion(result: result, error: nil)
                 } catch {
                      print("error serializing JSON: \(error)")
