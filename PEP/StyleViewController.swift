@@ -41,9 +41,11 @@ class StyleViewController: UIViewController {
         figureImgView.accessibilityActivate()
         figureImgView.isAccessibilityElement = true
         figureImgView.userInteractionEnabled = true
+        figureImgView.translatesAutoresizingMaskIntoConstraints = false;
+        figureImgView.contentMode = UIViewContentMode.Center
         
-        stackContentView.spacing = 8.0
-        stackContentView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        stackContentView.spacing = 16.0
+//        stackContentView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         stackContentView.axis = .Vertical
         stackContentView.layoutMarginsRelativeArrangement = true
         stackContentView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,16 +69,14 @@ class StyleViewController: UIViewController {
         addDoLines()
         addDontLines()
 
+        let lead = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.LeadingMargin, multiplier: 1.0, constant: 20.0)
         
-        let widthConstraint = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: SCREENWIDTH - 40)
-        
-        
+        let trail = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.TrailingMargin, multiplier: 1.0, constant: -20.0)
+    
         self.scrollView.addSubview(stackContentView)
 
-        view.addConstraint(widthConstraint)
-                scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[stackView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: ["stackView": stackContentView]))
-                scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[stackView]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: ["stackView": stackContentView]))
-
+        view.addConstraint(lead)
+        view.addConstraint(trail)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -102,6 +102,8 @@ class StyleViewController: UIViewController {
         
         let doTitle = UILabel()
         doTitle.text = "Do"
+
+        doTitle.font = UIFont.boldSystemFontOfSize(16.0)
         
         stackContentView.addArrangedSubview(doTitle)
         let stack = UIStackView()
@@ -124,7 +126,6 @@ class StyleViewController: UIViewController {
         }
         
         stackContentView.addArrangedSubview(stack)
-        
     }
     
     
@@ -132,6 +133,8 @@ class StyleViewController: UIViewController {
         
         let dontTitle = UILabel()
         dontTitle.text = "Don't"
+        dontTitle.font = UIFont.boldSystemFontOfSize(16.0)
+
         stackContentView.addArrangedSubview(dontTitle)
         
         let stack = UIStackView()
@@ -145,15 +148,17 @@ class StyleViewController: UIViewController {
         let pass = DatabaseController.sharedControl.getPassport()
         
         for rule in (pass.figure?.figureRules)! {
-            if rule.do_or_dont {
+            if !rule.do_or_dont {
                 let label = UILabel()
                 label.text = rule.text
                 label.numberOfLines = 0
                 stack.addArrangedSubview(label)
+                
             }
         }
         
         stackContentView.addArrangedSubview(stack)
     }
+    
     
 }
