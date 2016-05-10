@@ -30,7 +30,11 @@ class ScanViewController: UIViewController {
         self.title = NSLocalizedString("SCANTITLE", comment:"Scan title")
         self.view.backgroundColor = backgroundColor
         previewView.backgroundColor = backgroundColor
-    }
+        
+        let instanceOfCustomObject: OpenCvController = OpenCvController()
+        instanceOfCustomObject.someProperty = "Hello World"
+        print(instanceOfCustomObject.someProperty)
+        instanceOfCustomObject.someMethod()    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
