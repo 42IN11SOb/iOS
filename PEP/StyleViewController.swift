@@ -15,6 +15,13 @@ class StyleViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var figureImgView: UIImageView!
+    @IBOutlet weak var seasonLabel: UILabel!
+    @IBOutlet weak var adviceLabel: UILabel!
+    @IBOutlet weak var figureTitleLabel: UILabel!
+    @IBOutlet weak var figureLabel: UILabel!
+    @IBOutlet weak var doLabel: UILabel!
+    @IBOutlet weak var dontLabel: UILabel!
+    @IBOutlet weak var heightConstraintDo: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +30,23 @@ class StyleViewController: UIViewController {
         
         let pass = DatabaseController.sharedControl.getPassport()
 
+        print(pass)
         for rule in (pass.figure?.figureRules)! {
             print(rule)
         }
         
         figureImgView.load((pass.figure?.img)!)
+        
+        figureTitleLabel.text = pass.figure_title
+        figureLabel.text = pass.figure?.info
+        adviceLabel.text = pass.figure?.advice
+        
+        
+        
+//        seasonLabel.text = pass.season_title
+
+//        self.contentView.backgroundColor = yellowColor
+        
         
     }
     
