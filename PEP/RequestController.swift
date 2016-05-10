@@ -11,7 +11,7 @@ import UIKit
 
 class RequestController {
     
-    static func requestPassportColors(completion: (result: NSDictionary?, error: NSError?)->()){
+    static func requestPassport(completion: (result: NSDictionary?, error: NSError?)->()){
         
         let user = User()
         user.getUserInformation()

@@ -31,43 +31,43 @@ class StyleViewController: UIViewController {
         self.view.backgroundColor = backgroundColor
         self.scrollView.backgroundColor = panelColor
         
-        let pass = DatabaseController.sharedControl.getPassport()
-        
-        figureImgView = UIImageView(frame: CGRect(x: 16, y: 16, width: SCREENWIDTH*0.8, height: 150))
-        
-        figureImgView.load((pass.figure?.img)!)
-        figureImgView.accessibilityLabel = pass.figure_title
-        figureImgView.accessibilityHint = pass.figure_title
-        figureImgView.accessibilityActivate()
-        figureImgView.isAccessibilityElement = true
-        figureImgView.userInteractionEnabled = true
-        figureImgView.translatesAutoresizingMaskIntoConstraints = false;
-        figureImgView.contentMode = UIViewContentMode.Center
-        
-        stackContentView.spacing = 16.0
-//        stackContentView.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        stackContentView.axis = .Vertical
-        stackContentView.layoutMarginsRelativeArrangement = true
-        stackContentView.translatesAutoresizingMaskIntoConstraints = false
+        let pass: Passport? = DatabaseController.sharedControl.getPassport()
+        if pass != nil {
+            figureImgView = UIImageView(frame: CGRect(x: 16, y: 16, width: SCREENWIDTH*0.8, height: 150))
+            
+            figureImgView.load((pass!.figure?.img)!)
+            figureImgView.accessibilityLabel = pass!.figure_title
+            figureImgView.accessibilityHint = pass!.figure_title
+            figureImgView.accessibilityActivate()
+            figureImgView.isAccessibilityElement = true
+            figureImgView.userInteractionEnabled = true
+            figureImgView.translatesAutoresizingMaskIntoConstraints = false;
+            figureImgView.contentMode = UIViewContentMode.Center
+            
+            stackContentView.spacing = 16.0
+            stackContentView.axis = .Vertical
+            stackContentView.layoutMarginsRelativeArrangement = true
+            stackContentView.translatesAutoresizingMaskIntoConstraints = false
 
-        figureTitleLabel = UILabel()
-        figureTitleLabel.text = pass.figure_title
-        
-        figureLabel = UILabel()
-        adviceLabel = UILabel()
-        figureLabel.text = pass.figure?.info
-        figureLabel.numberOfLines = 0
-        adviceLabel.numberOfLines = 0
-        adviceLabel.text = pass.figure?.advice
-  
-        
-        stackContentView.addArrangedSubview(figureImgView)
-        stackContentView.addArrangedSubview(figureTitleLabel)
-        stackContentView.addArrangedSubview(figureLabel)
-        stackContentView.addArrangedSubview(adviceLabel)
-        
-        addDoLines()
-        addDontLines()
+            figureTitleLabel = UILabel()
+            figureTitleLabel.text = pass!.figure_title
+            
+            figureLabel = UILabel()
+            adviceLabel = UILabel()
+            figureLabel.text = pass!.figure?.info
+            figureLabel.numberOfLines = 0
+            adviceLabel.numberOfLines = 0
+            adviceLabel.text = pass!.figure?.advice
+      
+            
+            stackContentView.addArrangedSubview(figureImgView)
+            stackContentView.addArrangedSubview(figureTitleLabel)
+            stackContentView.addArrangedSubview(figureLabel)
+            stackContentView.addArrangedSubview(adviceLabel)
+            
+            addDoLines()
+            addDontLines()
+        }
 
         let lead = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.LeadingMargin, multiplier: 1.0, constant: 20.0)
         

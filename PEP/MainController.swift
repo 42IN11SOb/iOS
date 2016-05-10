@@ -81,15 +81,18 @@ class MainController : UIViewController, UIScrollViewDelegate {
         DatabaseController.sharedControl.deleteAll()
     
         
-        RequestController.requestPassportColors { (result, error) in
+        RequestController.requestPassport { (result, error) in
             
             if(result != nil){
                 let pass: Passport = Passport()
                 if ((result?.objectForKey("success")) != nil) {
                     
-                    if((result?.objectForKey("user")?.objectForKey("passport")) != nil){
-                        print(result?.objectForKey("user")?.objectForKey("passport"))
-                        let passport = result?.objectForKey("user")?.objectForKey("passport")
+                   
+                    let data = result?.objectForKey("data")
+                    print(data)
+                    if((data?.objectForKey("passport")) != nil){
+                        print(data?.objectForKey("passport"))
+                        let passport = data?.objectForKey("passport")
                         let season = passport!.objectForKey("season")
                         pass.season_title = season!.objectForKey("name") as! String
                         let figureObj = passport!.objectForKey("figure")
@@ -99,7 +102,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
                         let figure = Figure()
                         figure.title = figureObj!.objectForKey("title") as! String
                         figure.advice = figureObj!.objectForKey("advice") as! String
-                        figure.img = figureObj!.objectForKey("img") as! String
+//                        figure.img = figureObj!.objectForKey("img") as! String
                         figure.info = figureObj!.objectForKey("info") as! String
                         
                         DatabaseController.sharedControl.saveFigure(figure)
@@ -143,6 +146,8 @@ class MainController : UIViewController, UIScrollViewDelegate {
                             DatabaseController.sharedControl.savePassColor(passColor)
                             DatabaseController.sharedControl.addColorToPassport( passColor)
                         }
+                        
+                        
                         
                     }
                     
