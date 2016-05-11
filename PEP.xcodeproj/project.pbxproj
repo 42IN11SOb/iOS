@@ -53,6 +53,8 @@
 		53BF79F21CB79FBC0070EC3E /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BF79F11CB79FBC0070EC3E /* user.swift */; };
 		53BF79F81CB7C41B0070EC3E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53BF79FA1CB7C41B0070EC3E /* Localizable.strings */; };
 		53C6FE371CCFBE720008652B /* Passport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C6FE361CCFBE720008652B /* Passport.swift */; };
+		53CFA0BD1CE31E480090C9B5 /* person_style_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */; };
+		53CFA0BE1CE31E480090C9B5 /* colors_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CFA0BC1CE31E480090C9B5 /* colors_icon.png */; };
 		76842F69E0A5E7F298BB2360 /* Pods_PEP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582E5CE75C8462705154D978 /* Pods_PEP.framework */; };
 		8ABB38A4548BB8876D729FAE /* Pods_PEPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCB3DD6DDD3C1C1B16460E4 /* Pods_PEPTests.framework */; };
 /* End PBXBuildFile section */
@@ -126,6 +128,8 @@
 		53BF79FE1CB7C4800070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		53BF7A001CB7C48A0070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		53C6FE361CCFBE720008652B /* Passport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passport.swift; sourceTree = "<group>"; };
+		53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_style_icon.png; sourceTree = "<group>"; };
+		53CFA0BC1CE31E480090C9B5 /* colors_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors_icon.png; sourceTree = "<group>"; };
 		582E5CE75C8462705154D978 /* Pods_PEP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PEP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85AC405D25D6F0E92A9C48CB /* Pods-PEPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PEPTests/Pods-PEPTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AE4AE2AC366155F9BB1336F /* Pods-PEPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PEPTests/Pods-PEPTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 		533CF07B1CA084F600A1EC05 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */,
+				53CFA0BC1CE31E480090C9B5 /* colors_icon.png */,
 				52C4AAF61CC0349100E35F5C /* app_icons */,
 				53512D3A1CA2BC0E00E81676 /* types */,
 				53512D321CA2ACFD00E81676 /* more_icon.png */,
@@ -452,11 +458,13 @@
 				53512D361CA2ACFD00E81676 /* more_icon.png in Resources */,
 				52EF8B2F1CC4355200D00E40 /* pepIcon-Small-40.png in Resources */,
 				52EF8B2D1CC4355200D00E40 /* pepIcon-76.png in Resources */,
+				53CFA0BD1CE31E480090C9B5 /* person_style_icon.png in Resources */,
 				53512D381CA2ACFD00E81676 /* settings_icon.png in Resources */,
 				53BF79F81CB7C41B0070EC3E /* Localizable.strings in Resources */,
 				52EF8B341CC4355200D00E40 /* pepIcon-Small@3x.png in Resources */,
 				533CF0831CA085A400A1EC05 /* splash_topleftcorner.png in Resources */,
 				52EF8B2B1CC4355200D00E40 /* pepIcon-60@2x.png in Resources */,
+				53CFA0BE1CE31E480090C9B5 /* colors_icon.png in Resources */,
 				52EF8B331CC4355200D00E40 /* pepIcon-Small@2x.png in Resources */,
 				53512D3F1CA2BC2900E81676 /* Roboto-Italic.ttf in Resources */,
 				53B6420F1C98924E00B08F3B /* Main.storyboard in Resources */,

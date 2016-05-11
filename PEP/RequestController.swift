@@ -11,7 +11,7 @@ import UIKit
 
 class RequestController {
     
-    static func requestPassportColors(completion: (result: NSDictionary?, error: NSError?)->()){
+    static func requestPassport(completion: (result: NSDictionary?, error: NSError?)->()){
         
         let user = User()
         user.getUserInformation()
@@ -19,7 +19,7 @@ class RequestController {
         let request = NSMutableURLRequest(URL: NSURL(string: requestProfwithToken)!)
         request.HTTPMethod = "GET"
         
-        print(requestProfwithToken)
+//        print(requestProfwithToken)
 
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request){

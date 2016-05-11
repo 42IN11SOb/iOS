@@ -31,52 +31,52 @@ class StyleViewController: UIViewController {
         self.view.backgroundColor = backgroundColor
         self.scrollView.backgroundColor = panelColor
         
-        let pass = DatabaseController.sharedControl.getPassport()
-        
-        figureImgView = UIImageView(frame: CGRect(x: 16, y: 16, width: SCREENWIDTH*0.8, height: 150))
-        
-        figureImgView.load((pass.figure?.img)!)
-        figureImgView.accessibilityLabel = pass.figure_title
-        figureImgView.accessibilityHint = pass.figure_title
-        figureImgView.accessibilityActivate()
-        figureImgView.isAccessibilityElement = true
-        figureImgView.userInteractionEnabled = true
-        
-        stackContentView.spacing = 8.0
-        stackContentView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        stackContentView.axis = .Vertical
-        stackContentView.layoutMarginsRelativeArrangement = true
-        stackContentView.translatesAutoresizingMaskIntoConstraints = false
+        let pass: Passport? = DatabaseController.sharedControl.getPassport()
+        if pass != nil {
+            figureImgView = UIImageView(frame: CGRect(x: 16, y: 16, width: SCREENWIDTH*0.8, height: 150))
+            
+            figureImgView.load((pass!.figure?.img)!)
+            figureImgView.accessibilityLabel = pass!.figure_title
+            figureImgView.accessibilityHint = pass!.figure_title
+            figureImgView.accessibilityActivate()
+            figureImgView.isAccessibilityElement = true
+            figureImgView.userInteractionEnabled = true
+            figureImgView.translatesAutoresizingMaskIntoConstraints = false;
+            figureImgView.contentMode = UIViewContentMode.Center
+            
+            stackContentView.spacing = 16.0
+            stackContentView.axis = .Vertical
+            stackContentView.layoutMarginsRelativeArrangement = true
+            stackContentView.translatesAutoresizingMaskIntoConstraints = false
 
-        figureTitleLabel = UILabel()
-        figureTitleLabel.text = pass.figure_title
-        
-        figureLabel = UILabel()
-        adviceLabel = UILabel()
-        figureLabel.text = pass.figure?.info
-        figureLabel.numberOfLines = 0
-        adviceLabel.numberOfLines = 0
-        adviceLabel.text = pass.figure?.advice
-  
-        
-        stackContentView.addArrangedSubview(figureImgView)
-        stackContentView.addArrangedSubview(figureTitleLabel)
-        stackContentView.addArrangedSubview(figureLabel)
-        stackContentView.addArrangedSubview(adviceLabel)
-        
-        addDoLines()
-        addDontLines()
+            figureTitleLabel = UILabel()
+            figureTitleLabel.text = pass!.figure_title
+            
+            figureLabel = UILabel()
+            adviceLabel = UILabel()
+            figureLabel.text = pass!.figure?.info
+            figureLabel.numberOfLines = 0
+            adviceLabel.numberOfLines = 0
+            adviceLabel.text = pass!.figure?.advice
+      
+            
+            stackContentView.addArrangedSubview(figureImgView)
+            stackContentView.addArrangedSubview(figureTitleLabel)
+            stackContentView.addArrangedSubview(figureLabel)
+            stackContentView.addArrangedSubview(adviceLabel)
+            
+            addDoLines()
+            addDontLines()
+        }
 
+        let lead = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.LeadingMargin, multiplier: 1.0, constant: 20.0)
         
-        let widthConstraint = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: SCREENWIDTH - 40)
-        
-        
+        let trail = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.TrailingMargin, multiplier: 1.0, constant: -20.0)
+    
         self.scrollView.addSubview(stackContentView)
 
-        view.addConstraint(widthConstraint)
-                scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[stackView]|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: ["stackView": stackContentView]))
-                scrollView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[stackView]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: ["stackView": stackContentView]))
-
+        view.addConstraint(lead)
+        view.addConstraint(trail)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -102,6 +102,8 @@ class StyleViewController: UIViewController {
         
         let doTitle = UILabel()
         doTitle.text = "Do"
+
+        doTitle.font = UIFont.boldSystemFontOfSize(16.0)
         
         stackContentView.addArrangedSubview(doTitle)
         let stack = UIStackView()
@@ -124,7 +126,6 @@ class StyleViewController: UIViewController {
         }
         
         stackContentView.addArrangedSubview(stack)
-        
     }
     
     
@@ -132,6 +133,8 @@ class StyleViewController: UIViewController {
         
         let dontTitle = UILabel()
         dontTitle.text = "Don't"
+        dontTitle.font = UIFont.boldSystemFontOfSize(16.0)
+
         stackContentView.addArrangedSubview(dontTitle)
         
         let stack = UIStackView()
@@ -145,15 +148,17 @@ class StyleViewController: UIViewController {
         let pass = DatabaseController.sharedControl.getPassport()
         
         for rule in (pass.figure?.figureRules)! {
-            if rule.do_or_dont {
+            if !rule.do_or_dont {
                 let label = UILabel()
                 label.text = rule.text
                 label.numberOfLines = 0
                 stack.addArrangedSubview(label)
+                
             }
         }
         
         stackContentView.addArrangedSubview(stack)
     }
+    
     
 }

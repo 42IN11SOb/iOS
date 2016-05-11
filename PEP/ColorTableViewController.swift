@@ -15,11 +15,12 @@ class ColorTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title")
+       
         self.view.backgroundColor = backgroundColor
         self.tableView.backgroundColor = backgroundColor
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let pass = DatabaseController.sharedControl.getPassport()
+         self.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title") + " " + pass.season_title 
 
         for color in pass.season {
            colors.append(color as PassportColor)
