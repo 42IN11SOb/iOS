@@ -89,7 +89,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
                     
                    
                     let data = result?.objectForKey("data")
-                    print(data)
                     if((data?.objectForKey("passport")) != nil){
                         print(data?.objectForKey("passport"))
                         let passport = data?.objectForKey("passport")
