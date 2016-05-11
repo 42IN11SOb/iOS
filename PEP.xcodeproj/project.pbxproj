@@ -55,6 +55,8 @@
 		53C6FE371CCFBE720008652B /* Passport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C6FE361CCFBE720008652B /* Passport.swift */; };
 		53CFA0BD1CE31E480090C9B5 /* person_style_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */; };
 		53CFA0BE1CE31E480090C9B5 /* colors_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 53CFA0BC1CE31E480090C9B5 /* colors_icon.png */; };
+		53EB21F01CE35D0C007BFCBC /* Detector.mm in Sources */ = {isa = PBXBuildFile; fileRef = 53EB21EF1CE35D0C007BFCBC /* Detector.mm */; };
+		53EB21F41CE360DC007BFCBC /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EB21F31CE360DC007BFCBC /* CameraViewController.m */; };
 		76842F69E0A5E7F298BB2360 /* Pods_PEP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 582E5CE75C8462705154D978 /* Pods_PEP.framework */; };
 		8ABB38A4548BB8876D729FAE /* Pods_PEPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BCB3DD6DDD3C1C1B16460E4 /* Pods_PEPTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,6 +132,10 @@
 		53C6FE361CCFBE720008652B /* Passport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passport.swift; sourceTree = "<group>"; };
 		53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_style_icon.png; sourceTree = "<group>"; };
 		53CFA0BC1CE31E480090C9B5 /* colors_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors_icon.png; sourceTree = "<group>"; };
+		53EB21EF1CE35D0C007BFCBC /* Detector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Detector.mm; sourceTree = "<group>"; };
+		53EB21F11CE35D39007BFCBC /* Detector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Detector.h; sourceTree = "<group>"; };
+		53EB21F21CE360BC007BFCBC /* CameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		53EB21F31CE360DC007BFCBC /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		582E5CE75C8462705154D978 /* Pods_PEP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PEP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85AC405D25D6F0E92A9C48CB /* Pods-PEPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PEPTests/Pods-PEPTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AE4AE2AC366155F9BB1336F /* Pods-PEPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PEPTests/Pods-PEPTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +232,10 @@
 				5209229F1CD387F3008B6724 /* OpenCvController.mm */,
 				520922A11CD388C9008B6724 /* PEP-Bridging-Header.h */,
 				520922A21CD38963008B6724 /* OpenCvController.h */,
+				53EB21EF1CE35D0C007BFCBC /* Detector.mm */,
+				53EB21F11CE35D39007BFCBC /* Detector.h */,
+				53EB21F21CE360BC007BFCBC /* CameraViewController.h */,
+				53EB21F31CE360DC007BFCBC /* CameraViewController.m */,
 			);
 			name = scanning;
 			sourceTree = "<group>";
@@ -587,11 +597,13 @@
 				5325AC721CD34C97004AC6A3 /* Figure.swift in Sources */,
 				53C6FE371CCFBE720008652B /* Passport.swift in Sources */,
 				5206C4171CA2A11F005BCAC1 /* InformationViewController.swift in Sources */,
+				53EB21F41CE360DC007BFCBC /* CameraViewController.m in Sources */,
 				532272D71CC67AB3009A412E /* PassportColor.swift in Sources */,
 				53B6422A1C989BA100B08F3B /* MainController.swift in Sources */,
 				5334ED0A1CA95C0800C16912 /* LoginViewController.swift in Sources */,
 				53BF79F21CB79FBC0070EC3E /* user.swift in Sources */,
 				53B6422C1C98BF3300B08F3B /* settings.swift in Sources */,
+				53EB21F01CE35D0C007BFCBC /* Detector.mm in Sources */,
 				520922A01CD387F3008B6724 /* OpenCvController.mm in Sources */,
 				53B6420A1C98924E00B08F3B /* AppDelegate.swift in Sources */,
 				536C65311CD212E100946003 /* RequestController.swift in Sources */,

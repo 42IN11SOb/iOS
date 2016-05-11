@@ -15,8 +15,7 @@
 - (void) someMethod {
     NSLog(@"SomeMethod Ran");
     NSLog(@"picture received");
-    CvVideoCamera *hoi = [[CvVideoCamera alloc] init];
-    
+    CvVideoCamera *hoi = [[CvVideoCamera alloc] init]; 
 }
 
 @end

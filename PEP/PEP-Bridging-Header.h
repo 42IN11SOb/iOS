@@ -6,10 +6,8 @@
 //  Copyright © 2016 42IN11SOb. All rights reserved.
 //
 
-#ifndef PEP_Bridging_Header_h
-#define PEP_Bridging_Header_h
 
 #import "OpenCvController.h"
+#import "Detector.h"
+#import "CameraViewController.h"
 
-
-#endif /* PEP_Bridging_Header_h */
