@@ -102,7 +102,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
                         let figure = Figure()
                         figure.title = figureObj!.objectForKey("title") as! String
                         figure.advice = figureObj!.objectForKey("advice") as! String
-//                        figure.img = figureObj!.objectForKey("img") as! String
+                        figure.img = figureObj!.objectForKey("img") as! String
                         figure.info = figureObj!.objectForKey("info") as! String
                         
                         DatabaseController.sharedControl.saveFigure(figure)
