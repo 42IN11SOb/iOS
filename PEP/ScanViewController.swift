@@ -9,7 +9,11 @@
 import UIKit
 import AVFoundation
 
-class ScanViewController: UIViewController {
+protocol CameraFramesDelegate {
+    func processCameraFrames(sampleBuffer : CMSampleBufferRef)
+}
+
+class ScanViewController: UIViewController, CameraFramesDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     // #TODO:
     // - var outlets aanmaken voor alle elementen in de view
@@ -20,9 +24,13 @@ class ScanViewController: UIViewController {
     // -
     @IBOutlet weak var previewView: UIView!
     
-    var captureSession: AVCaptureSession?
+    var previewLayer : AVCaptureVideoPreviewLayer?
+    var delegate : CameraFramesDelegate?
+    var captureSession = AVCaptureSession();
+    var captureDevice : AVCaptureDevice?
+    
     var stillImageOutput: AVCaptureStillImageOutput?
-    var previewLayer: AVCaptureVideoPreviewLayer?
+    //var previewLayer: AVCaptureVideoPreviewLayer?
     let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
     
     override func viewDidLoad() {
@@ -34,12 +42,25 @@ class ScanViewController: UIViewController {
         let instanceOfCustomObject: OpenCvController = OpenCvController()
         instanceOfCustomObject.someProperty = "Hello World"
         print(instanceOfCustomObject.someProperty)
-        instanceOfCustomObject.someMethod()    }
+        instanceOfCustomObject.someMethod()
+        
+        //let _ = CvVideoCamera()
+    /*
+        /
+        self.videoCamera = [[CvVideoCamera alloc] initWithParentView:imageView];
+        self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+        self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset352x288;
+        self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
+        self.videoCamera.defaultFPS = 30;
+        self.videoCamera.grayscale = NO;
+    */
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         loadCamera()
-    }
+        
+        }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -96,39 +117,40 @@ class ScanViewController: UIViewController {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
+    
+    
+    
     func loadCamera(){
         
-        captureSession = AVCaptureSession()
-        captureSession!.sessionPreset = AVCaptureSessionPresetPhoto
-   
-        let captureDevice:AVCaptureDevice = backCamera
+        captureSession.beginConfiguration()
         
+        // Capture the session with High settings preset
+        captureSession.sessionPreset = AVCaptureSessionPresetHigh;
         
-        var error: NSError?
-        var input: AVCaptureDeviceInput!
+        self.captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo);
+        
+        // Because the old error handling method is deprecated
         do {
-            input = try AVCaptureDeviceInput(device: captureDevice)
-        } catch let error1 as NSError {
-            error = error1
-            input = nil
+            try captureSession.addInput(AVCaptureDeviceInput(device: captureDevice));
+        } catch {
+            print("Error in getting input from camera");
         }
         
-        if error == nil && captureSession!.canAddInput(input) {
-            captureSession!.addInput(input)
-            
-            stillImageOutput = AVCaptureStillImageOutput()
-            stillImageOutput!.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-            if captureSession!.canAddOutput(stillImageOutput) {
-                captureSession!.addOutput(stillImageOutput)
-                
-                previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-                previewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
-                previewLayer!.connection?.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
-                previewView.layer.addSublayer(previewLayer!)
-                
-                captureSession!.startRunning()
-            }
-        }
+        self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession);
+        
+        let output = AVCaptureVideoDataOutput();
+        
+        var outputQueue : dispatch_queue_t?
+        outputQueue = dispatch_queue_create("outputQueue", DISPATCH_QUEUE_SERIAL);
+        output.setSampleBufferDelegate(self, queue: outputQueue)
+        
+        output.alwaysDiscardsLateVideoFrames = true;
+        output.videoSettings = nil;
+        
+        captureSession.addOutput(output);
+        
+        captureSession.commitConfiguration()
+        captureSession.startRunning();
 
     }
 
@@ -164,6 +186,25 @@ class ScanViewController: UIViewController {
         }
 
     }
+    
+    //sla huidige frame op
+    func captureFrame()
+    {
+        print("capturing frame");
+    }
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+        
+        print("frame dropped")
+    }
+    
+    func captureOutput(captureOutput: AVCaptureOutput, didOutputSampleBuffer sampleBuffer: CMSampleBufferRef, fromConnection connection: AVCaptureConnection) {
+        
+        print("frame received")
+    }
+    
+    func processCameraFrames(sampleBuffer : CMSampleBufferRef)
+    {}
     
 }
 

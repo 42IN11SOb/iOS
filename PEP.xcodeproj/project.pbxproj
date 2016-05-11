@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5206C4171CA2A11F005BCAC1 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206C4161CA2A11F005BCAC1 /* InformationViewController.swift */; };
-		520922A01CD387F3008B6724 /* OpenCvController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5209229F1CD387F3008B6724 /* OpenCvController.m */; };
+		520922A01CD387F3008B6724 /* OpenCvController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5209229F1CD387F3008B6724 /* OpenCvController.mm */; };
 		52EF8B2B1CC4355200D00E40 /* pepIcon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B211CC4355200D00E40 /* pepIcon-60@2x.png */; };
 		52EF8B2C1CC4355200D00E40 /* pepIcon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B221CC4355200D00E40 /* pepIcon-60@3x.png */; };
 		52EF8B2D1CC4355200D00E40 /* pepIcon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B231CC4355200D00E40 /* pepIcon-76.png */; };
@@ -69,7 +69,7 @@
 
 /* Begin PBXFileReference section */
 		5206C4161CA2A11F005BCAC1 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
-		5209229F1CD387F3008B6724 /* OpenCvController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCvController.m; sourceTree = "<group>"; };
+		5209229F1CD387F3008B6724 /* OpenCvController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCvController.mm; sourceTree = "<group>"; };
 		520922A11CD388C9008B6724 /* PEP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEP-Bridging-Header.h"; sourceTree = "<group>"; };
 		520922A21CD38963008B6724 /* OpenCvController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCvController.h; sourceTree = "<group>"; };
 		52EF8B211CC4355200D00E40 /* pepIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-60@2x.png"; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				53B6420B1C98924E00B08F3B /* ScanViewController.swift */,
-				5209229F1CD387F3008B6724 /* OpenCvController.m */,
+				5209229F1CD387F3008B6724 /* OpenCvController.mm */,
 				520922A11CD388C9008B6724 /* PEP-Bridging-Header.h */,
 				520922A21CD38963008B6724 /* OpenCvController.h */,
 			);
@@ -584,7 +584,7 @@
 				5334ED0A1CA95C0800C16912 /* LoginViewController.swift in Sources */,
 				53BF79F21CB79FBC0070EC3E /* user.swift in Sources */,
 				53B6422C1C98BF3300B08F3B /* settings.swift in Sources */,
-				520922A01CD387F3008B6724 /* OpenCvController.m in Sources */,
+				520922A01CD387F3008B6724 /* OpenCvController.mm in Sources */,
 				53B6420A1C98924E00B08F3B /* AppDelegate.swift in Sources */,
 				536C65311CD212E100946003 /* RequestController.swift in Sources */,
 				532272D11CC677D6009A412E /* ColorViewController.swift in Sources */,
