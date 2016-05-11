@@ -19,7 +19,7 @@ class PassportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "PASPOORT"
+        self.title = NSLocalizedString("PASSPORTTITLE", comment:"Passport title")
         self.view.backgroundColor = backgroundColor
     }
     

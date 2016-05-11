@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "INSTELLINGEN"
+        self.title = NSLocalizedString("SETTINGSTITLE", comment:"Settings title")
         self.view.backgroundColor = backgroundColor
         
         
