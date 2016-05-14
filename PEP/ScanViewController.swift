@@ -105,10 +105,36 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Here you collect each frame and process it
         
         print("frame")
+        
+        let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
+        
+        CVWrapper.processImageWithOpenCV(image)
+        
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
         // Here you can count how many frames are dopped
+    }
+    
+    func imageFromSampleBuffer(sampleBuffer:CMSampleBuffer!) -> UIImage {
+        let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        CVPixelBufferLockBaseAddress(imageBuffer, 0)
+        
+        let baseAddress = CVPixelBufferGetBaseAddress(imageBuffer)
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
+        let width = CVPixelBufferGetWidth(imageBuffer)
+        let height = CVPixelBufferGetHeight(imageBuffer)
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        let bitmapInfo:CGBitmapInfo = [.ByteOrder32Little, CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedFirst.rawValue)]
+        let context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, bitmapInfo.rawValue)
+        
+        let quartzImage = CGBitmapContextCreateImage(context)
+        CVPixelBufferUnlockBaseAddress(imageBuffer, 0)
+        
+        let image = UIImage(CGImage: quartzImage!)
+        return image
     }
 
     

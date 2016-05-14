@@ -7,6 +7,5 @@
 //
 
 
-#import "OpenCvController.h"
-
+#import "CVWrapper.h"
 
