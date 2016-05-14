@@ -6,17 +6,13 @@
 //  Copyright © 2016 42IN11SOb. All rights reserved.
 //
 
-#ifndef OpenCvController_h
-#define OpenCvController_h
-
 #import <Foundation/Foundation.h>
 
 @interface OpenCvController : NSObject
 
 @property (strong, nonatomic) id someProperty;
+//- (void)processImage:(cv::Mat &)image
 
-- (void) someMethod;
 
 @end
 
-#endif /* OpenCvController_h */

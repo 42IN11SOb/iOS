@@ -18,4 +18,10 @@
     CvVideoCamera *hoi = [[CvVideoCamera alloc] init]; 
 }
 
+
+- (void)processImage:(cv::Mat &)image {
+    
+}
+
+
 @end

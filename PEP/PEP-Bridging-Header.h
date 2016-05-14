@@ -8,6 +8,5 @@
 
 
 #import "OpenCvController.h"
-#import "Detector.h"
-#import "CameraViewController.h"
+
 
