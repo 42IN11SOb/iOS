@@ -498,28 +498,8 @@
                     <view key="view" contentMode="scaleToFill" id="KGX-56-Vb5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0TW-Aw-IX6">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xP-ok-XuC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="0TW-Aw-IX6" secondAttribute="trailing" constant="-20" id="2Qy-3v-MKR"/>
-                            <constraint firstItem="0TW-Aw-IX6" firstAttribute="top" secondItem="xzL-g3-659" secondAttribute="bottom" id="5vN-tI-w1T"/>
-                            <constraint firstItem="btw-57-qeV" firstAttribute="top" secondItem="0TW-Aw-IX6" secondAttribute="bottom" id="MaX-5a-sOm"/>
-                            <constraint firstItem="0TW-Aw-IX6" firstAttribute="leading" secondItem="KGX-56-Vb5" secondAttribute="leadingMargin" constant="-20" id="lgz-tT-Nzf"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="previewView" destination="4xP-ok-XuC" id="8LJ-2h-tZG"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jwA-aA-jJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -804,7 +784,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFQ-Du-qBH">
-                                <rect key="frame" x="40" y="84" width="520" height="414"/>
+                                <rect key="frame" x="40" y="84" width="520" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJq-5b-7hd">
                                         <rect key="frame" x="238" y="48" width="45" height="21"/>
@@ -828,7 +808,7 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWJ-Ch-8OG">
-                                        <rect key="frame" x="230" y="364" width="60" height="30"/>
+                                        <rect key="frame" x="230" y="450" width="60" height="30"/>
                                         <state key="normal" title="Inloggen"/>
                                         <connections>
                                             <action selector="loginTapped:" destination="n7C-Yl-xU0" eventType="touchUpInside" id="KFP-L0-hit"/>
@@ -845,7 +825,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
                                     </textField>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BGy-EY-NzY">
-                                        <rect key="frame" x="250" y="197" width="20" height="20"/>
+                                        <rect key="frame" x="250" y="240" width="20" height="20"/>
                                         <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                         <color key="color" red="1" green="0.87074370620846941" blue="0.24981068600271861" alpha="1" colorSpace="calibratedRGB"/>
                                     </activityIndicatorView>
@@ -869,7 +849,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KhV-8C-f5b" firstAttribute="top" secondItem="kFQ-Du-qBH" secondAttribute="bottom" constant="102" id="OBx-3Z-bbD"/>
+                            <constraint firstItem="KhV-8C-f5b" firstAttribute="top" secondItem="kFQ-Du-qBH" secondAttribute="bottom" constant="16" id="OBx-3Z-bbD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kFQ-Du-qBH" secondAttribute="trailing" constant="20" id="at3-7z-ICg"/>
                             <constraint firstItem="kFQ-Du-qBH" firstAttribute="leading" secondItem="CXY-AM-nan" secondAttribute="leadingMargin" constant="20" id="dWB-kR-2x9"/>
                             <constraint firstItem="kFQ-Du-qBH" firstAttribute="top" secondItem="mXg-XY-wQc" secondAttribute="bottom" constant="20" id="z0N-oA-Ynd"/>

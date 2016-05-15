@@ -58,7 +58,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     lazy var cameraSession: AVCaptureSession = {
         let s = AVCaptureSession()
-        s.sessionPreset = AVCaptureSessionPresetLow
+        s.sessionPreset = AVCaptureSessionPreset640x480
         return s
     }()
     
@@ -81,6 +81,9 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             if (cameraSession.canAddInput(deviceInput) == true) {
                 cameraSession.addInput(deviceInput)
             }
+            
+            
+            
             
             let dataOutput = AVCaptureVideoDataOutput()
             dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
@@ -106,9 +109,9 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         print("frame")
         
-        let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
+//        let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
         
-        CVWrapper.processImageWithOpenCV(image)
+//        CVWrapper.processImageWithOpenCV(image)
         
     }
     
