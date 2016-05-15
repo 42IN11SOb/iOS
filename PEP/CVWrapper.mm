@@ -13,7 +13,8 @@
 
 + (UIImage*) processImageWithOpenCV: (UIImage*) inputImage
 {
-   
+ 
+//    NSLog(inputImage)
     return inputImage;
 }
 

@@ -20,6 +20,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // - scan 'recognized' functie opzetten (al is het maar een opzet) 
     // -
 
+    var frameNr = 0
     
     
     override func viewDidLoad() {
@@ -39,6 +40,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        frameNr = 0
         view.layer.addSublayer(previewLayer)
         
         cameraSession.startRunning()
@@ -105,13 +107,16 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
-        // Here you collect each frame and process it
         
-        print("frame")
-        
-//        let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
-        
-//        CVWrapper.processImageWithOpenCV(image)
+        if frameNr % 4 == 0 {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                //All stuff here
+                let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
+                
+//                CVWrapper.processImageWithOpenCV(image)
+            })
+        }
+        frameNr += 1
         
     }
     
@@ -119,25 +124,37 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Here you can count how many frames are dopped
     }
     
-    func imageFromSampleBuffer(sampleBuffer:CMSampleBuffer!) -> UIImage {
-        let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+
+    func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage {
+        // Get a CMSampleBuffer's Core Video image buffer for the media data
+        let imageBuffer: CVImageBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        // Lock the base address of the pixel buffer
         CVPixelBufferLockBaseAddress(imageBuffer, 0)
         
-        let baseAddress = CVPixelBufferGetBaseAddress(imageBuffer)
-        let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
+        // Get the pixel buffer width and height
         let width = CVPixelBufferGetWidth(imageBuffer)
         let height = CVPixelBufferGetHeight(imageBuffer)
         
+        // Create a device-dependent RGB color space
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
-        let bitmapInfo:CGBitmapInfo = [.ByteOrder32Little, CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedFirst.rawValue)]
-        let context = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, bitmapInfo.rawValue)
+        // Create a bitmap graphics context with the sample buffer data
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.NoneSkipFirst.rawValue | CGBitmapInfo.ByteOrder32Little.rawValue).rawValue
+        let context = CGBitmapContextCreate(nil, width, height, 8, 0, colorSpace, bitmapInfo)
+        // Create a Quartz image from the pixel data in the bitmap graphics context
+        
         
         let quartzImage = CGBitmapContextCreateImage(context)
-        CVPixelBufferUnlockBaseAddress(imageBuffer, 0)
+        // Unlock the pixel buffer
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
         
+        
+        // Create an image object from the Quartz image
         let image = UIImage(CGImage: quartzImage!)
+        
         return image
+        
+        
     }
 
     
