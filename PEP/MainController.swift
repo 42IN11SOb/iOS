@@ -87,7 +87,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
                 let pass: Passport = Passport()
                 if ((result?.objectForKey("success")) != nil) {
                     
-                   
                     let data = result?.objectForKey("data")
                     if((data?.objectForKey("passport")) != nil){
                         print(data?.objectForKey("passport"))
@@ -128,8 +127,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
                             DatabaseController.sharedControl.addRuleToFigure(rule)
                         }
                         
-                        
-                        
                         let colors = season!.objectForKey("colors") as! NSArray
                         
                         for color in colors {
@@ -145,9 +142,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
                             DatabaseController.sharedControl.savePassColor(passColor)
                             DatabaseController.sharedControl.addColorToPassport( passColor)
                         }
-                        
-                        
-                        
                     }
                     
                 }

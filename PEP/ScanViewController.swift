@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import RealmSwift
 
 
 class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate{
@@ -21,17 +22,22 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     // -
 
     var frameNr = 0
-    
+    var colors: [PassportColor] = []
+    var regColorView: UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("SCANTITLE", comment:"Scan title")
         self.view.backgroundColor = backgroundColor
-
+        
+        let pass = DatabaseController.sharedControl.getPassport()
+        for color in pass.season {
+            colors.append(color as PassportColor)
+        }
+        
+        
         setupCameraSession()
     }
-
-
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,11 +46,27 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        frameNr = 0
         view.layer.addSublayer(previewLayer)
         
         cameraSession.startRunning()
-       
+        
+        regColorView.layer.borderWidth = 10
+        regColorView.layer.borderColor = UIColor.blueColor().CGColor
+        regColorView.backgroundColor = UIColor.clearColor()
+        
+        let size = 100
+        let center_x = self.view.frame.size.width/2
+        let center_y = self.view.frame.size.height/2
+        let pos_x = Int(center_x) - (size/2)
+        let pos_y = Int(center_y) - (size/2)
+        
+        let frame = CGRect(x: pos_x, y: pos_y, width: size, height: size)
+        regColorView.frame = frame
+        
+        
+        self.view.addSubview(regColorView)
+        self.view.bringSubviewToFront(regColorView)
+        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -60,7 +82,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     lazy var cameraSession: AVCaptureSession = {
         let s = AVCaptureSession()
-        s.sessionPreset = AVCaptureSessionPreset640x480
+        s.sessionPreset = AVCaptureSessionPresetHigh
         return s
     }()
     
@@ -84,11 +106,8 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 cameraSession.addInput(deviceInput)
             }
             
-            
-            
-            
             let dataOutput = AVCaptureVideoDataOutput()
-            dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+            dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCVPixelFormatType_32BGRA)]
             dataOutput.alwaysDiscardsLateVideoFrames = true
             
             if (cameraSession.canAddOutput(dataOutput) == true) {
@@ -108,16 +127,28 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
         
-        if frameNr % 4 == 0 {
+        if frameNr % 16 == 0 {
+            
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 //All stuff here
                 let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
-                
-//                CVWrapper.processImageWithOpenCV(image)
+                let colorArray = CVWrapper.processImageWithOpenCV(image)
+                self.checkColors(colorArray)
             })
         }
         frameNr += 1
         
+    }
+    
+    func checkColors(array: NSArray){
+        
+        
+        print(array[0])
+        print(array[1])
+        print(array[2])
+        
+        regColorView.layer.borderColor = UIColor(red: CGFloat(array[0] as! NSNumber)/255, green: CGFloat(array[1] as! NSNumber)/255, blue: CGFloat(array[2] as! NSNumber)/255, alpha: 1).CGColor
+        regColorView.layer.setNeedsDisplay()
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
@@ -130,17 +161,19 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let imageBuffer: CVImageBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
         // Lock the base address of the pixel buffer
         CVPixelBufferLockBaseAddress(imageBuffer, 0)
+          let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
         
+        let address = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0)
         // Get the pixel buffer width and height
         let width = CVPixelBufferGetWidth(imageBuffer)
         let height = CVPixelBufferGetHeight(imageBuffer)
-        
+
         // Create a device-dependent RGB color space
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
         // Create a bitmap graphics context with the sample buffer data
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.NoneSkipFirst.rawValue | CGBitmapInfo.ByteOrder32Little.rawValue).rawValue
-        let context = CGBitmapContextCreate(nil, width, height, 8, 0, colorSpace, bitmapInfo)
+        let context = CGBitmapContextCreate(address, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
         // Create a Quartz image from the pixel data in the bitmap graphics context
         
         
@@ -152,11 +185,14 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         // Create an image object from the Quartz image
         let image = UIImage(CGImage: quartzImage!)
         
+
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
+        
         return image
         
         
     }
-
-    
 }
+
+
 

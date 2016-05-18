@@ -35,3 +35,10 @@ let requestLogin: String = baseURL + "/users/login"
 //let requestProfile: String = baseURL + "/seasons?token="
 let requestProfile: String = baseURL + "/users/profile?token="
 
+
+func getDocumentsDirectory() -> NSString {
+    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let documentsDirectory = paths[0]
+    return documentsDirectory
+}
+

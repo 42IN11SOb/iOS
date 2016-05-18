@@ -683,7 +683,7 @@
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="yDe-kT-6V7" kind="show" id="a1C-hs-2i9"/>
+                                            <segue destination="mB7-h6-DpO" kind="show" id="h6D-ll-A2G"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ik ben niet bij een PEP-dag geweest" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dm-lE-jiH">
@@ -876,9 +876,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.83529411760000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="NYv-Nn-W4N" kind="relationship" relationship="rootViewController" id="Mj5-GT-vCA"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjx-Xm-qNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -896,7 +893,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFz-vK-tkf">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XFz-vK-tkf">
                                 <rect key="frame" x="20" y="84" width="560" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -973,4 +970,7 @@
         <image name="scan_icon.png" width="237" height="239"/>
         <image name="settings_icon.png" width="250" height="238"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="h6D-ll-A2G"/>
+    </inferredMetricsTieBreakers>
 </document>
