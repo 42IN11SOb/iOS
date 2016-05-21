@@ -57,7 +57,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         let size = 100
         let center_x = self.view.frame.size.width/2
-        let center_y = self.view.frame.size.height/2
+        let center_y = (self.view.frame.size.height/2) - 100
         let pos_x = Int(center_x) - (size/2)
         let pos_y = Int(center_y) - (size/2)
         

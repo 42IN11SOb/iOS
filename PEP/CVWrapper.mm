@@ -28,16 +28,73 @@
     int x,y;
     x = inputImage.size.width/2;
     y = inputImage.size.height/2;
-
+    
+    int red, green, blue;
+    red = 0;
+    green = 0;
+    blue = 0;
+    int numberOfPixels = 1;
+//    NSDictionary *colorValues = [[NSDictionary alloc] init];
+    
     cv::Vec3b intensity = img.at<cv::Vec3b>(y, x);
+    red = intensity.val[0];
+    NSLog(@"%d red", intensity.val[0]);
+    green = intensity.val[1];
+    blue = intensity.val[2];
+    
+//    
+//    for(int i=0; i < numberOfPixels; i++){
+//        int xx =(x-2)+i;
+//        int yy = (y-2)+i;
+//        
+//        cv::Vec3b intensity = img.at<cv::Vec3b>(yy, xx);
+//        red += intensity.val[0];
+//        green += intensity.val[1];
+//        blue += intensity.val[2];
+//    }
+    
+    int avgRed =0, avgGreen=0, avgBlue = 0;
+    avgRed = red/(numberOfPixels);
+    avgGreen = green/(numberOfPixels);
+    avgBlue = blue/(numberOfPixels);
+    
+    
+    NSLog(@" %d red , %d green %d blue", avgRed, avgGreen, avgBlue);
+//    colorValues = @{
+//                    @"r": [NSNumber numberWithInt:avgRed],
+//                    @"g": [NSNumber numberWithInt:avgGreen],
+//                    @"b": [NSNumber numberWithInt:avgBlue],};
 
-    int redd = intensity.val[0];
-    int greenn = intensity.val[1];
-    int bluee = intensity.val[2];
 
-    NSArray * check = [NSArray arrayWithObjects:[NSNumber numberWithInt:redd], [NSNumber numberWithInt:greenn], [NSNumber numberWithInt:bluee], nil];
+
+    NSArray * check = [NSArray arrayWithObjects:[NSNumber numberWithInt:avgRed], [NSNumber numberWithInt:avgGreen], [NSNumber numberWithInt:avgBlue], nil];
     return check;
 //    return recognized;
+}
+
+
++ (NSDictionary*) calculateFromThree: (int)x y:(int)y img:(cv::Mat)img {
+    int red, green, blue;
+    int numberOfPixels = 3;
+    NSDictionary *colorValues = [[NSDictionary alloc] init];
+    
+    for(int i=0; i < numberOfPixels; i++){
+        cv::Vec3b intensity = img.at<cv::Vec3b>((y-1)+i, (x-1)+i);
+        red += intensity.val[0];
+        green += intensity.val[1];
+        blue += intensity.val[2];
+    }
+    
+    int avgRed, avgGreen, avgBlue;
+    avgRed = red/numberOfPixels;
+    avgGreen = green/numberOfPixels;
+    avgBlue = blue/numberOfPixels;
+    colorValues = @{
+                    @"r": [NSNumber numberWithInt:avgRed],
+                    @"g": [NSNumber numberWithInt:avgGreen],
+                    @"b": [NSNumber numberWithInt:avgBlue],};
+    
+    return colorValues;
 }
 
 
