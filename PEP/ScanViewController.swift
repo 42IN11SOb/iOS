@@ -42,6 +42,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }
+
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -78,6 +79,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     
     lazy var cameraSession: AVCaptureSession = {
@@ -129,6 +131,9 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         if frameNr % 16 == 0 {
             
+//            let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
+//            let colorArray = CVWrapper.processImageWithOpenCV(image)
+//            self.checkColors(colorArray)
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 //All stuff here
                 let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
@@ -143,12 +148,19 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     func checkColors(array: NSArray){
         
         
-        print(array[0])
-        print(array[1])
-        print(array[2])
+//        print(array[0])
+//        print(array[1])
+//        print(array[2])
         
-        regColorView.layer.borderColor = UIColor(red: CGFloat(array[0] as! NSNumber)/255, green: CGFloat(array[1] as! NSNumber)/255, blue: CGFloat(array[2] as! NSNumber)/255, alpha: 1).CGColor
-        regColorView.layer.setNeedsDisplay()
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            
+            self.regColorView.layer.borderColor = UIColor(red: CGFloat(array[0] as! NSNumber)/255, green: CGFloat(array[1] as! NSNumber)/255, blue: CGFloat(array[2] as! NSNumber)/255, alpha: 1).CGColor
+            self.regColorView.layer.setNeedsDisplay()
+        }
+        
+        
+        
+        
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
