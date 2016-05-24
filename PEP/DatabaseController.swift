@@ -77,7 +77,9 @@ class DatabaseController {
     func getPassport() -> Passport{
         dataRealm()
         let pass = database.objects(Passport).filter("user_id = 0").first
-        
+        if(pass == nil){
+            return Passport();
+        }
         return pass!
     }
     
