@@ -35,7 +35,7 @@ let requestLogin: String = baseURL + "/users/login"
 //let requestProfile: String = baseURL + "/seasons?token="
 let requestProfile: String = baseURL + "/users/profile?token="
 
-let requestNews: String = baseURL + "/news?token="
+let requestNews: String = baseURL + "/news"
 
 
 func getDocumentsDirectory() -> NSString {

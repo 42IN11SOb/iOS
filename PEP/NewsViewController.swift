@@ -76,13 +76,16 @@ class NewsViewController: UIViewController {
         
         for newsItem in self.news.newsItems {
          
+//            let backView: UIView = UIView()
+//            backView.backgroundColor = panelColor
+            
             let view : UIStackView = UIStackView()
             view.spacing = 8.0
 //            view.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
             view.axis = .Vertical
             view.layoutMarginsRelativeArrangement = true
             view.translatesAutoresizingMaskIntoConstraints = false
-            
+       
             print(newsItem.title)
             
             let title: UILabel = UILabel()
@@ -90,8 +93,12 @@ class NewsViewController: UIViewController {
             let content: UILabel = UILabel()
             content.attributedText = newsItem.getContent()
             content.numberOfLines = 0
+            
             view.addArrangedSubview(title)
             view.addArrangedSubview(content)
+            
+//            backView.addSubview(view)
+            
             
             stackContentView.addArrangedSubview(view)
        

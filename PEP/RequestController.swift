@@ -43,12 +43,12 @@ class RequestController {
     static func getNews(completion: (result: NSDictionary?, error: NSError?)->()){
         
         
-        let user = User()
-        user.getUserInformation()
-        let requestNewswithToken = requestNews+user.token
+//        let user = User()
+//        user.getUserInformation()
+//        let requestNewswithToken = requestNews+user.token
+//        
         
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: requestNewswithToken)!)
+        let request = NSMutableURLRequest(URL: NSURL(string: requestNews)!)
         request.HTTPMethod = "GET"
         
         
