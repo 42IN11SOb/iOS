@@ -152,14 +152,31 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
 //        print(array[1])
 //        print(array[2])
         
+        let re: Float = array[0].floatValue
+        let gr: Float = array[1].floatValue
+        let bl: Float = array[2].floatValue
+        
+        
+        
         dispatch_async(dispatch_get_main_queue()) { [unowned self] in
             
+            for color in self.colors{
+                
+                 print("red \(re) -  \(color.redColor)" )
+                 print("green \(gr) -  \(color.greenColor)" )
+                 print("blue \(bl) -  \(color.blueColor)" )
+                
+                
+                
+                if(color.redColor > (re - 40) && color.redColor < (re + 40) && color.greenColor > (gr - 40) && color.greenColor < (gr + 40) && color.blueColor > (bl - 40) && color.blueColor < (bl+40)){
+                    print("I've recognized a color of your scheme!")
+                }
+            }
+            
+//            self.regColorView.layer.borderColor = UIColor(hue: CGFloat(array[0] as! NSNumber), saturation: CGFloat(array[1] as! NSNumber), brightness: CGFloat(array[2] as! NSNumber), alpha: 1).CGColor
             self.regColorView.layer.borderColor = UIColor(red: CGFloat(array[0] as! NSNumber)/255, green: CGFloat(array[1] as! NSNumber)/255, blue: CGFloat(array[2] as! NSNumber)/255, alpha: 1).CGColor
             self.regColorView.layer.setNeedsDisplay()
         }
-        
-        
-        
         
     }
     

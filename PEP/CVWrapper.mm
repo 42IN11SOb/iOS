@@ -14,62 +14,98 @@
 
 @implementation CVWrapper
 
+
 + (NSArray*) processImageWithOpenCV: (UIImage*) inputImage
 {
 
     cv::Mat thr;
     cv::Mat img = [inputImage CVMat];
     cv::Mat hsvImage;
-//    cv::cvtColor(img , hsvImage, CV_BGR2HSV);
-//    threshold(thr,thr,180,255,cv::THRESH_BINARY_INV);
     
-    std::vector<cv::Mat>channels;
+    int pos_x,pos_y;
+    pos_x = inputImage.size.width/2;
+    pos_y = inputImage.size.height/2;
     
-    int x,y;
-    x = inputImage.size.width/2;
-    y = inputImage.size.height/2;
     
-    int red, green, blue;
-    red = 0;
-    green = 0;
-    blue = 0;
-    int numberOfPixels = 1;
-//    NSDictionary *colorValues = [[NSDictionary alloc] init];
+    NSMutableArray *colorPoints = [NSMutableArray init];
+
     
-    cv::Vec3b intensity = img.at<cv::Vec3b>(y, x);
-    red = intensity.val[0];
-    NSLog(@"%d red", intensity.val[0]);
-    green = intensity.val[1];
-    blue = intensity.val[2];
+    int numberOfPointsPerRow = 3;
+    for(int i=0; i<numberOfPointsPerRow; i++){
+        for(int j=0; j<numberOfPointsPerRow; j++){
+            int red, green, blue;
+            red = 0;
+            green = 0;
+            blue = 0;
+            int xpos = (inputImage.size.width / 5) * j;
+            int ypos = (inputImage.size.height/ 5) * i;
+            
+            cv::Vec3b intensity = img.at<cv::Vec3b>(ypos, xpos);
+            red = intensity.val[0];
+            green = intensity.val[1];
+            blue = intensity.val[2];
+            
+            NSDictionary *colorValues = [[NSDictionary alloc] init];
+            colorValues = @{
+                            @"r": [NSNumber numberWithInt:red],
+                            @"g": [NSNumber numberWithInt:green],
+                            @"b": [NSNumber numberWithInt:blue],};
+            [colorPoints addObject:colorValues];
+            
+        }
+    }
     
+    return colorPoints;
+
+////    cv::cvtColor(img , hsvImage, CV_BGR2HSV);
+////
+////    cv::Vec3b hsv=hsvImage.at<cv::Vec3b>(pos_x,pos_y);
+////    int H=hsv.val[0]; //hue
+////    int S=hsv.val[1]; //saturation
+////    int V=hsv.val[2]; //value
+////    
+////    
+////    NSLog(@"%i, %i, %i", H,S,V);
 //    
-//    for(int i=0; i < numberOfPixels; i++){
-//        int xx =(x-2)+i;
-//        int yy = (y-2)+i;
-//        
-//        cv::Vec3b intensity = img.at<cv::Vec3b>(yy, xx);
-//        red += intensity.val[0];
-//        green += intensity.val[1];
-//        blue += intensity.val[2];
-//    }
-    
-    int avgRed =0, avgGreen=0, avgBlue = 0;
-    avgRed = red/(numberOfPixels);
-    avgGreen = green/(numberOfPixels);
-    avgBlue = blue/(numberOfPixels);
-    
-    
-    NSLog(@" %d red , %d green %d blue", avgRed, avgGreen, avgBlue);
-//    colorValues = @{
-//                    @"r": [NSNumber numberWithInt:avgRed],
-//                    @"g": [NSNumber numberWithInt:avgGreen],
-//                    @"b": [NSNumber numberWithInt:avgBlue],};
-
-
-
-    NSArray * check = [NSArray arrayWithObjects:[NSNumber numberWithInt:avgRed], [NSNumber numberWithInt:avgGreen], [NSNumber numberWithInt:avgBlue], nil];
-    return check;
-//    return recognized;
+////    threshold(thr,thr,180,255,cv::THRESH_BINARY_INV);
+//    
+////    std::vector<cv::Mat>channels;
+//  
+//    int red, green, blue;
+//    red = 0;
+//    green = 0;
+//    blue = 0;
+//    int numberOfPixels = 1;
+//    
+//    
+//    //    for(int x=0; x<150; x++){
+//    //        for(int y=0; y<150; y++){
+//    //            cv::Vec3b intensity = img.at<cv::Vec3b>((pos_y-75)+y, (pos_x-75)+x);
+//    //            red += intensity.val[0];
+//    //            green += intensity.val[1];
+//    //            blue += intensity.val[2];
+//    //            numberOfPixels++;
+//    //        }
+//    //    }
+//    ////
+//    //    int avgRed =0, avgGreen=0, avgBlue = 0;
+//    //    avgRed = red/numberOfPixels;
+//    //    avgGreen = green/numberOfPixels;
+//    //    avgBlue = blue/numberOfPixels;
+//    
+//
+//    cv::Vec3b intensity = img.at<cv::Vec3b>(pos_y, pos_x);
+//    red = intensity.val[0];
+//    green = intensity.val[1];
+//    blue = intensity.val[2];
+//    
+//    int avgRed =0, avgGreen=0, avgBlue = 0;
+//    avgRed = red/numberOfPixels;
+//    avgGreen = green/numberOfPixels;
+//    avgBlue = blue/numberOfPixels;
+//
+//    NSArray * check = [NSArray arrayWithObjects:[NSNumber numberWithInt:avgRed], [NSNumber numberWithInt:avgGreen], [NSNumber numberWithInt:avgBlue], nil];
+//    return check;
 }
 
 
