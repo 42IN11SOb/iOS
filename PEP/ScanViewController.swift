@@ -129,7 +129,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
         
-        if frameNr % 16 == 0 {
+        if frameNr % 32 == 0 {
             
 //            let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
 //            let colorArray = CVWrapper.processImageWithOpenCV(image)
@@ -162,6 +162,8 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             
             for color in self.colors{
                 
+                print("----------------------------------")
+                print(color.name)
                  print("red \(re) -  \(color.redColor)" )
                  print("green \(gr) -  \(color.greenColor)" )
                  print("blue \(bl) -  \(color.blueColor)" )
@@ -170,6 +172,10 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 
                 if(color.redColor > (re - 40) && color.redColor < (re + 40) && color.greenColor > (gr - 40) && color.greenColor < (gr + 40) && color.blueColor > (bl - 40) && color.blueColor < (bl+40)){
                     print("I've recognized a color of your scheme!")
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    let alertController = UIAlertController(title:"Color in your scheme!", message:" Woei!", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
             }
             
