@@ -256,7 +256,7 @@
                                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="NYv-Nn-W4N" kind="show" id="Pu0-o7-UDQ"/>
+                                                            <segue destination="NYv-Nn-W4N" kind="show" id="rDP-l5-xqp"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -977,6 +977,6 @@
         <image name="settings_icon.png" width="250" height="238"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pu0-o7-UDQ"/>
+        <segue reference="rDP-l5-xqp"/>
     </inferredMetricsTieBreakers>
 </document>

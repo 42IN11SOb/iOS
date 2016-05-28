@@ -66,6 +66,9 @@ class MainController : UIViewController, UIScrollViewDelegate {
             self.scanViewButton.userInteractionEnabled = false
         #endif
         
+        self.view.bringSubviewToFront(informationViewButton)
+        self.informationViewButton.userInteractionEnabled = true
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -79,8 +82,12 @@ class MainController : UIViewController, UIScrollViewDelegate {
     }
     
     override func viewDidLayoutSubviews() {
+            super.viewDidLayoutSubviews()
         scrollView.scrollEnabled = true
+            scrollView.needsUpdateConstraints()
     }
+    
+
     
     func downloadPassport(completion: (loaded: Bool) ->()){
         
