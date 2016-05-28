@@ -47,18 +47,27 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.scrollView.backgroundColor = backgroundColor
         self.mainView.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
-        
+        self.navigationItem.setHidesBackButton(true, animated:true);
         
         user = User()
         user.getUserInformation()
-        downloadPassport { (loaded) in
-            print("Download passport complete")
-            
+        
+        
+        let pass = DatabaseController.sharedControl.getPassport()
+        
+        if(pass.season.count == 0){
+            downloadPassport { (loaded) in
+                print("Download passport complete")
+                
+            }
         }
         
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             self.scanViewButton.userInteractionEnabled = false
         #endif
+        
+        self.view.bringSubviewToFront(informationViewButton)
+        self.informationViewButton.userInteractionEnabled = true
         
     }
     
@@ -73,8 +82,12 @@ class MainController : UIViewController, UIScrollViewDelegate {
     }
     
     override func viewDidLayoutSubviews() {
+            super.viewDidLayoutSubviews()
         scrollView.scrollEnabled = true
+            scrollView.needsUpdateConstraints()
     }
+    
+
     
     func downloadPassport(completion: (loaded: Bool) ->()){
         

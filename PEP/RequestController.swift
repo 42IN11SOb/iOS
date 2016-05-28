@@ -39,5 +39,36 @@ class RequestController {
         
         task.resume()
     }
+    
+    static func getNews(completion: (result: NSDictionary?, error: NSError?)->()){
+        
+        
+//        let user = User()
+//        user.getUserInformation()
+//        let requestNewswithToken = requestNews+user.token
+//        
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: requestNews)!)
+        request.HTTPMethod = "GET"
+        
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request){
+            (data, response, error) -> Void in
+            if error != nil {
+                completion(result: nil, error: error)
+            } else {
+                do {
+                    
+                    let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    completion(result: result, error: nil)
+                } catch {
+                    print("error serializing JSON: \(error)")
+                }
+            }
+        }
+        
+        task.resume()
+    }
 
 }

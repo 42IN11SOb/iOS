@@ -34,6 +34,9 @@ let baseURL: String  = "https://projectpep.herokuapp.com"
 let requestLogin: String = baseURL + "/users/login"
 //let requestProfile: String = baseURL + "/seasons?token="
 let requestProfile: String = baseURL + "/users/profile?token="
+let requestCheckLogin : String = baseURL + "/users/loggedIn?token="
+
+let requestNews: String = baseURL + "/news"
 
 
 func getDocumentsDirectory() -> NSString {

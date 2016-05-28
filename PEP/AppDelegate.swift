@@ -22,6 +22,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // - make terms view 
         // - make switch for termsview or launch main. 
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let token = defaults.stringForKey("apiToken")
+    
+        if (token != nil) {
+            print("Token in storage")
+            print(token)
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainView = mainStoryboard.instantiateViewControllerWithIdentifier("MainController") as! MainController
+            mainView.navigationItem.setHidesBackButton(true, animated:true);
+            let rootViewController = self.window!.rootViewController as! UINavigationController
+            
+            rootViewController.pushViewController(mainView, animated: true)
+            
+        } else {
+            print("No token ");
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let introView = mainStoryboard.instantiateViewControllerWithIdentifier("IntroViewController") as! IntroViewController
+            let rootViewController = self.window!.rootViewController as! UINavigationController
+            rootViewController.pushViewController(introView, animated: true)
+        }
+        
         return true
     }
 
