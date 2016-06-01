@@ -11,13 +11,15 @@ import UIKit
 
 class RequestController {
     
-    static func requestPassportColors(completion: (result: NSArray?, error: NSError?)->()){
+    static func requestPassport(completion: (result: NSDictionary?, error: NSError?)->()){
         
         let user = User()
         user.getUserInformation()
         let requestProfwithToken = requestProfile + user.token
         let request = NSMutableURLRequest(URL: NSURL(string: requestProfwithToken)!)
         request.HTTPMethod = "GET"
+        
+//        print(requestProfwithToken)
 
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request){
@@ -27,10 +29,41 @@ class RequestController {
             } else {
                 do {
                     
-                    let result:NSArray = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+                    let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                         completion(result: result, error: nil)
                 } catch {
                      print("error serializing JSON: \(error)")
+                }
+            }
+        }
+        
+        task.resume()
+    }
+    
+    static func getNews(completion: (result: NSDictionary?, error: NSError?)->()){
+        
+        
+//        let user = User()
+//        user.getUserInformation()
+//        let requestNewswithToken = requestNews+user.token
+//        
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: requestNews)!)
+        request.HTTPMethod = "GET"
+        
+        
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request){
+            (data, response, error) -> Void in
+            if error != nil {
+                completion(result: nil, error: error)
+            } else {
+                do {
+                    
+                    let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    completion(result: result, error: nil)
+                } catch {
+                    print("error serializing JSON: \(error)")
                 }
             }
         }

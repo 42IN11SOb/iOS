@@ -11,11 +11,9 @@ import UIKit
 class ColorTableCell: UITableViewCell {
     
     @IBOutlet weak var headingLabel: UILabel!
-//    @IBOutlet var backgroundView: UIView!
-    
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

@@ -8,41 +8,20 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-class Passport {
+class Passport: Object {
     
-    var styleAdvice = ""
-    var does = ""
-    var donts = ""
-    var seasonColors: [PassportColor] = []
-//    var requestController: RequestController = RequestController()
+    dynamic var id = 0
+    dynamic var user_id =  0
+    dynamic var makeup_title = ""
+    dynamic var figure_title = ""
+    dynamic var season_title = ""
+    dynamic var figure: Figure? = nil
+    let season = List<PassportColor>()
     
-
-    func downloadSeason(completion: (loaded: Bool) ->()){
-        
-       RequestController.requestPassportColors { (result, error) in
-        
-            if(result != nil){
-                for object in result! {
-                        
-                        let r = object["r"] as! CGFloat
-                        let g = object["g"] as! CGFloat
-                        let b = object["b"] as! CGFloat
-                        let color = UIColor(red: r/255, green: g/255, blue: b/255, alpha: 1)
-                    
-                        let passColor : PassportColor = PassportColor()
-                        passColor.color = color
-                        passColor.colorName = "Color name"
-
-                        self.seasonColors.append(passColor)
-                    }
-                
-                completion(loaded: true)
-            } else {
-                completion(loaded: false)
-            }
-        }
+    override class func primaryKey() -> String? {
+        return "id"
     }
 
-    
 }

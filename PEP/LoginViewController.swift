@@ -130,18 +130,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 do {
                     let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     
-                    let token = jsonResult["token"] as! String
-                    
-                    self.user.name = self.nameField.text!
-                    self.user.email = ""
-                    self.user.token = token
-                    self.user.saveUser()
-                    self.loginSuccesfull = true
-                    
-                    NSOperationQueue.mainQueue().addOperationWithBlock {
-                        self.performSegueWithIdentifier("login", sender: self)
+                    if (jsonResult["success"] != nil) {
+                        let success = jsonResult["success"] as! Bool
+                        if success {
+                            let data = jsonResult["data"] as! NSDictionary
+                            let token = data["token"] as! String
+                            
+                            self.user.name = self.nameField.text!
+                            self.user.email = ""
+                            self.user.token = token
+                            self.user.saveUser()
+                            self.loginSuccesfull = true
+                            
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                self.performSegueWithIdentifier("login", sender: self)
+                            }
+
+                        }
+                        
                     }
-                } catch {
+                                   } catch {
                     print("Error in parsing JSON")
                 }
                 

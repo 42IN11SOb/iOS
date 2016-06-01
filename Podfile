@@ -6,12 +6,14 @@ use_frameworks!
 target 'PEP' do
 pod 'RealmSwift'
 pod 'OpenCV'
+pod 'ImageLoader'
 
 end
 
 target 'PEPTests' do
 pod 'RealmSwift'
 pod 'OpenCV'
+pod 'ImageLoader'
 
 end
 

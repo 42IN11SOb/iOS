@@ -80,7 +80,6 @@ class ColorPageViewController: UIPageViewController, UIPageViewControllerDataSou
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         
-        self.title = self.pageColors[selectedIndex!].colorName
         return selectedIndex!
     }
     
