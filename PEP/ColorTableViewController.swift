@@ -20,7 +20,7 @@ class ColorTableViewController: UITableViewController {
         self.tableView.backgroundColor = backgroundColor
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let pass = DatabaseController.sharedControl.getPassport()
-         self.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title") + " " + pass.season_title 
+        self.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title") + " " + pass.season_title
 
         for color in pass.season {
            colors.append(color as PassportColor)

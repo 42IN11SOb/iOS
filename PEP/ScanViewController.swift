@@ -147,11 +147,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func checkColors(array: NSArray){
         
-        
-//        print(array[0])
-//        print(array[1])
-//        print(array[2])
-        
         let re: Float = array[0].floatValue
         let gr: Float = array[1].floatValue
         let bl: Float = array[2].floatValue
@@ -167,9 +162,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                  print("red \(re) -  \(color.redColor)" )
                  print("green \(gr) -  \(color.greenColor)" )
                  print("blue \(bl) -  \(color.blueColor)" )
-                
-                
-                
+
                 if(color.redColor > (re - 40) && color.redColor < (re + 40) && color.greenColor > (gr - 40) && color.greenColor < (gr + 40) && color.blueColor > (bl - 40) && color.blueColor < (bl+40)){
                     print("I've recognized a color of your scheme!")
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
@@ -178,8 +171,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
             }
-            
-//            self.regColorView.layer.borderColor = UIColor(hue: CGFloat(array[0] as! NSNumber), saturation: CGFloat(array[1] as! NSNumber), brightness: CGFloat(array[2] as! NSNumber), alpha: 1).CGColor
+
             self.regColorView.layer.borderColor = UIColor(red: CGFloat(array[0] as! NSNumber)/255, green: CGFloat(array[1] as! NSNumber)/255, blue: CGFloat(array[2] as! NSNumber)/255, alpha: 1).CGColor
             self.regColorView.layer.setNeedsDisplay()
         }
@@ -211,7 +203,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let context = CGBitmapContextCreate(address, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
         // Create a Quartz image from the pixel data in the bitmap graphics context
         
-        
         let quartzImage = CGBitmapContextCreateImage(context)
         // Unlock the pixel buffer
         CVPixelBufferUnlockBaseAddress(imageBuffer,0)
@@ -219,8 +210,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         // Create an image object from the Quartz image
         let image = UIImage(CGImage: quartzImage!)
-        
-
         CVPixelBufferUnlockBaseAddress(imageBuffer,0)
         
         return image
