@@ -57,8 +57,7 @@
             
         }
     }
-//
-    NSLog(@" %d", counter);
+
     int redMode = getMode(redColor, counter);
     int greenMode = getMode(greenColor, counter);
     int blueMode =getMode(blueColor, counter);
@@ -66,9 +65,6 @@
     NSArray * check = [NSArray arrayWithObjects:[NSNumber numberWithInt:redMode], [NSNumber numberWithInt:greenMode], [NSNumber numberWithInt:blueMode], nil];
     return check;
     
-    
-//    return colorValues;
-
 }
 
 

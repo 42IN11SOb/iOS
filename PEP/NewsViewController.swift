@@ -28,6 +28,7 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor
         scrollView.backgroundColor = panelColor
+        self.navigationItem.setHidesBackButton(false, animated:true);
         
         stackContentView.spacing = 16.0
         stackContentView.axis = .Vertical
@@ -48,7 +49,6 @@ class NewsViewController: UIViewController {
         let trail = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.TrailingMargin, multiplier: 1.0, constant: 20.0)
         
         self.scrollView.addSubview(stackContentView)
-        
         self.scrollView.addConstraint(top)
         view.addConstraint(lead)
         view.addConstraint(trail)

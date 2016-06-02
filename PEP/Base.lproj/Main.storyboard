@@ -388,8 +388,53 @@
                     <view key="view" contentMode="scaleToFill" id="JuH-fX-lgU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqO-2W-KeM">
+                                <rect key="frame" x="20" y="86" width="565" height="494"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agI-63-juI">
+                                        <rect key="frame" x="29" y="38" width="507" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xMR-wW-Q0o">
+                                        <rect key="frame" x="28" y="73" width="508" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3vv-we-ZsJ">
+                                        <rect key="frame" x="264" y="143" width="48" height="30"/>
+                                        <state key="normal" title="Logout"/>
+                                        <connections>
+                                            <action selector="logoutButtonClicked:" destination="OJB-35-uh2" eventType="touchUpInside" id="Hnb-pK-Jkd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xMR-wW-Q0o" firstAttribute="top" secondItem="agI-63-juI" secondAttribute="bottom" constant="14" id="1bK-us-E5E"/>
+                                    <constraint firstItem="agI-63-juI" firstAttribute="top" secondItem="oqO-2W-KeM" secondAttribute="top" constant="38" id="7JC-7T-PBS"/>
+                                    <constraint firstItem="3vv-we-ZsJ" firstAttribute="centerX" secondItem="oqO-2W-KeM" secondAttribute="centerX" id="BrV-Yo-7c0"/>
+                                    <constraint firstItem="3vv-we-ZsJ" firstAttribute="top" secondItem="xMR-wW-Q0o" secondAttribute="bottom" constant="40" id="K6I-NW-pIs"/>
+                                    <constraint firstAttribute="trailing" secondItem="agI-63-juI" secondAttribute="trailing" constant="29" id="Miz-i0-Yzf"/>
+                                    <constraint firstItem="agI-63-juI" firstAttribute="leading" secondItem="oqO-2W-KeM" secondAttribute="leading" constant="29" id="X6K-hH-Gqd"/>
+                                    <constraint firstItem="xMR-wW-Q0o" firstAttribute="leading" secondItem="oqO-2W-KeM" secondAttribute="leading" constant="28" id="b5o-ay-b2x"/>
+                                    <constraint firstAttribute="trailing" secondItem="xMR-wW-Q0o" secondAttribute="trailing" constant="29" id="huf-Qh-FE3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aC1-8H-pMb" firstAttribute="top" secondItem="oqO-2W-KeM" secondAttribute="bottom" constant="20" id="GH1-Nk-mXS"/>
+                            <constraint firstItem="oqO-2W-KeM" firstAttribute="top" secondItem="4QB-gu-Ief" secondAttribute="bottom" constant="22" id="HbF-i1-kJN"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="oqO-2W-KeM" secondAttribute="leading" id="MxQ-dd-5hh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oqO-2W-KeM" secondAttribute="trailing" constant="-5" id="kaA-a5-a0e"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logoutButton" destination="3vv-we-ZsJ" id="E6u-OM-tyN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uz-5u-AEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -757,7 +802,7 @@
         <!--Navigation Controller-->
         <scene sceneID="gE5-R9-0UF">
             <objects>
-                <navigationController id="AI7-6j-SE8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StartBoard" id="AI7-6j-SE8" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s1W-pK-TUa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
