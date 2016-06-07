@@ -74,36 +74,37 @@ class NewsViewController: UIViewController, UIScrollViewDelegate {
         var counter: CGFloat = 0
         
         for newsItem in self.news.newsItems {
-            
-            let viewInside : UIStackView = UIStackView()
-            viewInside.spacing = 0
-            viewInside.layoutMargins = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
-            viewInside.axis = .Vertical
-            viewInside.layoutMarginsRelativeArrangement = true
-            viewInside.translatesAutoresizingMaskIntoConstraints = false
-            viewInside.tag = Int(counter)
-            
-            let title: PaddedLabel = PaddedLabel()
-            title.text = newsItem.title
-            title.backgroundColor = yellowColor
-            title.numberOfLines = 2
-            
-            let bgView: UIView = UIView()
-            bgView.backgroundColor = panelColor
-            
-            let content: PaddedLabel = PaddedLabel()
-            content.attributedText = newsItem.getContent()
-            content.numberOfLines = 5
-            content.backgroundColor = panelColor
+            if(newsItem.publish){
+                let viewInside : UIStackView = UIStackView()
+                viewInside.spacing = 0
+                viewInside.layoutMargins = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
+                viewInside.axis = .Vertical
+                viewInside.layoutMarginsRelativeArrangement = true
+                viewInside.translatesAutoresizingMaskIntoConstraints = false
+                viewInside.tag = Int(counter)
+                
+                let title: PaddedLabel = PaddedLabel()
+                title.text = newsItem.title
+                title.backgroundColor = yellowColor
+                title.numberOfLines = 2
+                
+                let bgView: UIView = UIView()
+                bgView.backgroundColor = panelColor
+                
+                let content: PaddedLabel = PaddedLabel()
+                content.attributedText = newsItem.getContent()
+                content.numberOfLines = 5
+                content.backgroundColor = panelColor
 
-            viewInside.addArrangedSubview(title)
-            viewInside.addArrangedSubview(content)
+                viewInside.addArrangedSubview(title)
+                viewInside.addArrangedSubview(content)
 
-            viewInside.userInteractionEnabled = true
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(NewsViewController.clickedOnArticle(_:)))
-            viewInside.addGestureRecognizer(gesture)
-            
-            stackContentView.addArrangedSubview(viewInside)
+                viewInside.userInteractionEnabled = true
+                let gesture = UITapGestureRecognizer(target: self, action: #selector(NewsViewController.clickedOnArticle(_:)))
+                viewInside.addGestureRecognizer(gesture)
+                
+                stackContentView.addArrangedSubview(viewInside)
+            }
             counter++
         }
     }
@@ -123,7 +124,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate {
                             let newsItem: NewsItem = NewsItem()
                             newsItem.title = newItem.objectForKey("title") as! String
                             newsItem.content = newItem.objectForKey("content") as! String
-                            
+                            newsItem.publish = newItem.objectForKey("publish") as! Bool
                             self.news.newsItems.append(newsItem)
                         }
                         completion(loaded: true)
