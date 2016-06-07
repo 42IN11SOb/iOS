@@ -47,6 +47,17 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.contentView.backgroundColor = backgroundColor
         self.navigationItem.setHidesBackButton(true, animated:true);
         
+        let logoutItem: UIBarButtonItem = UIBarButtonItem(
+            title: "Uitloggen",
+            style: .Plain,
+            target: self,
+            action: #selector(MainController.logout(_:))
+        )
+        
+        logoutItem.tintColor = blackColor
+        
+        self.navigationItem.rightBarButtonItem = logoutItem
+        
         let buttonHeight = SCREENHEIGHT/4
         scanViewHeightContstraint.constant = buttonHeight
         passportHeightConstraint.constant = buttonHeight
@@ -84,6 +95,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
         
         
     }
+
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
@@ -96,6 +108,25 @@ class MainController : UIViewController, UIScrollViewDelegate {
     }
     
 
+    func logout(sender: AnyObject){
+        RequestController.logout { (result, error) in
+       
+            
+            if ((result?.objectForKey("success")) != nil) {
+                let success = result?.objectForKey("success") as! Bool
+                if(success){
+                    DatabaseController.sharedControl.deleteAll()
+                    let appDomain = NSBundle.mainBundle().bundleIdentifier!
+                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+                    
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("StartBoard") as UIViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }
+            }
+            
+        }
+    }
     
     func downloadPassport(completion: (loaded: Bool) ->()){
         
