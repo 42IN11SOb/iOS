@@ -19,12 +19,14 @@ class MainController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var passportViewButton: UIView!
     @IBOutlet weak var settingsViewButton: UIView!
     @IBOutlet weak var informationViewButton: UIView!
+    @IBOutlet weak var newsViewButton: UIView!
     
     @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var scanViewHeightContstraint: NSLayoutConstraint!
     @IBOutlet weak var passportHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var settingsHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var informationHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var newsHeightConstraint: NSLayoutConstraint!
     
     var user: User!
     
@@ -50,8 +52,10 @@ class MainController : UIViewController, UIScrollViewDelegate {
         passportHeightConstraint.constant = buttonHeight
         settingsHeightConstraint.constant = buttonHeight
         informationHeightConstraint.constant = buttonHeight
+        newsHeightConstraint.constant = buttonHeight
         scrollView.contentSize.height = buttonHeight*4
         scrollView.needsUpdateConstraints()
+        
         
         user = User()
         user.getUserInformation()
@@ -87,7 +91,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
             super.viewDidLayoutSubviews()
-        scrollView.scrollEnabled = true
+            scrollView.scrollEnabled = true
             scrollView.needsUpdateConstraints()
     }
     
@@ -186,6 +190,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
         passportHeightConstraint.constant = buttonHeight
         settingsHeightConstraint.constant = buttonHeight
         informationHeightConstraint.constant = buttonHeight
+         newsHeightConstraint.constant = buttonHeight
         scrollView.contentSize.height = buttonHeight*4
         scrollView.needsUpdateConstraints()
         
