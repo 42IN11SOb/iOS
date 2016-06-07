@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
+
+
+// IMPORTANT NOTE! 
+//  When showing a loaded youtube video in full screen,
+//  layout constraints are broken. This seems to be a problem in iOS 9
+// http://stackoverflow.com/questions/32765124/ios-9-uiwebview-embedded-video-fullscreen-play-cause-a-constraint-error
 
 class NewsItemViewController: UIViewController, UIScrollViewDelegate {
     
-    
-    @IBOutlet weak var scrollView: UIScrollView!
-    var stackContentView: UIStackView! = UIStackView()
+
+    @IBOutlet weak var webView : UIWebView!
+    let audioSession: AVAudioSession = AVAudioSession.sharedInstance()
     
     var newsItem: NewsItem? {
         didSet{
@@ -28,44 +35,24 @@ class NewsItemViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = backgroundColor
-        self.view.willRemoveSubview(scrollView)
 
-//
-//  
-//        stackContentView.spacing = 16.0
-//        stackContentView.axis = .Vertical
-//        stackContentView.layoutMarginsRelativeArrangement = true
-//        stackContentView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        
-//        let contentLabel : UILabel = UILabel()
-//        contentLabel.attributedText = newsItem?.getContent()
-//        contentLabel.numberOfLines = 0
-//        
-//        stackContentView.addArrangedSubview(contentLabel)
-//        
-//        
-//        let lead = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.LeadingMargin, multiplier: 1.0, constant: 20.0)
-//        
-//        let trail = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.TrailingMargin, multiplier: 1.0, constant: -20.0)
-//        
-//        let top = NSLayoutConstraint(item: stackContentView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.TopMargin, multiplier: 1.0, constant: 100.0)
-//        
-//        self.scrollView.addSubview(stackContentView)
-//        
-//        view.addConstraint(lead)
-//        view.addConstraint(trail)
-//        view.addConstraint(top)
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+        } catch {
+             print(error)
+        }
+        self.view.backgroundColor = backgroundColor
+
+        webView.mediaPlaybackRequiresUserAction = false
+        webView.translatesAutoresizingMaskIntoConstraints = false
+      
         
+    
         
         let htmlString : NSMutableString = NSMutableString(string: "<html><head><title></title></head><body style=\"background:transparent;\">")
         
         htmlString.appendString(newsItem!.content)
-        htmlString.appendString("</body></html>")
-        
-        let webView = UIWebView(frame: self.view.frame)
-        
+        htmlString.appendString("</body></html>")  
         
         webView.backgroundColor = UIColor.clearColor()
         webView.loadHTMLString(htmlString.description, baseURL: nil)
@@ -92,7 +79,6 @@ class NewsItemViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.contentSize = CGSize(width: SCREENWIDTH - 40, height: stackContentView.frame.height + 20)
     }
     
     
