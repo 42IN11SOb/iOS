@@ -10,12 +10,6 @@ import UIKit
 
 class PassportViewController: UIViewController {
     
-    // #TODO:
-    // - var outlets aanmaken voor alle elementen in de view
-    // - passport model aanmaken
-    // - passport color 'show' functie aanmaken (specifiek tonen van 1 kleur -> via nieuwe controller)
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

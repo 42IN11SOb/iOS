@@ -24,8 +24,8 @@ let buttonColor     = greyColor
 let panelColor      = whiteColor
 let backgroundColor = greyColor
 
-let SCREENHEIGHT = UIScreen.mainScreen().bounds.size.height
-let SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
+var SCREENHEIGHT = UIScreen.mainScreen().bounds.size.height
+var SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
 
 
 // API INFO

@@ -20,6 +20,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var settingsViewButton: UIView!
     @IBOutlet weak var informationViewButton: UIView!
     
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var scanViewHeightContstraint: NSLayoutConstraint!
     @IBOutlet weak var passportHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var settingsHeightConstraint: NSLayoutConstraint!
@@ -30,13 +31,8 @@ class MainController : UIViewController, UIScrollViewDelegate {
     override func loadView() {
         super.loadView()
         
-        let buttonHeight = SCREENHEIGHT/4
-        scanViewHeightContstraint.constant = buttonHeight
-        passportHeightConstraint.constant = buttonHeight
-        settingsHeightConstraint.constant = buttonHeight
-        informationHeightConstraint.constant = buttonHeight
-        scrollView.contentSize.height = buttonHeight*4
-        scrollView.needsUpdateConstraints()
+        self.contentViewHeightConstraint.constant = SCREENHEIGHT
+        contentView.setNeedsUpdateConstraints()
     
     }
     
@@ -48,6 +44,14 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.mainView.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
         self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        let buttonHeight = SCREENHEIGHT/4
+        scanViewHeightContstraint.constant = buttonHeight
+        passportHeightConstraint.constant = buttonHeight
+        settingsHeightConstraint.constant = buttonHeight
+        informationHeightConstraint.constant = buttonHeight
+        scrollView.contentSize.height = buttonHeight*4
+        scrollView.needsUpdateConstraints()
         
         user = User()
         user.getUserInformation()
@@ -164,6 +168,34 @@ class MainController : UIViewController, UIScrollViewDelegate {
                 completion(loaded: false)
             }
         }
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        
+        self.scrollView.scrollEnabled = true
+        self.scrollView.directionalLockEnabled = true
+        
+        
+        SCREENHEIGHT = UIScreen.mainScreen().bounds.size.height
+        SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
+        self.scrollView.setNeedsUpdateConstraints()
+        
+        
+        let buttonHeight = SCREENHEIGHT/4
+        scanViewHeightContstraint.constant = buttonHeight
+        passportHeightConstraint.constant = buttonHeight
+        settingsHeightConstraint.constant = buttonHeight
+        informationHeightConstraint.constant = buttonHeight
+        scrollView.contentSize.height = buttonHeight*4
+        scrollView.needsUpdateConstraints()
+        
+        self.contentViewHeightConstraint.constant = SCREENHEIGHT
+        contentView.setNeedsUpdateConstraints()
+        
+        
+        mainView.setNeedsUpdateConstraints()
+        
+        
     }
     
     
