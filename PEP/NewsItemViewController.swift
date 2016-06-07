@@ -49,7 +49,7 @@ class NewsItemViewController: UIViewController, UIScrollViewDelegate {
         
     
         
-        let htmlString : NSMutableString = NSMutableString(string: "<html><head><title></title></head><body style=\"background:transparent;\">")
+        let htmlString : NSMutableString = NSMutableString(string: "<html><head><title></title></head><body>")
         
         htmlString.appendString(newsItem!.content)
         htmlString.appendString("</body></html>")  
