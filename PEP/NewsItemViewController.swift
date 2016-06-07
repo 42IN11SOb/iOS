@@ -36,6 +36,7 @@ class NewsItemViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Following setting is needed for playing Audio from movies implemented in webview. 
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayback)
         } catch {
@@ -45,9 +46,6 @@ class NewsItemViewController: UIViewController, UIScrollViewDelegate {
 
         webView.mediaPlaybackRequiresUserAction = false
         webView.translatesAutoresizingMaskIntoConstraints = false
-      
-        
-    
         
         let htmlString : NSMutableString = NSMutableString(string: "<html><head><title></title></head><body>")
         
