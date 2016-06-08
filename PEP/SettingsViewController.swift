@@ -44,8 +44,8 @@ class SettingsViewController: UIViewController {
                 let success = result?.objectForKey("success") as! Bool
                 if(success){
                     DatabaseController.sharedControl.deleteAll()
-//                    let appDomain = NSBundle.mainBundle().bundleIdentifier!
-//                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+                    let appDomain = NSBundle.mainBundle().bundleIdentifier!
+                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
                     
                     let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
                     let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("StartBoard") as UIViewController
