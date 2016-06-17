@@ -21,6 +21,7 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -573,8 +574,29 @@
                     <view key="view" contentMode="scaleToFill" id="KGX-56-Vb5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXv-AW-x7c">
+                                <rect key="frame" x="250" y="250" width="100" height="100"/>
+                                <color key="backgroundColor" red="1" green="0.83529411760000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="wmw-nr-zUt"/>
+                                    <constraint firstAttribute="height" constant="100" id="xiJ-cF-M8I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                                <state key="normal" title="SCAN">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sXv-AW-x7c" firstAttribute="centerX" secondItem="KGX-56-Vb5" secondAttribute="centerX" id="8lK-to-c3K"/>
+                            <constraint firstItem="sXv-AW-x7c" firstAttribute="centerY" secondItem="KGX-56-Vb5" secondAttribute="centerY" id="BiR-D1-bHy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scanButton" destination="sXv-AW-x7c" id="cmN-Eg-mJO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jwA-aA-jJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

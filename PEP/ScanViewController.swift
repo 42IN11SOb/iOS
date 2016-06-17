@@ -24,6 +24,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var frameNr = 0
     var colors: [PassportColor] = []
     var regColorView: UIView = UIView()
+    @IBOutlet weak var scanButton: UIButton
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +65,11 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let frame = CGRect(x: 10, y: 64, width: SCREENWIDTH - 20, height: SCREENHEIGHT - 84)
         regColorView.frame = frame
         
+        scanButton.layer.cornerRadius = 100
         
         self.view.addSubview(regColorView)
         self.view.bringSubviewToFront(regColorView)
-        
+        self.view.bringSubviewToFront(scanButton)
     }
     
     override func viewDidDisappear(animated: Bool) {
