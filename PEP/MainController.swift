@@ -19,24 +19,22 @@ class MainController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var passportViewButton: UIView!
     @IBOutlet weak var settingsViewButton: UIView!
     @IBOutlet weak var informationViewButton: UIView!
+    @IBOutlet weak var newsViewButton: UIView!
     
+    @IBOutlet weak var contentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var scanViewHeightContstraint: NSLayoutConstraint!
     @IBOutlet weak var passportHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var settingsHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var informationHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var newsHeightConstraint: NSLayoutConstraint!
     
     var user: User!
     
     override func loadView() {
         super.loadView()
         
-        let buttonHeight = SCREENHEIGHT/4
-        scanViewHeightContstraint.constant = buttonHeight
-        passportHeightConstraint.constant = buttonHeight
-        settingsHeightConstraint.constant = buttonHeight
-        informationHeightConstraint.constant = buttonHeight
-        scrollView.contentSize.height = buttonHeight*4
-        scrollView.needsUpdateConstraints()
+        self.contentViewHeightConstraint.constant = SCREENHEIGHT
+        contentView.setNeedsUpdateConstraints()
     
     }
     
@@ -48,6 +46,27 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.mainView.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
         self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        let logoutItem: UIBarButtonItem = UIBarButtonItem(
+            title: "Uitloggen",
+            style: .Plain,
+            target: self,
+            action: #selector(MainController.logout(_:))
+        )
+        
+        logoutItem.tintColor = blackColor
+        
+        self.navigationItem.rightBarButtonItem = logoutItem
+        
+        let buttonHeight = SCREENHEIGHT/4
+        scanViewHeightContstraint.constant = buttonHeight
+        passportHeightConstraint.constant = buttonHeight
+        settingsHeightConstraint.constant = buttonHeight
+        informationHeightConstraint.constant = buttonHeight
+        newsHeightConstraint.constant = buttonHeight
+        scrollView.contentSize.height = buttonHeight*4
+        scrollView.needsUpdateConstraints()
+        
         
         user = User()
         user.getUserInformation()
@@ -76,6 +95,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
         
         
     }
+
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
@@ -83,11 +103,30 @@ class MainController : UIViewController, UIScrollViewDelegate {
     
     override func viewDidLayoutSubviews() {
             super.viewDidLayoutSubviews()
-        scrollView.scrollEnabled = true
+            scrollView.scrollEnabled = true
             scrollView.needsUpdateConstraints()
     }
     
 
+    func logout(sender: AnyObject){
+        RequestController.logout { (result, error) in
+       
+            
+            if ((result?.objectForKey("success")) != nil) {
+                let success = result?.objectForKey("success") as! Bool
+                if(success){
+                    DatabaseController.sharedControl.deleteAll()
+                    let appDomain = NSBundle.mainBundle().bundleIdentifier!
+                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+                    
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("StartBoard") as UIViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }
+            }
+            
+        }
+    }
     
     func downloadPassport(completion: (loaded: Bool) ->()){
         
@@ -164,6 +203,35 @@ class MainController : UIViewController, UIScrollViewDelegate {
                 completion(loaded: false)
             }
         }
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        
+        self.scrollView.scrollEnabled = true
+        self.scrollView.directionalLockEnabled = true
+        
+        
+        SCREENHEIGHT = UIScreen.mainScreen().bounds.size.height
+        SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
+        self.scrollView.setNeedsUpdateConstraints()
+        
+        
+        let buttonHeight = SCREENHEIGHT/4
+        scanViewHeightContstraint.constant = buttonHeight
+        passportHeightConstraint.constant = buttonHeight
+        settingsHeightConstraint.constant = buttonHeight
+        informationHeightConstraint.constant = buttonHeight
+         newsHeightConstraint.constant = buttonHeight
+        scrollView.contentSize.height = buttonHeight*4
+        scrollView.needsUpdateConstraints()
+        
+        self.contentViewHeightConstraint.constant = SCREENHEIGHT
+        contentView.setNeedsUpdateConstraints()
+        
+        
+        mainView.setNeedsUpdateConstraints()
+        
+        
     }
     
     

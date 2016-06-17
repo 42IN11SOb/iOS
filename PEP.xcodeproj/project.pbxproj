@@ -18,6 +18,9 @@
 		52EF8B321CC4355200D00E40 /* pepIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B281CC4355200D00E40 /* pepIcon-Small.png */; };
 		52EF8B331CC4355200D00E40 /* pepIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B291CC4355200D00E40 /* pepIcon-Small@2x.png */; };
 		52EF8B341CC4355200D00E40 /* pepIcon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B2A1CC4355200D00E40 /* pepIcon-Small@3x.png */; };
+		53202AB51D06C16600C96C28 /* news_318-32311.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53202AB41D06C16600C96C28 /* news_318-32311.jpg */; };
+		53202AB81D06C7A400C96C28 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53202AB71D06C7A400C96C28 /* PaddedLabel.swift */; };
+		53202ABA1D06FA4400C96C28 /* NewsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */; };
 		532272D11CC677D6009A412E /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272D01CC677D6009A412E /* ColorViewController.swift */; };
 		532272D31CC677F0009A412E /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272D21CC677F0009A412E /* ColorTableViewController.swift */; };
 		532272D51CC67808009A412E /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272D41CC67808009A412E /* StyleViewController.swift */; };
@@ -88,6 +91,9 @@
 		52EF8B281CC4355200D00E40 /* pepIcon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small.png"; sourceTree = "<group>"; };
 		52EF8B291CC4355200D00E40 /* pepIcon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small@2x.png"; sourceTree = "<group>"; };
 		52EF8B2A1CC4355200D00E40 /* pepIcon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small@3x.png"; sourceTree = "<group>"; };
+		53202AB41D06C16600C96C28 /* news_318-32311.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "news_318-32311.jpg"; sourceTree = "<group>"; };
+		53202AB71D06C7A400C96C28 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
+		53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
 		532272D01CC677D6009A412E /* ColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		532272D21CC677F0009A412E /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 		532272D41CC67808009A412E /* StyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
@@ -197,10 +203,19 @@
 			name = app_icons;
 			sourceTree = "<group>";
 		};
+		53202AB61D06C78500C96C28 /* layout_models */ = {
+			isa = PBXGroup;
+			children = (
+				53202AB71D06C7A400C96C28 /* PaddedLabel.swift */,
+			);
+			name = layout_models;
+			sourceTree = "<group>";
+		};
 		532D83E01CF47B5100AE5FB1 /* news */ = {
 			isa = PBXGroup;
 			children = (
 				532D83E11CF47B5E00AE5FB1 /* NewsViewController.swift */,
+				53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */,
 			);
 			name = news;
 			sourceTree = "<group>";
@@ -208,6 +223,7 @@
 		533CF07B1CA084F600A1EC05 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				53202AB41D06C16600C96C28 /* news_318-32311.jpg */,
 				53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */,
 				53CFA0BC1CE31E480090C9B5 /* colors_icon.png */,
 				52C4AAF61CC0349100E35F5C /* app_icons */,
@@ -318,6 +334,7 @@
 				53BF79F01CB79F0C0070EC3E /* controllers */,
 				533CF07B1CA084F600A1EC05 /* res */,
 				5396D0ED1C9B07C20010B3E1 /* models */,
+				53202AB61D06C78500C96C28 /* layout_models */,
 				5396D0EC1C9B07BC0010B3E1 /* core */,
 				53B642091C98924E00B08F3B /* AppDelegate.swift */,
 				53B6420D1C98924E00B08F3B /* Main.storyboard */,
@@ -479,6 +496,7 @@
 				52EF8B321CC4355200D00E40 /* pepIcon-Small.png in Resources */,
 				52EF8B2C1CC4355200D00E40 /* pepIcon-60@3x.png in Resources */,
 				53512D3E1CA2BC2900E81676 /* Roboto-Bold.ttf in Resources */,
+				53202AB51D06C16600C96C28 /* news_318-32311.jpg in Resources */,
 				53512D371CA2ACFD00E81676 /* pass_icon.png in Resources */,
 				533CF0821CA085A400A1EC05 /* splash_bottomrightcorner.png in Resources */,
 				53B642111C98924E00B08F3B /* Assets.xcassets in Resources */,
@@ -619,6 +637,8 @@
 				5325AC721CD34C97004AC6A3 /* Figure.swift in Sources */,
 				53C6FE371CCFBE720008652B /* Passport.swift in Sources */,
 				5206C4171CA2A11F005BCAC1 /* InformationViewController.swift in Sources */,
+				53202AB81D06C7A400C96C28 /* PaddedLabel.swift in Sources */,
+				53202ABA1D06FA4400C96C28 /* NewsItemViewController.swift in Sources */,
 				532272D71CC67AB3009A412E /* PassportColor.swift in Sources */,
 				532362581CE7616400E67968 /* UIImage+OpenCV.mm in Sources */,
 				532362561CE760B100E67968 /* stitching.cpp in Sources */,

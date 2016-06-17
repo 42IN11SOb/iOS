@@ -9,11 +9,6 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    // #TODO:
-    // - inlog functionaliteit
-    // - api call voor inloggen
-    // - opslaan "sessie" gegevens // passport gegevens ophalen.
-    
     
     @IBOutlet weak var panelView: UIView!
     @IBOutlet weak var nameField: UITextField!

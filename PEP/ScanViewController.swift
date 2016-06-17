@@ -24,6 +24,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var frameNr = 0
     var colors: [PassportColor] = []
     var regColorView: UIView = UIView()
+    @IBOutlet weak var scanButton: UIButton
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,23 +52,24 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         cameraSession.startRunning()
         
-        regColorView.layer.borderWidth = 10
+        regColorView.layer.borderWidth = 20
         regColorView.layer.borderColor = UIColor.blueColor().CGColor
         regColorView.backgroundColor = UIColor.clearColor()
         
-        let size = 100
-        let center_x = self.view.frame.size.width/2
-        let center_y = (self.view.frame.size.height/2) - 100
-        let pos_x = Int(center_x) - (size/2)
-        let pos_y = Int(center_y) - (size/2)
+//        let size = 100
+//        let center_x = self.view.frame.size.width/2
+//        let center_y = (self.view.frame.size.height/2) - 100
+//        let pos_x = Int(center_x) - (size/2)
+//        let pos_y = Int(center_y) - (size/2)
         
-        let frame = CGRect(x: pos_x, y: pos_y, width: size, height: size)
+        let frame = CGRect(x: 10, y: 64, width: SCREENWIDTH - 20, height: SCREENHEIGHT - 84)
         regColorView.frame = frame
         
+        scanButton.layer.cornerRadius = 100
         
         self.view.addSubview(regColorView)
         self.view.bringSubviewToFront(regColorView)
-        
+        self.view.bringSubviewToFront(scanButton)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -131,9 +133,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         if frameNr % 32 == 0 {
             
-//            let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
-//            let colorArray = CVWrapper.processImageWithOpenCV(image)
-//            self.checkColors(colorArray)
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 //All stuff here
                 let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)

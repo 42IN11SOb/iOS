@@ -8,12 +8,14 @@
 
 import UIKit
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, UIScrollViewDelegate {
     
     var user: User!
     var news: News = News()
     var newsItemView = UIView()
     var stackContentView: UIStackView! = UIStackView()
+    var itemTapped: NewsItem!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     override func loadView() {
@@ -27,14 +29,13 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = backgroundColor
-        scrollView.backgroundColor = panelColor
         self.navigationItem.setHidesBackButton(false, animated:true);
         
         stackContentView.spacing = 16.0
         stackContentView.axis = .Vertical
         stackContentView.layoutMarginsRelativeArrangement = true
         stackContentView.translatesAutoresizingMaskIntoConstraints = false
-
+        self.scrollView.directionalLockEnabled = true
         self.getNews { (loaded) in
             
             dispatch_async(dispatch_get_main_queue()) { [unowned self] in
@@ -50,6 +51,7 @@ class NewsViewController: UIViewController {
         
         self.scrollView.addSubview(stackContentView)
         self.scrollView.addConstraint(top)
+        
         view.addConstraint(lead)
         view.addConstraint(trail)
    
@@ -57,8 +59,6 @@ class NewsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -67,51 +67,51 @@ class NewsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //        scrollView.content
-        scrollView.contentSize = CGSize(width: SCREENWIDTH - 40, height: stackContentView.frame.height + 20)
+        scrollView.contentSize = CGSize(width: SCREENWIDTH - 40, height: stackContentView.frame.height + 40)
     }
     
     func createNewsViews(){
-        
+        var counter: CGFloat = 0
         
         for newsItem in self.news.newsItems {
-         
-//            let backView: UIView = UIView()
-//            backView.backgroundColor = panelColor
-            
-            let view : UIStackView = UIStackView()
-            view.spacing = 8.0
-//            view.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-            view.axis = .Vertical
-            view.layoutMarginsRelativeArrangement = true
-            view.translatesAutoresizingMaskIntoConstraints = false
-       
-            print(newsItem.title)
-            
-            let title: UILabel = UILabel()
-            title.text = newsItem.title
-            let content: UILabel = UILabel()
-            content.attributedText = newsItem.getContent()
-            content.numberOfLines = 0
-            
-            view.addArrangedSubview(title)
-            view.addArrangedSubview(content)
-            
-//            backView.addSubview(view)
-            
-            
-            stackContentView.addArrangedSubview(view)
-       
+            print(newsItem.publish)
+            if(newsItem.publish){
+                let viewInside : UIStackView = UIStackView()
+                viewInside.spacing = 0
+                viewInside.layoutMargins = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
+                viewInside.axis = .Vertical
+                viewInside.layoutMarginsRelativeArrangement = true
+                viewInside.translatesAutoresizingMaskIntoConstraints = false
+                viewInside.tag = Int(counter)
+                
+                let title: PaddedLabel = PaddedLabel()
+                title.text = newsItem.title
+                title.backgroundColor = yellowColor
+                title.numberOfLines = 2
+                
+                let bgView: UIView = UIView()
+                bgView.backgroundColor = panelColor
+                
+                let content: PaddedLabel = PaddedLabel()
+                content.attributedText = newsItem.getContent()
+                content.numberOfLines = 5
+                content.backgroundColor = panelColor
+
+                viewInside.addArrangedSubview(title)
+                viewInside.addArrangedSubview(content)
+
+                viewInside.userInteractionEnabled = true
+                let gesture = UITapGestureRecognizer(target: self, action: #selector(NewsViewController.clickedOnArticle(_:)))
+                viewInside.addGestureRecognizer(gesture)
+                
+                stackContentView.addArrangedSubview(viewInside)
+            }
+            counter++
         }
-//        
-//             self.viewDidLayoutSubviews()
-//        self.view.needsUpdateConstraints()
-//        self.scrollView.needsUpdateConstraints()
     }
     
     func getNews(completion: (loaded: Bool) ->()){
         
-//        self.news.newsItems = []
         RequestController.getNews { (result, error) in
       
             if(result != nil){
@@ -125,12 +125,10 @@ class NewsViewController: UIViewController {
                             let newsItem: NewsItem = NewsItem()
                             newsItem.title = newItem.objectForKey("title") as! String
                             newsItem.content = newItem.objectForKey("content") as! String
+                            newsItem.publish = newItem.objectForKey("publish") as! Bool
                             
                             self.news.newsItems.append(newsItem)
-                           
                         }
-                        
-                        
                         completion(loaded: true)
                     }
                     
@@ -141,6 +139,43 @@ class NewsViewController: UIViewController {
         }
 
     }
+
+    func clickedOnArticle(sender:UITapGestureRecognizer){
+        
+        let clicked = sender.view! as! UIStackView
+        let newsId = clicked.tag
+        
+        let newsItem = self.news.newsItems[newsId]
+        self.itemTapped = newsItem
+        
+        self.performSegueWithIdentifier("newsItemSeque", sender: sender)
+       
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+
+        
+        SCREENHEIGHT = UIScreen.mainScreen().bounds.size.height
+        SCREENWIDTH = UIScreen.mainScreen().bounds.size.width
+        self.scrollView.setNeedsUpdateConstraints()
+        
+    }
+    
+    // MARK: - Segues
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "newsItemSeque" {
+            
+            let controller:NewsItemViewController = segue.destinationViewController as! NewsItemViewController
+
+            controller.newsItem = self.itemTapped
+            controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+            controller.navigationItem.leftItemsSupplementBackButton = true
+            
+        }
+    }
+    
+    
+    
     
     
 }
