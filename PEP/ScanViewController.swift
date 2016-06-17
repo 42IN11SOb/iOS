@@ -25,6 +25,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var colors: [PassportColor] = []
     var regColorView: UIView = UIView()
     var scanning: Bool = false
+    var timer = NSTimer()
     
     @IBOutlet weak var scanButton: UIButton!
     
@@ -131,7 +132,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         if(scanning){
             if frameNr % 32 == 0 {
                 
-            
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                     //All stuff here
                     let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
@@ -151,8 +151,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let gr: Float = array[1].floatValue
         let bl: Float = array[2].floatValue
         
-        
-        
         dispatch_async(dispatch_get_main_queue()) { [unowned self] in
             
             for color in self.colors{
@@ -164,11 +162,15 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                  print("blue \(bl) -  \(color.blueColor)" )
 
                 if(color.redColor > (re - 40) && color.redColor < (re + 40) && color.greenColor > (gr - 40) && color.greenColor < (gr + 40) && color.blueColor > (bl - 40) && color.blueColor < (bl+40)){
-                    print("I've recognized a color of your scheme!")
-                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    let alertController = UIAlertController(title:"Color in your scheme!", message:" Woei!", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alertController, animated: true, completion: nil)
+//                    print("I've recognized a color of your scheme!")
+//                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+//                    let alertController = UIAlertController(title:"Color in your scheme!", message:" Woei!", preferredStyle: UIAlertControllerStyle.Alert)
+//                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+//                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                    
+                     self.performSegueWithIdentifier("scanResultSegue", sender: self)
+                    
                 }
             }
 
@@ -216,6 +218,38 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         
     }
+    @IBAction func scanButtonClicked(sender: AnyObject) {
+        
+        self.scanButton.titleLabel!.text = "scanning"
+        timer.invalidate()
+        timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
+        
+        self.scanButton.backgroundColor = blackColor
+//        self.scanButton.sette
+        
+//        UIView.animateWithDuration(2) { () -> Void in
+//            
+//            self.scanButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+//        }
+//        
+//        UIView.animateWithDuration(2, delay: 2, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+//            
+//            self.scanButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI*2))
+//            }, completion: nil)
+//        
+        self.scanning = true
+    }
+    
+    // called every time interval from the timer
+    func timerAction() {
+        self.scanning = false
+        self.scanButton.titleLabel!.text = "SCAN"
+        self.scanButton.backgroundColor = yellowColor
+//        self.scanButton.hidden = false
+        /// to cancel timer: timer.invalidate()
+    }
+    
+    
 }
 
 

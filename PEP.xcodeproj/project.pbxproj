@@ -18,6 +18,7 @@
 		52EF8B321CC4355200D00E40 /* pepIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B281CC4355200D00E40 /* pepIcon-Small.png */; };
 		52EF8B331CC4355200D00E40 /* pepIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B291CC4355200D00E40 /* pepIcon-Small@2x.png */; };
 		52EF8B341CC4355200D00E40 /* pepIcon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B2A1CC4355200D00E40 /* pepIcon-Small@3x.png */; };
+		5301C1821D141D4A00F5C098 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301C1811D141D4A00F5C098 /* ScanResultController.swift */; };
 		53202AB51D06C16600C96C28 /* news_318-32311.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53202AB41D06C16600C96C28 /* news_318-32311.jpg */; };
 		53202AB81D06C7A400C96C28 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53202AB71D06C7A400C96C28 /* PaddedLabel.swift */; };
 		53202ABA1D06FA4400C96C28 /* NewsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */; };
@@ -91,6 +92,7 @@
 		52EF8B281CC4355200D00E40 /* pepIcon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small.png"; sourceTree = "<group>"; };
 		52EF8B291CC4355200D00E40 /* pepIcon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small@2x.png"; sourceTree = "<group>"; };
 		52EF8B2A1CC4355200D00E40 /* pepIcon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small@3x.png"; sourceTree = "<group>"; };
+		5301C1811D141D4A00F5C098 /* ScanResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanResultController.swift; sourceTree = "<group>"; };
 		53202AB41D06C16600C96C28 /* news_318-32311.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "news_318-32311.jpg"; sourceTree = "<group>"; };
 		53202AB71D06C7A400C96C28 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				53B6420B1C98924E00B08F3B /* ScanViewController.swift */,
+				5301C1811D141D4A00F5C098 /* ScanResultController.swift */,
 			);
 			name = scanning;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				536C65311CD212E100946003 /* RequestController.swift in Sources */,
 				532D83E21CF47B5E00AE5FB1 /* NewsViewController.swift in Sources */,
 				532272D11CC677D6009A412E /* ColorViewController.swift in Sources */,
+				5301C1821D141D4A00F5C098 /* ScanResultController.swift in Sources */,
 				532D83E41CF4856E00AE5FB1 /* News.swift in Sources */,
 				532D83DF1CF4737600AE5FB1 /* IntroViewController.swift in Sources */,
 				532272D31CC677F0009A412E /* ColorTableViewController.swift in Sources */,
@@ -802,6 +806,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PEP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -822,6 +827,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PEP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
