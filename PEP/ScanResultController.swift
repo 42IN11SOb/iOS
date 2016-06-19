@@ -28,7 +28,8 @@ class ScanResultViewController: UIViewController{
     }
     
     override func loadView() {
-      super.loadView()
+        super.loadView()
+        self.navigationItem.backBarButtonItem?.title = " "
     }
     
     override func viewDidLoad() {

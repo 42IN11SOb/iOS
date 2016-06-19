@@ -27,6 +27,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         super.viewDidLoad()
         self.title = NSLocalizedString("SCANTITLE", comment:"Scan title")
         self.view.backgroundColor = backgroundColor
+        self.navigationItem.backBarButtonItem?.title = " "
         
         let pass = DatabaseController.sharedControl.getPassport()
         for color in pass.season {
@@ -35,6 +36,11 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         
         setupCameraSession()
+    }
+    
+    override func loadView() {
+        super.loadView()
+        self.navigationItem.backBarButtonItem?.title = " "
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -252,14 +258,13 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             
             let controller:ScanResultViewController = segue.destinationViewController as! ScanResultViewController
             controller.scanResult = self.result
-            
+            controller.navigationItem.backBarButtonItem?.title = " "
             if(self.result){
                 controller.title = "Match found!"
                 controller.resultColor = resultColor
             } else {
                 controller.title = "No Match found!"
             }
-            
             
             
         }
