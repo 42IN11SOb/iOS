@@ -13,19 +13,13 @@ import RealmSwift
 
 class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate{
 
-    // #TODO:
-    // - var outlets aanmaken voor alle elementen in de view
-    // - scan knop of continue scan?
-    // - camera koppeling (camera spul zelf in core!)
-    // - model aanmaken voor een herkende scan 
-    // - scan 'recognized' functie opzetten (al is het maar een opzet) 
-    // -
-
     var frameNr = 0
     var colors: [PassportColor] = []
     var regColorView: UIView = UIView()
     var scanning: Bool = false
     var timer = NSTimer()
+    var result: Bool = false
+    var resultColor: PassportColor!
     
     @IBOutlet weak var scanButton: UIButton!
     
@@ -128,8 +122,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
         
-        
-        if(scanning){
             if frameNr % 32 == 0 {
                 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
@@ -141,7 +133,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 
             }
             frameNr += 1
-        }
         
     }
     
@@ -152,32 +143,44 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         let bl: Float = array[2].floatValue
         
         dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-            
-            for color in self.colors{
-                
-                print("----------------------------------")
-                print(color.name)
-                 print("red \(re) -  \(color.redColor)" )
-                 print("green \(gr) -  \(color.greenColor)" )
-                 print("blue \(bl) -  \(color.blueColor)" )
-
-                if(color.redColor > (re - 40) && color.redColor < (re + 40) && color.greenColor > (gr - 40) && color.greenColor < (gr + 40) && color.blueColor > (bl - 40) && color.blueColor < (bl+40)){
-//                    print("I've recognized a color of your scheme!")
-//                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-//                    let alertController = UIAlertController(title:"Color in your scheme!", message:" Woei!", preferredStyle: UIAlertControllerStyle.Alert)
-//                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-//                    self.presentViewController(alertController, animated: true, completion: nil)
-                    
-                    
-                     self.performSegueWithIdentifier("scanResultSegue", sender: self)
-                    
-                }
-            }
-
             self.regColorView.layer.borderColor = UIColor(red: CGFloat(array[0] as! NSNumber)/255, green: CGFloat(array[1] as! NSNumber)/255, blue: CGFloat(array[2] as! NSNumber)/255, alpha: 1).CGColor
             self.regColorView.layer.setNeedsDisplay()
         }
         
+        
+        if(self.scanning){
+        
+            dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+                
+                for color in self.colors{
+
+                    let margin: Float = 30.0
+                    if(color.redColor > (re - margin) && color.redColor < (re + margin) && color.greenColor > (gr - margin) && color.greenColor < (gr + margin) && color.blueColor > (bl - margin) && color.blueColor < (bl+margin)){
+                        
+                        print("----------------------------------")
+                        print(color.name)
+                        print("red \(re) -  \(color.redColor)" )
+                        print("green \(gr) -  \(color.greenColor)" )
+                        print("blue \(bl) -  \(color.blueColor)" )
+                        
+                        if(self.scanning){
+                            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                            
+                            self.resultColor = color
+                            self.result = true
+                            self.performSegueWithIdentifier("scanResultSegue", sender: self)
+                            
+                            self.timer.invalidate()
+                            self.resetButton()
+                            self.scanning = false
+                        }
+ 
+                        
+                    }
+                }
+            }
+        }
     }
     
     func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
@@ -225,28 +228,41 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
         
         self.scanButton.backgroundColor = blackColor
-//        self.scanButton.sette
-        
-//        UIView.animateWithDuration(2) { () -> Void in
-//            
-//            self.scanButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-//        }
-//        
-//        UIView.animateWithDuration(2, delay: 2, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-//            
-//            self.scanButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI*2))
-//            }, completion: nil)
-//        
+        self.scanButton.userInteractionEnabled = false
         self.scanning = true
     }
     
     // called every time interval from the timer
     func timerAction() {
-        self.scanning = false
-        self.scanButton.titleLabel!.text = "SCAN"
+        resetButton()
+        self.performSegueWithIdentifier("scanResultSegue", sender: self)
+    }
+    
+    func resetButton() {
         self.scanButton.backgroundColor = yellowColor
-//        self.scanButton.hidden = false
-        /// to cancel timer: timer.invalidate()
+        self.scanButton.userInteractionEnabled = true
+        self.scanning = false
+        self.result = false
+    }
+    
+    
+    // MARK: - Segues
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "scanResultSegue" {
+            
+            let controller:ScanResultViewController = segue.destinationViewController as! ScanResultViewController
+            controller.scanResult = self.result
+            
+            if(self.result){
+                controller.title = "Match found!"
+                controller.resultColor = resultColor
+            } else {
+                controller.title = "No Match found!"
+            }
+            
+            
+            
+        }
     }
     
     
