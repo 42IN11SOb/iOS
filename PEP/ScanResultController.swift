@@ -18,6 +18,16 @@ class ScanResultViewController: UIViewController{
     var scanResult: Bool  = false
     var resultColor: PassportColor?
     
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        if(scanResult){
+            self.navigationItem.title = NSLocalizedString("MATCHFOUND", comment:"Match found title") + "!"
+        } else {
+            self.navigationItem.title = NSLocalizedString("MATCHNOTFOUND", comment:"Match not found title") + "!"
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
