@@ -75,6 +75,10 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         coordinator.animateAlongsideTransition({ (context) -> Void in
             self.previewLayer.connection.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
             self.previewLayer.frame.size = self.view.frame.size
+            
+            let frame = CGRect(x: 10, y: 64, width: self.view.frame.size.width - 20, height: self.view.frame.size.height - 84)
+            self.regColorView.frame = frame
+
             }, completion: { (context) -> Void in
                 
         })
