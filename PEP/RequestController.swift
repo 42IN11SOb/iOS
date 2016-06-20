@@ -19,8 +19,6 @@ class RequestController {
         let request = NSMutableURLRequest(URL: NSURL(string: requestProfwithToken)!)
         request.HTTPMethod = "GET"
         
-//        print(requestProfwithToken)
-
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request){
             (data, response, error) -> Void in
@@ -53,7 +51,6 @@ class RequestController {
                 completion(result: nil, error: error)
             } else {
                 do {
-                    
                     let result:NSDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     completion(result: result, error: nil)
                 } catch {

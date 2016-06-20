@@ -81,6 +81,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
             }
         }
         
+        // While on a simulator, scanning view is disabled! Camera view won't work!
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             self.scanViewButton.userInteractionEnabled = false
         #endif
@@ -230,7 +231,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
         
         
         mainView.setNeedsUpdateConstraints()
-        
         
     }
     

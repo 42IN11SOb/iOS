@@ -471,7 +471,7 @@
             </objects>
             <point key="canvasLocation" x="1285" y="756"/>
         </scene>
-        <!--Scan Result View Controller-->
+        <!-- -->
         <scene sceneID="IXc-so-cvr">
             <objects>
                 <viewController id="fjs-Sm-3qN" customClass="ScanResultViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
@@ -533,6 +533,9 @@
                             <constraint firstItem="MeX-lF-RgV" firstAttribute="top" secondItem="4pr-GP-7bV" secondAttribute="bottom" constant="14" id="pB1-cP-DkX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title=" " id="K8q-1x-jNh">
+                        <barButtonItem key="backBarButtonItem" title=" " id="GLh-da-RCt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="ResultLabel" destination="gwD-WD-707" id="SRv-og-GBI"/>
                         <outlet property="backgroundView" destination="MeX-lF-RgV" id="7ev-c9-65p"/>
@@ -645,7 +648,7 @@
             </objects>
             <point key="canvasLocation" x="2814" y="344"/>
         </scene>
-        <!--Scan View Controller-->
+        <!-- -->
         <scene sceneID="3ER-Ph-Pax">
             <objects>
                 <viewController id="mB7-h6-DpO" customClass="ScanViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
@@ -679,6 +682,9 @@
                             <constraint firstItem="sXv-AW-x7c" firstAttribute="centerY" secondItem="KGX-56-Vb5" secondAttribute="centerY" id="BiR-D1-bHy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title=" " id="Zay-Vp-vnt">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xGE-ZU-NaN"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="scanButton" destination="sXv-AW-x7c" id="cmN-Eg-mJO"/>
                         <segue destination="fjs-Sm-3qN" kind="show" identifier="scanResultSegue" id="jrO-W4-3eW"/>
