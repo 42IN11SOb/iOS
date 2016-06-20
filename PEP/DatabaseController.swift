@@ -43,7 +43,6 @@ class DatabaseController {
     
     func deleteAll(){
         dataRealm()
-
         try! database.write({
             database.deleteAll()
         })
