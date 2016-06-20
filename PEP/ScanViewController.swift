@@ -8,158 +8,295 @@
 
 import UIKit
 import AVFoundation
+import RealmSwift
 
-class ScanViewController: UIViewController {
 
-    // #TODO:
-    // - var outlets aanmaken voor alle elementen in de view
-    // - scan knop of continue scan?
-    // - camera koppeling (camera spul zelf in core!)
-    // - model aanmaken voor een herkende scan 
-    // - scan 'recognized' functie opzetten (al is het maar een opzet) 
-    // -
-    @IBOutlet weak var previewView: UIView!
+class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate{
+
     
-    var captureSession: AVCaptureSession?
-    var stillImageOutput: AVCaptureStillImageOutput?
-    var previewLayer: AVCaptureVideoPreviewLayer?
-    let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+    
+    // MARK: Variables
+    var frameNr = 0
+    var colors: [PassportColor] = []
+    var regColorView: UIView = UIView()
+    var scanning: Bool = false
+    var timer = NSTimer()
+    var result: Bool = false
+    var resultColor: PassportColor!
+    
+    @IBOutlet weak var scanButton: UIButton!
+    
+    
+    // MARK: - View loading
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("SCANTITLE", comment:"Scan title")
         self.view.backgroundColor = backgroundColor
-        previewView.backgroundColor = backgroundColor
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        loadCamera()
+        self.navigationItem.backBarButtonItem?.title = " "
+        
+        let pass = DatabaseController.sharedControl.getPassport()
+        for color in pass.season {
+            colors.append(color as PassportColor)
+        }
+        
+        
+        setupCameraSession()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) ==  AVAuthorizationStatus.Authorized{
-        previewLayer!.frame = previewView.bounds
-        previewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-        }
-        else
-        {
-            let alertController = UIAlertController(
-                title: "Geen camera toegang",
-                message: "De app heeft toegang nodig tot uw camera om gebruik te kunnen maken van deze functie",
-                preferredStyle: UIAlertControllerStyle.Alert
-            )
-            
-            let settingsAction = UIAlertAction(
-                title: "Instellingen",
-                style: UIAlertActionStyle.Default) { (action) in
-                    UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-                    self.navigationController?.popViewControllerAnimated(true)
-            }
-            
-            let confirmAction = UIAlertAction(
-            title: "Terug", style: UIAlertActionStyle.Default) { (action) in
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-            
-            alertController.addAction(confirmAction)
-            alertController.addAction(settingsAction)
-
-            self.presentViewController(alertController, animated: true, completion: nil)
-
-        }
+        
+        view.layer.addSublayer(previewLayer)
+        
+        cameraSession.startRunning()
+        
+        regColorView.layer.borderWidth = 20
+        regColorView.layer.borderColor = UIColor.blueColor().CGColor
+        regColorView.backgroundColor = UIColor.clearColor()
+        
+        let frame = CGRect(x: 10, y: 64, width: self.view.frame.size.width - 20, height: self.view.frame.size.height - 84)
+        regColorView.frame = frame
+        
+        scanButton.layer.cornerRadius = 50
+        
+        self.view.addSubview(regColorView)
+        self.view.bringSubviewToFront(regColorView)
+        self.view.bringSubviewToFront(scanButton)
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //zodra het cherm veranderd (rotate) dan word de previewlayer ook aangepast
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animateAlongsideTransition({ (context) -> Void in
-            self.previewLayer?.connection.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
-            self.previewLayer?.frame.size = self.previewView.frame.size
+            self.previewLayer.connection.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
+            self.previewLayer.frame.size = self.view.frame.size
+            
+            let frame = CGRect(x: 10, y: 64, width: self.view.frame.size.width - 20, height: self.view.frame.size.height - 84)
+            self.regColorView.frame = frame
+
             }, completion: { (context) -> Void in
                 
         })
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
+
+      // MARK: - Camera setup
     
-    func loadCamera(){
+    lazy var cameraSession: AVCaptureSession = {
+        let s = AVCaptureSession()
+        s.sessionPreset = AVCaptureSessionPresetHigh
+        return s
+    }()
+
+    
+    lazy var previewLayer: AVCaptureVideoPreviewLayer = {
+        let preview =  AVCaptureVideoPreviewLayer(session: self.cameraSession)
+        preview.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        preview.position = CGPoint(x: CGRectGetMidX(self.view.bounds), y: CGRectGetMidY(self.view.bounds))
+        preview.videoGravity = AVLayerVideoGravityResize
+        preview!.connection?.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
+        return preview
+    }()
+    
+    func setupCameraSession() {
+        let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo) as AVCaptureDevice
         
-        captureSession = AVCaptureSession()
-        captureSession!.sessionPreset = AVCaptureSessionPresetPhoto
-   
-        let captureDevice:AVCaptureDevice = backCamera
-        
-        
-        var error: NSError?
-        var input: AVCaptureDeviceInput!
         do {
-            input = try AVCaptureDeviceInput(device: captureDevice)
-        } catch let error1 as NSError {
-            error = error1
-            input = nil
-        }
-        
-        if error == nil && captureSession!.canAddInput(input) {
-            captureSession!.addInput(input)
+            let deviceInput = try AVCaptureDeviceInput(device: captureDevice)
             
-            stillImageOutput = AVCaptureStillImageOutput()
-            stillImageOutput!.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-            if captureSession!.canAddOutput(stillImageOutput) {
-                captureSession!.addOutput(stillImageOutput)
-                
-                previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-                previewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
-                previewLayer!.connection?.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
-                previewView.layer.addSublayer(previewLayer!)
-                
-                captureSession!.startRunning()
+            cameraSession.beginConfiguration()
+            
+            if (cameraSession.canAddInput(deviceInput) == true) {
+                cameraSession.addInput(deviceInput)
             }
+            
+            let dataOutput = AVCaptureVideoDataOutput()
+            dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCVPixelFormatType_32BGRA)]
+            dataOutput.alwaysDiscardsLateVideoFrames = true
+            
+            if (cameraSession.canAddOutput(dataOutput) == true) {
+                cameraSession.addOutput(dataOutput)
+            }
+            
+            cameraSession.commitConfiguration()
+            
+            let queue = dispatch_queue_create("com.oogverblindendmooi.queue", DISPATCH_QUEUE_SERIAL)
+            dataOutput.setSampleBufferDelegate(self, queue: queue)
+            
         }
-
-    }
-
-    //deze methode veranderd de orientatie van de camera op dezelfde orientatie als van de UIview
-    func transformOrientation(orientation: UIInterfaceOrientation) -> AVCaptureVideoOrientation {
-        switch orientation {
-        case .LandscapeLeft:
-            return .LandscapeLeft
-        case .LandscapeRight:
-            return .LandscapeRight
-        case .PortraitUpsideDown:
-            return .PortraitUpsideDown
-        default:
-            return .Portrait
+        catch let error as NSError {
+            NSLog("\(error), \(error.localizedDescription)")
         }
     }
     
-    //deze methode zet het camera lampje aan of weer uit
-    func toggleFlash()
-    {
-        if (backCamera.hasTorch) {
-            do {
-                try backCamera.lockForConfiguration()
-                if (backCamera.torchMode == AVCaptureTorchMode.On) {
-                    backCamera.torchMode = AVCaptureTorchMode.Off
-                } else {
-                    try backCamera.setTorchModeOnWithLevel(1.0)
+    //deze methode veranderd de orientatie van de camera op dezelfde orientatie als van de UIview
+        func transformOrientation(orientation: UIInterfaceOrientation) -> AVCaptureVideoOrientation {
+                switch orientation {
+                    case .LandscapeLeft:
+                            return .LandscapeLeft
+                    case .LandscapeRight:
+                            return .LandscapeRight
+                    case .PortraitUpsideDown:
+                            return .PortraitUpsideDown
+                    default:
+                            return .Portrait
+                    }
+            }
+      // MARK: - Capturing output
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+        
+            if frameNr % 32 == 0 {
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                    //All stuff here
+                    let image:UIImage = self.imageFromSampleBuffer(sampleBuffer)
+                    let colorArray = CVWrapper.processImageWithOpenCV(image)
+                    self.checkColors(colorArray)
+                })
+                
+            }
+            frameNr += 1
+        
+    }
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+        // Here you can count how many frames are dopped
+    }
+    
+    
+    func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage {
+        // Get a CMSampleBuffer's Core Video image buffer for the media data
+        let imageBuffer: CVImageBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        // Lock the base address of the pixel buffer
+        CVPixelBufferLockBaseAddress(imageBuffer, 0)
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
+        
+        let address = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0)
+        // Get the pixel buffer width and height
+        let width = CVPixelBufferGetWidth(imageBuffer)
+        let height = CVPixelBufferGetHeight(imageBuffer)
+        
+        // Create a device-dependent RGB color space
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        // Create a bitmap graphics context with the sample buffer data
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.NoneSkipFirst.rawValue | CGBitmapInfo.ByteOrder32Little.rawValue).rawValue
+        let context = CGBitmapContextCreate(address, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
+        // Create a Quartz image from the pixel data in the bitmap graphics context
+        
+        let quartzImage = CGBitmapContextCreateImage(context)
+        // Unlock the pixel buffer
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
+        
+        
+        // Create an image object from the Quartz image
+        let image = UIImage(CGImage: quartzImage!)
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
+        
+        return image
+        
+        
+    }
+    
+      // MARK: - Color output
+    
+    func checkColors(array: NSArray){
+        
+        let re: Float = array[0].floatValue
+        let gr: Float = array[1].floatValue
+        let bl: Float = array[2].floatValue
+        
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            self.regColorView.layer.borderColor = UIColor(red: CGFloat(array[0] as! NSNumber)/255, green: CGFloat(array[1] as! NSNumber)/255, blue: CGFloat(array[2] as! NSNumber)/255, alpha: 1).CGColor
+            self.regColorView.layer.setNeedsDisplay()
+        }
+        
+        
+        if(self.scanning){
+        
+            dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+                
+                for color in self.colors{
+
+                    let margin: Float = 30.0
+                    if(color.redColor > (re - margin) && color.redColor < (re + margin)
+                        && color.greenColor > (gr - margin) && color.greenColor < (gr + margin)
+                        && color.blueColor > (bl - margin) && color.blueColor < (bl+margin)){
+                        
+//                        print("----------------------------------")
+//                        print(color.name)
+//                        print("red \(re) -  \(color.redColor)" )
+//                        print("green \(gr) -  \(color.greenColor)" )
+//                        print("blue \(bl) -  \(color.blueColor)" )
+                        
+                        if(self.scanning){
+                            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+                            
+                            self.resultColor = color
+                            self.result = true
+                            self.performSegueWithIdentifier("scanResultSegue", sender: self)
+                            
+                            self.timer.invalidate()
+                            self.resetButton()
+                            self.scanning = false
+                        }
+                    }
                 }
-                backCamera.unlockForConfiguration()
-            } catch {
-                print(error)
             }
         }
-
     }
+    
+    // MARK: - Actions
+    
+    
+    @IBAction func scanButtonClicked(sender: AnyObject) {
+        
+        timer.invalidate()
+        timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
+        
+        self.scanButton.backgroundColor = blackColor
+        self.scanButton.userInteractionEnabled = false
+        self.scanning = true
+    }
+    
+    // called every time interval from the timer
+    func timerAction() {
+        resetButton()
+        self.performSegueWithIdentifier("scanResultSegue", sender: self)
+    }
+    
+    func resetButton() {
+        self.scanButton.backgroundColor = yellowColor
+        self.scanButton.userInteractionEnabled = true
+        self.scanning = false
+        self.result = false
+    }
+    
+    
+    // MARK: - Segues
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "scanResultSegue" {
+            
+            let controller:ScanResultViewController = segue.destinationViewController as! ScanResultViewController
+            controller.scanResult = self.result
+            controller.navigationItem.backBarButtonItem?.title = " "
+            if(self.result){
+                controller.resultColor = resultColor
+            } else {
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            }
+            
+        }
+    }
+    
     
 }
+
+
 

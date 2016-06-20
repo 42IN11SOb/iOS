@@ -13,17 +13,16 @@ class StyleViewController: UIViewController {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
-//    @IBOutlet weak var contentView: UIView!
     var stackContentView: UIStackView! = UIStackView()
     
-                    var figureImgView: UIImageView!
-                    var seasonLabel: UILabel!
-                    var adviceLabel: UILabel!
-                    var figureTitleLabel: UILabel!
-                    var figureLabel: UILabel!
-                    var doLabel: UILabel!
-                    var dontLabel: UILabel!
-//    @IBOutlet weak var heightConstraintDo: NSLayoutConstraint!
+    var figureImgView: UIImageView!
+    var seasonLabel: UILabel!
+    var adviceLabel: UILabel!
+    var figureTitleLabel: UILabel!
+    var figureLabel: UILabel!
+    var doLabel: UILabel!
+    var dontLabel: UILabel!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,14 +93,13 @@ class StyleViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        scrollView.content
         scrollView.contentSize = CGSize(width: SCREENWIDTH - 40, height: stackContentView.frame.height + 20)
     }
     
     func addDoLines(){
         
         let doTitle = UILabel()
-        doTitle.text = "Do"
+        doTitle.text = NSLocalizedString("DO", comment:"Do title")
 
         doTitle.font = UIFont.boldSystemFontOfSize(16.0)
         
@@ -132,7 +130,7 @@ class StyleViewController: UIViewController {
     func addDontLines(){
         
         let dontTitle = UILabel()
-        dontTitle.text = "Don't"
+        dontTitle.text = NSLocalizedString("DONT", comment:"Dont title")
         dontTitle.font = UIFont.boldSystemFontOfSize(16.0)
 
         stackContentView.addArrangedSubview(dontTitle)

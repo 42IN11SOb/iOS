@@ -22,6 +22,7 @@ class ColorPageViewController: UIPageViewController, UIPageViewControllerDataSou
         }
     }
     
+    
     func configureView(){
         
         if pageColors.count > 0 {
@@ -121,7 +122,7 @@ class ColorPageViewController: UIPageViewController, UIPageViewControllerDataSou
         colorPageViewController.selectedColor = pageColors[index]
         colorPageViewController.pageIndex = index
         
-        
+        colorPageViewController.navigationItem.backBarButtonItem?.title = " "
         return colorPageViewController
     }
     

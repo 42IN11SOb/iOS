@@ -1,15 +1,33 @@
 
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "1Tt-9m-wht"; */
+"1Tt-9m-wht.title" = "News";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "3vv-we-ZsJ"; */
+"3vv-we-ZsJ.normalTitle" = "Logout";
+
 /* Class = "UILabel"; text = "Uw persoonlijke assistent bij het herkennen van de kleur."; ObjectID = "42V-Eg-c6d"; */
-"42V-Eg-c6d.text" = "Your personal assistant for recognizing colors.";
+"42V-Eg-c6d.text" = "Your personal assistant for recognising a color matching your color profile.";
 
 /* Class = "UITextField"; placeholder = "wachtwoord"; ObjectID = "46X-fd-YB6"; */
-"46X-fd-YB6.placeholder" = "password";
+"46X-fd-YB6.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Ik ben niet bij een PEP-dag geweest"; ObjectID = "4dm-lE-jiH"; */
+"4dm-lE-jiH.text" = "I have not been at a PEP-day";
+
+/* Class = "UIButton"; normalTitle = "Inloggen"; ObjectID = "64j-kB-3zR"; */
+"64j-kB-3zR.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Uw samengestelde persoonlijke stylingsprofiel."; ObjectID = "7fe-zm-1P9"; */
+"7fe-zm-1P9.text" = "Your personal customized styling profile.";
 
 /* Class = "UITextField"; placeholder = "naam"; ObjectID = "9lg-Uc-PM6"; */
-"9lg-Uc-PM6.placeholder" = "name";
+"9lg-Uc-PM6.placeholder" = "Name";
 
-/* Class = "UIButton"; normalTitle = "doorgaan zonder inloggen"; ObjectID = "IeQ-fP-Cd0"; */
-"IeQ-fP-Cd0.normalTitle" = "Continue without signing in";
+/* Class = "UILabel"; text = "Uw collectie van samengestelde kleuren."; ObjectID = "GMV-1F-Mwg"; */
+"GMV-1F-Mwg.text" = "Your collection of customized colors.";
+
+/* Class = "UILabel"; text = "Nieuws"; ObjectID = "GOT-vW-1tH"; */
+"GOT-vW-1tH.text" = "News";
 
 /* Class = "UILabel"; text = "Scanner"; ObjectID = "Ks8-2I-Q8l"; */
 "Ks8-2I-Q8l.text" = "Scanner";
@@ -18,16 +36,34 @@
 "MST-ya-5z2.text" = "Passport";
 
 /* Class = "UIButton"; normalTitle = "paspoort"; ObjectID = "O0p-vg-WaX"; */
-"O0p-vg-WaX.normalTitle" = "passport";
+"O0p-vg-WaX.normalTitle" = "Passport";
 
-/* Class = "UIBarButtonItem"; title = "BACK"; ObjectID = "QaI-uF-2Kt"; */
-"QaI-uF-2Kt.title" = "BACK";
+/* Class = "UIBarButtonItem"; title = "  "; ObjectID = "QaI-uF-2Kt"; */
+"QaI-uF-2Kt.title" = "  ";
 
-/* Class = "UILabel"; text = "Uw persoonlijke kleding paspoort."; ObjectID = "SYH-Hi-nN9"; */
-"SYH-Hi-nN9.text" = "Your personal clothing passport";
+/* Class = "UIBarButtonItem"; title = "  "; ObjectID = "RVi-t7-p5e"; */
+"RVi-t7-p5e.title" = "  ";
+
+/* Class = "UIBarButtonItem"; title = "  "; ObjectID = "S4v-p8-F1b"; */
+"S4v-p8-F1b.title" = "  ";
 
 /* Class = "UIButton"; normalTitle = "instellingen"; ObjectID = "Sn2-9m-kFH"; */
 "Sn2-9m-kFH.normalTitle" = "Settings";
+
+/* Class = "UIButton"; normalTitle = "Geen account"; ObjectID = "TwS-j7-PZQ"; */
+"TwS-j7-PZQ.normalTitle" = "No account";
+
+/* Class = "UIButton"; normalTitle = "Nieuws"; ObjectID = "ZKF-Th-dEd"; */
+"ZKF-Th-dEd.normalTitle" = "News";
+
+/* Class = "UIButton"; normalTitle = "kleur paspoort"; ObjectID = "ZOE-2h-5os"; */
+"ZOE-2h-5os.normalTitle" = "Collor palette";
+
+/* Class = "UINavigationItem"; title = "Inloggen"; ObjectID = "aQu-Sg-Muo"; */
+"aQu-Sg-Muo.title" = "Login";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "agI-63-juI"; */
+"agI-63-juI.text" = "Email";
 
 /* Class = "UIButton"; normalTitle = "Inloggen"; ObjectID = "cWJ-Ch-8OG"; */
 "cWJ-Ch-8OG.normalTitle" = "Login";
@@ -35,8 +71,20 @@
 /* Class = "UILabel"; text = "Wachtwoord"; ObjectID = "fYy-tl-3w4"; */
 "fYy-tl-3w4.text" = "Password";
 
+/* Class = "UILabel"; text = "Label"; ObjectID = "fs7-aX-03P"; */
+"fs7-aX-03P.text" = "Label";
+
+/* Class = "UILabel"; text = "Stijl"; ObjectID = "h0D-bo-QoV"; */
+"h0D-bo-QoV.text" = "Style";
+
 /* Class = "UILabel"; text = "Overige"; ObjectID = "jjl-Tc-caN"; */
 "jjl-Tc-caN.text" = "Miscellaneous";
+
+/* Class = "UIButton"; normalTitle = "Stijl"; ObjectID = "jpX-ud-1th"; */
+"jpX-ud-1th.normalTitle" = "Style";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "liI-gL-ixn"; */
+"liI-gL-ixn.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "overige"; ObjectID = "mPd-2x-IcQ"; */
 "mPd-2x-IcQ.normalTitle" = "Miscellaneous";
@@ -44,8 +92,20 @@
 /* Class = "UIButton"; normalTitle = "SCANNER"; ObjectID = "mof-LN-ejC"; */
 "mof-LN-ejC.normalTitle" = "SCANNER";
 
+/* Class = "UILabel"; text = "Ik ben bij een PEP-dag geweest"; ObjectID = "pLA-dR-XWd"; */
+"pLA-dR-XWd.text" = "I have been at a PEP-day";
+
 /* Class = "UILabel"; text = "Naam"; ObjectID = "qJq-5b-7hd"; */
 "qJq-5b-7hd.text" = "Name";
 
+/* Class = "UILabel"; text = "Kleur paspoort"; ObjectID = "rej-fK-hoe"; */
+"rej-fK-hoe.text" = "Color palette";
+
+/* Class = "UIButton"; normalTitle = "SCAN"; ObjectID = "sXv-AW-x7c"; */
+"sXv-AW-x7c.normalTitle" = "SCAN";
+
 /* Class = "UILabel"; text = "Instellingen"; ObjectID = "wA1-wT-wux"; */
 "wA1-wT-wux.text" = "Settings";
+
+/* Class = "UITextField"; text = "Email"; ObjectID = "xMR-wW-Q0o"; */
+"xMR-wW-Q0o.text" = "Email";

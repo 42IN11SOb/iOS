@@ -20,8 +20,7 @@ class ColorTableViewController: UITableViewController {
         self.tableView.backgroundColor = backgroundColor
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let pass = DatabaseController.sharedControl.getPassport()
-         self.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title") + " " + pass.season_title 
-
+        self.navigationItem.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title") + " " + pass.season_title
         for color in pass.season {
            colors.append(color as PassportColor)
         }
@@ -30,19 +29,9 @@ class ColorTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.tableView.reloadData()
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colors.count;
@@ -52,7 +41,6 @@ class ColorTableViewController: UITableViewController {
         let cell =  tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath) as! ColorTableCell
         
         let color: PassportColor = self.colors[indexPath.row]
-
         cell.layer.backgroundColor = color.getColorFromRGB().CGColor
         cell.headingLabel?.text = color.name
         cell.contentView.backgroundColor = color.getColorFromRGB()
@@ -72,8 +60,7 @@ class ColorTableViewController: UITableViewController {
                 let coloring : [PassportColor] = self.colors
                 controller.pageColors = coloring
                 controller.selectedIndex = indexPath.row
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
+
             }
         }
     }

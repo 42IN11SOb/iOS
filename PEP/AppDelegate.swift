@@ -13,14 +13,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let token = defaults.stringForKey("apiToken")
     
-        // #TODO: make boolean terms accepted
-        // - make terms view 
-        // - make switch for termsview or launch main. 
+        if (token != nil) {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainView = mainStoryboard.instantiateViewControllerWithIdentifier("MainController") as! MainController
+            mainView.navigationItem.setHidesBackButton(true, animated:true);
+            let rootViewController = self.window!.rootViewController as! UINavigationController
+            
+            rootViewController.pushViewController(mainView, animated: true)
+            
+        } else {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let introView = mainStoryboard.instantiateViewControllerWithIdentifier("IntroViewController") as! IntroViewController
+            let rootViewController = self.window!.rootViewController as! UINavigationController
+            rootViewController.pushViewController(introView, animated: true)
+        }
         
         return true
     }

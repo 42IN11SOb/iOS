@@ -1,29 +1,44 @@
-/* 
-  Localizable.strings
-  PEP
-
-  Created by Corina Nibbering on 08-04-16.
-  Copyright © 2016 42IN11SOb. All rights reserved.
-*/
+/*
+ Localizable.strings
+ PEP
+ 
+ Created by Corina Nibbering on 08-04-16.
+ Copyright © 2016 42IN11SOb. All rights reserved.
+ */
 //View Titles
 "PASSPORTTITLE" = "PASPOORT";
 "SETTINGSTITLE" = "INSTELLINGEN";
 "MISCELLANEOUSTITLE" = "OVERIGE";
-"SCANTITLE" = "SCANNER";
-"COLORTABLETITLE" = "Kleuren paspoort";
+"SCANTITLE" = "SCAN";
+"COLORTABLETITLE" = "Paspoort Kleuren";
 "STYLETITLE" = "STIJL";
 //
 
-"LOGIN" = "Inloggen";
-"WrongLogin" = "Login onjuist";
-"WrongUsernamePassword" = "De ingevoegde gebruikersnaam en wachtwoord combinatie is fout.";
-"TryAgain" = "Probeer het opnieuw";
+//Login Controller
+"LOGIN" = "Login";
+"WrongLogin" = "Inlog combinatie verkeerd";
+"WrongUsernamePassword" = "Verkeerde gebruikergsnaam en wachtwoord combinatie.";
+"TryAgain" = "Probeer het nog eens";
 "Error" = "Fout";
-"SomethingWrong" = "Er is iets fouts gegaan";
+"SomethingWrong" = "Er is iets fout gegaan";
 "OK" = "Oke";
 "NetworkNotAvailable" = "Geen netwerk beschikbaar, je hebt een internetverbinding nodig om in te kunnen loggen.";
-"NoNetwork" = "Geen netwerk";
-"LoginFailed" = "Inloggen mislukt";
-"BothFields" = "Vul beiden velden in. ";
+"NoNetwork" = "Geen Netwerk";
+"LoginFailed" = "inloggen mislukt";
+"BothFields" = "Vul beide velden in.";
 "BACK" = "TERUG";
 
+//Scan View Controller
+"ColorIsInSchemeTitle" = "Het is een match";
+"ColorIsInSchemeMessage" = "De kleur die je hebt gescant past in uw kleurenpalet.";
+"LOGOUT"= "Uitloggen";
+"DONT" = "Dont's";
+"DO"= "Do's";
+
+"MATCHFOUND" = "Kleur gevonden";
+"MATCHNOTFOUND" = "Geen kleur gevonden";
+
+"COLORHASBEENFOUND" = "De volgende kleur is gevonden";
+"NOCOLORHASBEENFOUND" = "Er is geen kleur gevonden";
+
+"RESULT" = "Resultaat";

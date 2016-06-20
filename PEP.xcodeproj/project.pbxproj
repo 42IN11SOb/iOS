@@ -18,15 +18,26 @@
 		52EF8B321CC4355200D00E40 /* pepIcon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B281CC4355200D00E40 /* pepIcon-Small.png */; };
 		52EF8B331CC4355200D00E40 /* pepIcon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B291CC4355200D00E40 /* pepIcon-Small@2x.png */; };
 		52EF8B341CC4355200D00E40 /* pepIcon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF8B2A1CC4355200D00E40 /* pepIcon-Small@3x.png */; };
+		5301C1821D141D4A00F5C098 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5301C1811D141D4A00F5C098 /* ScanResultController.swift */; };
+		53202AB51D06C16600C96C28 /* news_318-32311.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53202AB41D06C16600C96C28 /* news_318-32311.jpg */; };
+		53202AB81D06C7A400C96C28 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53202AB71D06C7A400C96C28 /* PaddedLabel.swift */; };
+		53202ABA1D06FA4400C96C28 /* NewsItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */; };
 		532272D11CC677D6009A412E /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272D01CC677D6009A412E /* ColorViewController.swift */; };
 		532272D31CC677F0009A412E /* ColorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272D21CC677F0009A412E /* ColorTableViewController.swift */; };
 		532272D51CC67808009A412E /* StyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272D41CC67808009A412E /* StyleViewController.swift */; };
 		532272D71CC67AB3009A412E /* PassportColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272D61CC67AB3009A412E /* PassportColor.swift */; };
 		532272DB1CC6808B009A412E /* ColorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532272DA1CC6808B009A412E /* ColorTableCell.swift */; };
+		532362521CE7600100E67968 /* CVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 532362511CE7600100E67968 /* CVWrapper.mm */; };
+		532362561CE760B100E67968 /* stitching.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 532362541CE760B000E67968 /* stitching.cpp */; };
+		532362581CE7616400E67968 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = 532362571CE7616400E67968 /* UIImage+OpenCV.mm */; };
 		5325AC721CD34C97004AC6A3 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325AC711CD34C97004AC6A3 /* Figure.swift */; };
 		5325AC741CD34CA2004AC6A3 /* FigureRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325AC731CD34CA2004AC6A3 /* FigureRules.swift */; };
 		5325AC761CD34CEF004AC6A3 /* MakeUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325AC751CD34CEF004AC6A3 /* MakeUp.swift */; };
 		5325AC781CD35838004AC6A3 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325AC771CD35838004AC6A3 /* DatabaseController.swift */; };
+		532D83DF1CF4737600AE5FB1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D83DE1CF4737600AE5FB1 /* IntroViewController.swift */; };
+		532D83E21CF47B5E00AE5FB1 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D83E11CF47B5E00AE5FB1 /* NewsViewController.swift */; };
+		532D83E41CF4856E00AE5FB1 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D83E31CF4856E00AE5FB1 /* News.swift */; };
+		532D83E61CF485C500AE5FB1 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D83E51CF485C500AE5FB1 /* NewsItem.swift */; };
 		5334ED0A1CA95C0800C16912 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5334ED091CA95C0800C16912 /* LoginViewController.swift */; };
 		533812D31CC7AD5600C9AE30 /* ColorPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533812D21CC7AD5600C9AE30 /* ColorPageViewController.swift */; };
 		533CF0821CA085A400A1EC05 /* splash_bottomrightcorner.png in Resources */ = {isa = PBXBuildFile; fileRef = 533CF0801CA085A400A1EC05 /* splash_bottomrightcorner.png */; };
@@ -70,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		5206C4161CA2A11F005BCAC1 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		520922A11CD388C9008B6724 /* PEP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PEP-Bridging-Header.h"; sourceTree = "<group>"; };
 		52EF8B211CC4355200D00E40 /* pepIcon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-60@2x.png"; sourceTree = "<group>"; };
 		52EF8B221CC4355200D00E40 /* pepIcon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-60@3x.png"; sourceTree = "<group>"; };
 		52EF8B231CC4355200D00E40 /* pepIcon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-76.png"; sourceTree = "<group>"; };
@@ -80,15 +92,29 @@
 		52EF8B281CC4355200D00E40 /* pepIcon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small.png"; sourceTree = "<group>"; };
 		52EF8B291CC4355200D00E40 /* pepIcon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small@2x.png"; sourceTree = "<group>"; };
 		52EF8B2A1CC4355200D00E40 /* pepIcon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pepIcon-Small@3x.png"; sourceTree = "<group>"; };
+		5301C1811D141D4A00F5C098 /* ScanResultController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanResultController.swift; sourceTree = "<group>"; };
+		53202AB41D06C16600C96C28 /* news_318-32311.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "news_318-32311.jpg"; sourceTree = "<group>"; };
+		53202AB71D06C7A400C96C28 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
+		53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItemViewController.swift; sourceTree = "<group>"; };
 		532272D01CC677D6009A412E /* ColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		532272D21CC677F0009A412E /* ColorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableViewController.swift; sourceTree = "<group>"; };
 		532272D41CC67808009A412E /* StyleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleViewController.swift; sourceTree = "<group>"; };
 		532272D61CC67AB3009A412E /* PassportColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassportColor.swift; sourceTree = "<group>"; };
 		532272DA1CC6808B009A412E /* ColorTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTableCell.swift; sourceTree = "<group>"; };
+		532362501CE75FDA00E67968 /* CVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CVWrapper.h; sourceTree = "<group>"; };
+		532362511CE7600100E67968 /* CVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CVWrapper.mm; sourceTree = "<group>"; };
+		532362531CE7608100E67968 /* stitching.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stitching.h; sourceTree = "<group>"; };
+		532362541CE760B000E67968 /* stitching.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stitching.cpp; sourceTree = "<group>"; };
+		532362571CE7616400E67968 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
+		532362591CE7617B00E67968 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
 		5325AC711CD34C97004AC6A3 /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 		5325AC731CD34CA2004AC6A3 /* FigureRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigureRules.swift; sourceTree = "<group>"; };
 		5325AC751CD34CEF004AC6A3 /* MakeUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeUp.swift; sourceTree = "<group>"; };
 		5325AC771CD35838004AC6A3 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		532D83DE1CF4737600AE5FB1 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
+		532D83E11CF47B5E00AE5FB1 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		532D83E31CF4856E00AE5FB1 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		532D83E51CF485C500AE5FB1 /* NewsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
 		5334ED091CA95C0800C16912 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		533812D21CC7AD5600C9AE30 /* ColorPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPageViewController.swift; sourceTree = "<group>"; };
 		533CF0801CA085A400A1EC05 /* splash_bottomrightcorner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_bottomrightcorner.png; sourceTree = "<group>"; };
@@ -116,17 +142,17 @@
 		53B642291C989BA100B08F3B /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		53B6422B1C98BF3300B08F3B /* settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
 		53BF79F11CB79FBC0070EC3E /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
-		53BF79F31CB7C30F0070EC3E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		53BF79F41CB7C30F0070EC3E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		53BF79F91CB7C41B0070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		53BF79FB1CB7C4210070EC3E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		53BF79FC1CB7C4250070EC3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		53BF79FE1CB7C4800070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		53BF7A001CB7C48A0070EC3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		53C6FE361CCFBE720008652B /* Passport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passport.swift; sourceTree = "<group>"; };
 		53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person_style_icon.png; sourceTree = "<group>"; };
 		53CFA0BC1CE31E480090C9B5 /* colors_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors_icon.png; sourceTree = "<group>"; };
 		582E5CE75C8462705154D978 /* Pods_PEP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PEP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A4C24661D141AC000E519A1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		5A4C24691D141AEB00E519A1 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		85AC405D25D6F0E92A9C48CB /* Pods-PEPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PEPTests/Pods-PEPTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9AE4AE2AC366155F9BB1336F /* Pods-PEPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PEPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PEPTests/Pods-PEPTests.release.xcconfig"; sourceTree = "<group>"; };
 		9BCB3DD6DDD3C1C1B16460E4 /* Pods_PEPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PEPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,9 +205,27 @@
 			name = app_icons;
 			sourceTree = "<group>";
 		};
+		53202AB61D06C78500C96C28 /* layout_models */ = {
+			isa = PBXGroup;
+			children = (
+				53202AB71D06C7A400C96C28 /* PaddedLabel.swift */,
+			);
+			name = layout_models;
+			sourceTree = "<group>";
+		};
+		532D83E01CF47B5100AE5FB1 /* news */ = {
+			isa = PBXGroup;
+			children = (
+				532D83E11CF47B5E00AE5FB1 /* NewsViewController.swift */,
+				53202AB91D06FA4400C96C28 /* NewsItemViewController.swift */,
+			);
+			name = news;
+			sourceTree = "<group>";
+		};
 		533CF07B1CA084F600A1EC05 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				53202AB41D06C16600C96C28 /* news_318-32311.jpg */,
 				53CFA0BB1CE31E480090C9B5 /* person_style_icon.png */,
 				53CFA0BC1CE31E480090C9B5 /* colors_icon.png */,
 				52C4AAF61CC0349100E35F5C /* app_icons */,
@@ -219,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				53B6420B1C98924E00B08F3B /* ScanViewController.swift */,
+				5301C1811D141D4A00F5C098 /* ScanResultController.swift */,
 			);
 			name = scanning;
 			sourceTree = "<group>";
@@ -239,6 +284,13 @@
 		5396D0EC1C9B07BC0010B3E1 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				520922A11CD388C9008B6724 /* PEP-Bridging-Header.h */,
+				532362501CE75FDA00E67968 /* CVWrapper.h */,
+				532362511CE7600100E67968 /* CVWrapper.mm */,
+				532362531CE7608100E67968 /* stitching.h */,
+				532362541CE760B000E67968 /* stitching.cpp */,
+				532362571CE7616400E67968 /* UIImage+OpenCV.mm */,
+				532362591CE7617B00E67968 /* UIImage+OpenCV.h */,
 			);
 			name = core;
 			sourceTree = "<group>";
@@ -252,6 +304,8 @@
 				5325AC711CD34C97004AC6A3 /* Figure.swift */,
 				5325AC731CD34CA2004AC6A3 /* FigureRules.swift */,
 				5325AC751CD34CEF004AC6A3 /* MakeUp.swift */,
+				532D83E31CF4856E00AE5FB1 /* News.swift */,
+				532D83E51CF485C500AE5FB1 /* NewsItem.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -283,6 +337,7 @@
 				53BF79F01CB79F0C0070EC3E /* controllers */,
 				533CF07B1CA084F600A1EC05 /* res */,
 				5396D0ED1C9B07C20010B3E1 /* models */,
+				53202AB61D06C78500C96C28 /* layout_models */,
 				5396D0EC1C9B07BC0010B3E1 /* core */,
 				53B642091C98924E00B08F3B /* AppDelegate.swift */,
 				53B6420D1C98924E00B08F3B /* Main.storyboard */,
@@ -306,7 +361,9 @@
 		53BF79F01CB79F0C0070EC3E /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				532D83E01CF47B5100AE5FB1 /* news */,
 				5334ED091CA95C0800C16912 /* LoginViewController.swift */,
+				532D83DE1CF4737600AE5FB1 /* IntroViewController.swift */,
 				5325AC771CD35838004AC6A3 /* DatabaseController.swift */,
 				536C65301CD212E100946003 /* RequestController.swift */,
 				53B642291C989BA100B08F3B /* MainController.swift */,
@@ -396,7 +453,7 @@
 		53B641FE1C98924E00B08F3B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = 42IN11SOb;
 				TargetAttributes = {
@@ -442,6 +499,7 @@
 				52EF8B321CC4355200D00E40 /* pepIcon-Small.png in Resources */,
 				52EF8B2C1CC4355200D00E40 /* pepIcon-60@3x.png in Resources */,
 				53512D3E1CA2BC2900E81676 /* Roboto-Bold.ttf in Resources */,
+				53202AB51D06C16600C96C28 /* news_318-32311.jpg in Resources */,
 				53512D371CA2ACFD00E81676 /* pass_icon.png in Resources */,
 				533CF0821CA085A400A1EC05 /* splash_bottomrightcorner.png in Resources */,
 				53B642111C98924E00B08F3B /* Assets.xcassets in Resources */,
@@ -572,22 +630,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				533812D31CC7AD5600C9AE30 /* ColorPageViewController.swift in Sources */,
+				532D83E61CF485C500AE5FB1 /* NewsItem.swift in Sources */,
 				532272D51CC67808009A412E /* StyleViewController.swift in Sources */,
 				5325AC761CD34CEF004AC6A3 /* MakeUp.swift in Sources */,
+				532362521CE7600100E67968 /* CVWrapper.mm in Sources */,
 				53B6420C1C98924E00B08F3B /* ScanViewController.swift in Sources */,
 				532272DB1CC6808B009A412E /* ColorTableCell.swift in Sources */,
 				5396D0E61C9B074B0010B3E1 /* SettingsViewController.swift in Sources */,
 				5325AC721CD34C97004AC6A3 /* Figure.swift in Sources */,
 				53C6FE371CCFBE720008652B /* Passport.swift in Sources */,
 				5206C4171CA2A11F005BCAC1 /* InformationViewController.swift in Sources */,
+				53202AB81D06C7A400C96C28 /* PaddedLabel.swift in Sources */,
+				53202ABA1D06FA4400C96C28 /* NewsItemViewController.swift in Sources */,
 				532272D71CC67AB3009A412E /* PassportColor.swift in Sources */,
+				532362581CE7616400E67968 /* UIImage+OpenCV.mm in Sources */,
+				532362561CE760B100E67968 /* stitching.cpp in Sources */,
 				53B6422A1C989BA100B08F3B /* MainController.swift in Sources */,
 				5334ED0A1CA95C0800C16912 /* LoginViewController.swift in Sources */,
 				53BF79F21CB79FBC0070EC3E /* user.swift in Sources */,
 				53B6422C1C98BF3300B08F3B /* settings.swift in Sources */,
 				53B6420A1C98924E00B08F3B /* AppDelegate.swift in Sources */,
 				536C65311CD212E100946003 /* RequestController.swift in Sources */,
+				532D83E21CF47B5E00AE5FB1 /* NewsViewController.swift in Sources */,
 				532272D11CC677D6009A412E /* ColorViewController.swift in Sources */,
+				5301C1821D141D4A00F5C098 /* ScanResultController.swift in Sources */,
+				532D83E41CF4856E00AE5FB1 /* News.swift in Sources */,
+				532D83DF1CF4737600AE5FB1 /* IntroViewController.swift in Sources */,
 				532272D31CC677F0009A412E /* ColorTableViewController.swift in Sources */,
 				5325AC741CD34CA2004AC6A3 /* FigureRules.swift in Sources */,
 				5396D0E81C9B07670010B3E1 /* PassportViewController.swift in Sources */,
@@ -618,8 +686,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				53B6420E1C98924E00B08F3B /* Base */,
-				53BF79F31CB7C30F0070EC3E /* nl */,
-				53BF79FE1CB7C4800070EC3E /* en */,
+				5A4C24661D141AC000E519A1 /* en */,
+				5A4C24691D141AEB00E519A1 /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -735,12 +803,19 @@
 			baseConfigurationReference = CB49CBCF8E2D9B556E63E35E /* Pods-PEP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PEP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = b42IN11SO.PEP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "PEP/PEP-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -749,12 +824,18 @@
 			baseConfigurationReference = E2290C756048B00FEED35440 /* Pods-PEP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PEP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = b42IN11SO.PEP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "PEP/PEP-Bridging-Header.h";
 			};
 			name = Release;
 		};

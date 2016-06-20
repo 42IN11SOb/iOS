@@ -10,24 +10,18 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    
-    // #TODO:
-    // - var outlets aanmaken voor alle elementen in de view
-    // - mogelijke benodigde functies aanmaken (denk aan save / discard etc. )
-    //
+    @IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("SETTINGSTITLE", comment:"Settings title")
         self.view.backgroundColor = backgroundColor
         
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
+    
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -35,6 +29,27 @@ class SettingsViewController: UIViewController {
         
     }
     
+    @IBAction func logoutButtonClicked(sender: AnyObject) {
+        
+        RequestController.logout { (result, error) in
+            print(result)
+            
+            if ((result?.objectForKey("success")) != nil) {
+                let success = result?.objectForKey("success") as! Bool
+                if(success){
+                    DatabaseController.sharedControl.deleteAll()
+                    let appDomain = NSBundle.mainBundle().bundleIdentifier!
+                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+                    
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("StartBoard") as UIViewController
+                    self.presentViewController(vc, animated: true, completion: nil)
+                }
+            }
+            
+        }
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

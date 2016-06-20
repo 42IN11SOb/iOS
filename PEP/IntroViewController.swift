@@ -1,19 +1,27 @@
 //
-//  SettingsController.swift
+//  IntroViewController.swift
 //  PEP
 //
-//  Created by Corina Nibbering on 17-03-16.
+//  Created by Corina Nibbering on 24-05-16.
 //  Copyright © 2016 42IN11SOb. All rights reserved.
 //
 
 import UIKit
 
-class InformationViewController: UIViewController {
+class IntroViewController: UIViewController {
     
+    var user: User!
+    
+    override func loadView() {
+        super.loadView()
 
+        user = User()
+        user.getUserInformation()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("MISCELLANEOUSTITLE", comment:"miscellaneous title")
         self.view.backgroundColor = backgroundColor
         
     }
@@ -26,18 +34,7 @@ class InformationViewController: UIViewController {
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
     
     
 }
-
