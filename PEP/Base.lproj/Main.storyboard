@@ -408,7 +408,7 @@
             </objects>
             <point key="canvasLocation" x="-237" y="4"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings view-->
         <scene sceneID="2Pg-Hs-Tjx">
             <objects>
                 <viewController id="OJB-35-uh2" customClass="SettingsViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
@@ -463,6 +463,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="oqO-2W-KeM" secondAttribute="trailing" constant="-5" id="kaA-a5-a0e"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Settings view" id="2vD-xA-epr">
+                        <barButtonItem key="backBarButtonItem" title=" " id="q4x-2G-1KM"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="logoutButton" destination="3vv-we-ZsJ" id="E6u-OM-tyN"/>
                     </connections>
@@ -549,7 +552,7 @@
             </objects>
             <point key="canvasLocation" x="2056" y="-1178"/>
         </scene>
-        <!--Style View Controller-->
+        <!--Style View-->
         <scene sceneID="WHx-Sv-Xpf">
             <objects>
                 <viewController id="tie-aQ-T1Y" customClass="StyleViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
@@ -573,6 +576,9 @@
                             <constraint firstItem="T2c-9L-bc8" firstAttribute="leading" secondItem="OLb-sd-wNl" secondAttribute="leadingMargin" id="sSP-Fs-fHT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Style View" id="tVs-LH-FFd">
+                        <barButtonItem key="backBarButtonItem" title="  " id="4ec-Yt-Azt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="scrollView" destination="T2c-9L-bc8" id="bAg-Aa-Xzc"/>
                     </connections>
@@ -581,7 +587,7 @@
             </objects>
             <point key="canvasLocation" x="2066" y="-426"/>
         </scene>
-        <!--Paul-->
+        <!--Color View-->
         <scene sceneID="aA9-KY-eEj">
             <objects>
                 <tableViewController id="0W0-6g-Uiv" customClass="ColorTableViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
@@ -623,8 +629,8 @@
                             <outlet property="delegate" destination="0W0-6g-Uiv" id="lfK-LQ-nPJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Paul" id="ofl-hi-ZN7">
-                        <barButtonItem key="backBarButtonItem" title=" " id="7Kf-3G-hqL"/>
+                    <navigationItem key="navigationItem" title="Color View" id="ofl-hi-ZN7">
+                        <barButtonItem key="backBarButtonItem" title="  " id="7Kf-3G-hqL"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OuH-Os-Cc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -640,6 +646,9 @@
         <scene sceneID="YhL-GO-LQj">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="enY-oQ-TL6" customClass="ColorPageViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ege-Wu-ATR">
+                        <barButtonItem key="backBarButtonItem" title="  " id="NFH-cm-9Y9"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="9Mr-eA-f0s" kind="show" identifier="showColorSegue" id="xPh-8s-Vic"/>
                     </connections>
@@ -694,7 +703,7 @@
             </objects>
             <point key="canvasLocation" x="1253" y="-865"/>
         </scene>
-        <!--Passport View Controller-->
+        <!--Passport view-->
         <scene sceneID="7dt-15-6nR">
             <objects>
                 <viewController id="7K4-wZ-t6R" customClass="PassportViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
@@ -845,6 +854,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Passport view" id="oin-AA-NwO">
+                        <barButtonItem key="backBarButtonItem" title=" " id="HSk-52-XcU"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bnw-Q2-VAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -937,7 +949,9 @@
                             <constraint firstItem="Ncl-1W-iQB" firstAttribute="leading" secondItem="19n-Qm-bYp" secondAttribute="leadingMargin" constant="20" id="fL0-8n-2EX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uvZ-wH-FKP"/>
+                    <navigationItem key="navigationItem" id="uvZ-wH-FKP">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Glf-0V-h4L"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cE8-0o-TrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -972,8 +986,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFQ-Du-qBH">
-                                <rect key="frame" x="40" y="84" width="520" height="500"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFQ-Du-qBH">
+                                <rect key="frame" x="40" y="80" width="520" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJq-5b-7hd">
                                         <rect key="frame" x="238" y="48" width="45" height="21"/>
@@ -1044,7 +1058,9 @@
                             <constraint firstItem="kFQ-Du-qBH" firstAttribute="top" secondItem="mXg-XY-wQc" secondAttribute="bottom" constant="20" id="z0N-oA-Ynd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Inloggen" id="aQu-Sg-Muo"/>
+                    <navigationItem key="navigationItem" title="Inloggen" id="aQu-Sg-Muo">
+                        <barButtonItem key="backBarButtonItem" title="  " id="RCK-Y7-0yj"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="BGy-EY-NzY" id="WTB-Hc-7FV"/>
                         <outlet property="nameField" destination="9lg-Uc-PM6" id="Rcg-Cz-EQT"/>
@@ -1101,7 +1117,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News" id="1Tt-9m-wht">
-                        <barButtonItem key="backBarButtonItem" title="  " id="S4v-p8-F1b"/>
+                        <barButtonItem key="backBarButtonItem" title="   " id="S4v-p8-F1b"/>
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -1191,6 +1207,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Qs0-r3-cU6" secondAttribute="trailing" constant="-20" id="rCD-Dc-69Y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="oFi-Mz-vpO">
+                        <barButtonItem key="backBarButtonItem" title="  " id="zb1-MX-fE6"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="colorLabel" destination="liI-gL-ixn" id="S6H-LP-bXS"/>
                     </connections>

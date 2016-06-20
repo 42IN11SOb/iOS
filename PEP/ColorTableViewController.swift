@@ -21,7 +21,7 @@ class ColorTableViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let pass = DatabaseController.sharedControl.getPassport()
         self.navigationItem.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title") + " " + pass.season_title
-        self.navigationItem.backBarButtonItem!.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title")
+        //self.navigationItem.backBarButtonItem!.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title")
         for color in pass.season {
            colors.append(color as PassportColor)
         }
@@ -72,9 +72,6 @@ class ColorTableViewController: UITableViewController {
                 let coloring : [PassportColor] = self.colors
                 controller.pageColors = coloring
                 controller.selectedIndex = indexPath.row
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
-                controller.navigationItem.backBarButtonItem?.title = " "
 
             }
         }
