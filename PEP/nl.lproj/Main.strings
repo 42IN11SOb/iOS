@@ -1,6 +1,6 @@
 
 /* Class = "UINavigationItem"; title = "News"; ObjectID = "1Tt-9m-wht"; */
-"1Tt-9m-wht.title" = "Niews";
+"1Tt-9m-wht.title" = "Nieuws";
 
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "3vv-we-ZsJ"; */
 "3vv-we-ZsJ.normalTitle" = "Uitloggen";
@@ -44,8 +44,7 @@
 /* Class = "UIBarButtonItem"; title = "  "; ObjectID = "RVi-t7-p5e"; */
 "RVi-t7-p5e.title" = "  ";
 
-/* Class = "UIBarButtonItem"; title = "  "; ObjectID = "S4v-p8-F1b"; */
-"S4v-p8-F1b.title" = "  ";
+/* Class = "UIBarButtonItem"; title = "  "; ObjectID = "S4v-p8-F1b"; */"S4v-p8-F1b.title" = "  ";
 
 /* Class = "UIButton"; normalTitle = "instellingen"; ObjectID = "Sn2-9m-kFH"; */
 "Sn2-9m-kFH.normalTitle" = "Instellingen";
