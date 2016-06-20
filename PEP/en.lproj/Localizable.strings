@@ -40,3 +40,5 @@
 
 "COLORHASBEENFOUND" = "The following color has been found";
 "NOCOLORHASBEENFOUND" = "No matching color has been found";
+
+"RESULT" = "Result";

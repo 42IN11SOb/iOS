@@ -14,13 +14,14 @@ class ScanResultViewController: UIViewController{
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var resultColorView: UIView!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var resultTitleLabel: UILabel!
     
     var scanResult: Bool  = false
     var resultColor: PassportColor?
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        resultTitleLabel.text =  NSLocalizedString("Result", comment:"Result text")
         configureView()
     }
     
