@@ -21,7 +21,6 @@ class ColorTableViewController: UITableViewController {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let pass = DatabaseController.sharedControl.getPassport()
         self.navigationItem.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title") + " " + pass.season_title
-        //self.navigationItem.backBarButtonItem!.title = NSLocalizedString("COLORTABLETITLE", comment:"Colortable title")
         for color in pass.season {
            colors.append(color as PassportColor)
         }
@@ -30,13 +29,11 @@ class ColorTableViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.tableView.reloadData()
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +49,6 @@ class ColorTableViewController: UITableViewController {
         let cell =  tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath) as! ColorTableCell
         
         let color: PassportColor = self.colors[indexPath.row]
-
         cell.layer.backgroundColor = color.getColorFromRGB().CGColor
         cell.headingLabel?.text = color.name
         cell.contentView.backgroundColor = color.getColorFromRGB()

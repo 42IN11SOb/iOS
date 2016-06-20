@@ -340,7 +340,7 @@
                                     <constraint firstAttribute="bottom" secondItem="WuG-Qm-w2Z" secondAttribute="bottom" constant="10" id="DlW-VN-TMk"/>
                                     <constraint firstItem="WuG-Qm-w2Z" firstAttribute="top" secondItem="Wsf-S8-q5Z" secondAttribute="top" constant="-24" id="Vap-XW-bXr"/>
                                     <constraint firstAttribute="trailing" secondItem="WuG-Qm-w2Z" secondAttribute="trailing" constant="8" id="fQf-ex-V7d"/>
-                                    <constraint firstItem="WuG-Qm-w2Z" firstAttribute="leading" secondItem="Wsf-S8-q5Z" secondAttribute="leading" constant="8" identifier="main3" id="lmj-jL-nVA"/>
+                                    <constraint firstItem="WuG-Qm-w2Z" firstAttribute="leading" secondItem="Wsf-S8-q5Z" secondAttribute="leading" constant="8" id="lmj-jL-nVA"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="y8E-Ap-we0"/>
