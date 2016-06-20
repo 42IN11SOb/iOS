@@ -55,7 +55,7 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         regColorView.layer.borderColor = UIColor.blueColor().CGColor
         regColorView.backgroundColor = UIColor.clearColor()
         
-        let frame = CGRect(x: 10, y: 64, width: SCREENWIDTH - 20, height: SCREENHEIGHT - 84)
+        let frame = CGRect(x: 10, y: 64, width: self.view.frame.size.width - 20, height: self.view.frame.size.height - 84)
         regColorView.frame = frame
         
         scanButton.layer.cornerRadius = 50
