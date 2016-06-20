@@ -70,6 +70,16 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animateAlongsideTransition({ (context) -> Void in
+            self.previewLayer.connection.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
+            self.previewLayer.frame.size = self.view.frame.size
+            }, completion: { (context) -> Void in
+                
+        })
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    }
 
       // MARK: - Camera setup
     
@@ -78,12 +88,14 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         s.sessionPreset = AVCaptureSessionPresetHigh
         return s
     }()
+
     
     lazy var previewLayer: AVCaptureVideoPreviewLayer = {
         let preview =  AVCaptureVideoPreviewLayer(session: self.cameraSession)
         preview.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         preview.position = CGPoint(x: CGRectGetMidX(self.view.bounds), y: CGRectGetMidY(self.view.bounds))
         preview.videoGravity = AVLayerVideoGravityResize
+        preview!.connection?.videoOrientation = self.transformOrientation(UIInterfaceOrientation(rawValue: UIApplication.sharedApplication().statusBarOrientation.rawValue)!)
         return preview
     }()
     
@@ -118,6 +130,19 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         }
     }
     
+    //deze methode veranderd de orientatie van de camera op dezelfde orientatie als van de UIview
+        func transformOrientation(orientation: UIInterfaceOrientation) -> AVCaptureVideoOrientation {
+                switch orientation {
+                    case .LandscapeLeft:
+                            return .LandscapeLeft
+                    case .LandscapeRight:
+                            return .LandscapeRight
+                    case .PortraitUpsideDown:
+                            return .PortraitUpsideDown
+                    default:
+                            return .Portrait
+                    }
+            }
       // MARK: - Capturing output
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
