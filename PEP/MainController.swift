@@ -39,10 +39,8 @@ class MainController : UIViewController, UIScrollViewDelegate {
     
     override func loadView() {
         super.loadView()
-        
         self.contentViewHeightConstraint.constant = SCREENHEIGHT
         contentView.setNeedsUpdateConstraints()
-    
     }
     
     override func viewDidLoad() {
@@ -145,8 +143,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
     func downloadPassport(completion: (loaded: Bool) ->()){
         
         DatabaseController.sharedControl.deleteAll()
-    
-        
         RequestController.requestPassport { (result, error) in
             
             if(result != nil){
@@ -155,7 +151,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
                     
                     let data = result?.objectForKey("data")
                     if((data?.objectForKey("passport")) != nil){
-                        print(data?.objectForKey("passport"))
                         let passport = data?.objectForKey("passport")
                         let season = passport!.objectForKey("season")
                         pass.season_title = season!.objectForKey("name") as! String

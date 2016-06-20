@@ -10,17 +10,11 @@ import UIKit
 
 class InformationViewController: UIViewController {
     
-    
-    // #TODO:
-    // - var outlets aanmaken voor alle elementen in de view
-    // - mogelijke benodigde functies aanmaken (denk aan save / discard etc. )
-    //
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("MISCELLANEOUSTITLE", comment:"miscellaneous title")
         self.view.backgroundColor = backgroundColor
-        
         
     }
     

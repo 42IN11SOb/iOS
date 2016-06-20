@@ -12,12 +12,6 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var logoutButton: UIButton!
     
-    // #TODO:
-    // - var outlets aanmaken voor alle elementen in de view
-    // - mogelijke benodigde functies aanmaken (denk aan save / discard etc. )
-    //
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = NSLocalizedString("SETTINGSTITLE", comment:"Settings title")
@@ -44,8 +38,8 @@ class SettingsViewController: UIViewController {
                 let success = result?.objectForKey("success") as! Bool
                 if(success){
                     DatabaseController.sharedControl.deleteAll()
-//                    let appDomain = NSBundle.mainBundle().bundleIdentifier!
-//                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+                    let appDomain = NSBundle.mainBundle().bundleIdentifier!
+                    NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
                     
                     let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
                     let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("StartBoard") as UIViewController
