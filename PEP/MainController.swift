@@ -48,7 +48,7 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.navigationItem.setHidesBackButton(true, animated:true);
         
         let logoutItem: UIBarButtonItem = UIBarButtonItem(
-            title: "Uitloggen",
+            title: NSLocalizedString("LOGOUT", comment:"Logout text"),
             style: .Plain,
             target: self,
             action: #selector(MainController.logout(_:))

@@ -166,8 +166,8 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 if(color.redColor > (re - 40) && color.redColor < (re + 40) && color.greenColor > (gr - 40) && color.greenColor < (gr + 40) && color.blueColor > (bl - 40) && color.blueColor < (bl+40)){
                     print("I've recognized a color of your scheme!")
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    let alertController = UIAlertController(title:"Color in your scheme!", message:" Woei!", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    let alertController = UIAlertController(title: NSLocalizedString("ColorIsInSchemeTitle", comment:"Color is in scheme title"), message:NSLocalizedString("ColorIsInSchemeMessage", comment:"Color is in scheme message"), preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment:"Ok Button"), style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }
             }
