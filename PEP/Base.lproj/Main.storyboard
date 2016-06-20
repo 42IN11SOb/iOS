@@ -643,7 +643,7 @@
             </objects>
             <point key="canvasLocation" x="2814" y="344"/>
         </scene>
-        <!-- -->
+        <!--Scan view-->
         <scene sceneID="3ER-Ph-Pax">
             <objects>
                 <viewController id="mB7-h6-DpO" customClass="ScanViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
@@ -677,7 +677,7 @@
                             <constraint firstItem="sXv-AW-x7c" firstAttribute="centerY" secondItem="KGX-56-Vb5" secondAttribute="centerY" id="BiR-D1-bHy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="Zay-Vp-vnt">
+                    <navigationItem key="navigationItem" title="Scan view" id="Zay-Vp-vnt">
                         <barButtonItem key="backBarButtonItem" title=" " id="xGE-ZU-NaN"/>
                     </navigationItem>
                     <connections>
