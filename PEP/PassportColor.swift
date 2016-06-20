@@ -19,13 +19,8 @@ class PassportColor: Object {
 
     
     func getColorFromRGB() -> UIColor{
-        
-        
-        
         let color = UIColor(red: CGFloat(self.redColor)/255, green: CGFloat(self.greenColor)/255, blue: CGFloat(self.blueColor)/255, alpha: 1)
-
         return color
     }
 
-    
 }
