@@ -13,64 +13,41 @@ class ScanResultViewController: UIViewController{
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var resultColorView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     
-    
-    var scanResult: Bool  = false {
-        didSet {
-            configureView()
-        }
-    }
-    
-    var resultColor: PassportColor? {
-        didSet{
-            configureView()
-        }
-    }
-    
-    override func loadView() {
-        super.loadView()
-        self.navigationItem.backBarButtonItem?.title = " "
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        
-    }
+    var scanResult: Bool  = false
+    var resultColor: PassportColor?
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+        configureView()
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func closeModal(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+    
+    
+    // MARK: - Setting results
     
     func configureView(){
         
         if(scanResult){
-            self.view.backgroundColor = greenColor
+            
             self.colorLabel.text = resultColor?.name
             self.resultColorView.backgroundColor = resultColor?.getColorFromRGB()
             self.resultLabel.text = "The following color has been found:"
             
-            
         } else {
-            self.view.backgroundColor = redColor
             self.resultLabel.text = "No matching color has been found"
+            self.colorLabel.text = " "
             self.resultColorView.backgroundColor = UIColor.clearColor()
         }
     }
     
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
+
     
 }

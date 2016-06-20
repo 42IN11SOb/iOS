@@ -13,6 +13,9 @@ import RealmSwift
 
 class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate{
 
+    
+    
+    // MARK: Variables
     var frameNr = 0
     var colors: [PassportColor] = []
     var regColorView: UIView = UIView()
@@ -22,6 +25,9 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var resultColor: PassportColor!
     
     @IBOutlet weak var scanButton: UIButton!
+    
+    
+    // MARK: - View loading
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,16 +43,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         
         setupCameraSession()
     }
-    
-    override func loadView() {
-        super.loadView()
-        self.navigationItem.backBarButtonItem?.title = " "
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -69,17 +65,13 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         self.view.bringSubviewToFront(scanButton)
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    
+      // MARK: - Camera setup
     
     lazy var cameraSession: AVCaptureSession = {
         let s = AVCaptureSession()
@@ -126,6 +118,8 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         }
     }
     
+      // MARK: - Capturing output
+    
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
         
             if frameNr % 32 == 0 {
@@ -141,6 +135,47 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             frameNr += 1
         
     }
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+        // Here you can count how many frames are dopped
+    }
+    
+    
+    func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage {
+        // Get a CMSampleBuffer's Core Video image buffer for the media data
+        let imageBuffer: CVImageBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        // Lock the base address of the pixel buffer
+        CVPixelBufferLockBaseAddress(imageBuffer, 0)
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
+        
+        let address = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0)
+        // Get the pixel buffer width and height
+        let width = CVPixelBufferGetWidth(imageBuffer)
+        let height = CVPixelBufferGetHeight(imageBuffer)
+        
+        // Create a device-dependent RGB color space
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        // Create a bitmap graphics context with the sample buffer data
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.NoneSkipFirst.rawValue | CGBitmapInfo.ByteOrder32Little.rawValue).rawValue
+        let context = CGBitmapContextCreate(address, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
+        // Create a Quartz image from the pixel data in the bitmap graphics context
+        
+        let quartzImage = CGBitmapContextCreateImage(context)
+        // Unlock the pixel buffer
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
+        
+        
+        // Create an image object from the Quartz image
+        let image = UIImage(CGImage: quartzImage!)
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
+        
+        return image
+        
+        
+    }
+    
+      // MARK: - Color output
     
     func checkColors(array: NSArray){
         
@@ -163,11 +198,11 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     let margin: Float = 30.0
                     if(color.redColor > (re - margin) && color.redColor < (re + margin) && color.greenColor > (gr - margin) && color.greenColor < (gr + margin) && color.blueColor > (bl - margin) && color.blueColor < (bl+margin)){
                         
-                        print("----------------------------------")
-                        print(color.name)
-                        print("red \(re) -  \(color.redColor)" )
-                        print("green \(gr) -  \(color.greenColor)" )
-                        print("blue \(bl) -  \(color.blueColor)" )
+//                        print("----------------------------------")
+//                        print(color.name)
+//                        print("red \(re) -  \(color.redColor)" )
+//                        print("green \(gr) -  \(color.greenColor)" )
+//                        print("blue \(bl) -  \(color.blueColor)" )
                         
                         if(self.scanning){
                             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
@@ -182,54 +217,17 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                             self.scanning = false
                         }
  
-                        
                     }
                 }
             }
         }
     }
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didDropSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
-        // Here you can count how many frames are dopped
-    }
+    // MARK: - Actions
     
-
-    func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage {
-        // Get a CMSampleBuffer's Core Video image buffer for the media data
-        let imageBuffer: CVImageBufferRef = CMSampleBufferGetImageBuffer(sampleBuffer)!
-        // Lock the base address of the pixel buffer
-        CVPixelBufferLockBaseAddress(imageBuffer, 0)
-          let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
-        
-        let address = CVPixelBufferGetBaseAddressOfPlane(imageBuffer, 0)
-        // Get the pixel buffer width and height
-        let width = CVPixelBufferGetWidth(imageBuffer)
-        let height = CVPixelBufferGetHeight(imageBuffer)
-
-        // Create a device-dependent RGB color space
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        
-        // Create a bitmap graphics context with the sample buffer data
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.NoneSkipFirst.rawValue | CGBitmapInfo.ByteOrder32Little.rawValue).rawValue
-        let context = CGBitmapContextCreate(address, width, height, 8, bytesPerRow, colorSpace, bitmapInfo)
-        // Create a Quartz image from the pixel data in the bitmap graphics context
-        
-        let quartzImage = CGBitmapContextCreateImage(context)
-        // Unlock the pixel buffer
-        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
-        
-        
-        // Create an image object from the Quartz image
-        let image = UIImage(CGImage: quartzImage!)
-        CVPixelBufferUnlockBaseAddress(imageBuffer,0)
-        
-        return image
-        
-        
-    }
+    
     @IBAction func scanButtonClicked(sender: AnyObject) {
         
-        self.scanButton.titleLabel!.text = "scanning"
         timer.invalidate()
         timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(timerAction), userInfo: nil, repeats: false)
         

@@ -74,6 +74,7 @@ class ColorTableViewController: UITableViewController {
                 controller.selectedIndex = indexPath.row
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
+                controller.navigationItem.backBarButtonItem?.title = " "
             }
         }
     }
