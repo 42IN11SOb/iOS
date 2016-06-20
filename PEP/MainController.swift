@@ -29,7 +29,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var newsHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var scannerLabel: UILabel!
-    @IBOutlet weak var scannerSubText: UILabel!
     @IBOutlet weak var passportLabel: UILabel!
     @IBOutlet weak var newsLabel: UILabel!
     @IBOutlet weak var settingsLabel: UILabel!
@@ -56,7 +55,6 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.navigationItem.setHidesBackButton(true, animated:true);
         
         self.scannerLabel.isAccessibilityElement = false
-        self.scannerSubText.isAccessibilityElement = false
         self.passportLabel.isAccessibilityElement = false
         self.newsLabel.isAccessibilityElement = false
         self.settingsLabel.isAccessibilityElement = false
