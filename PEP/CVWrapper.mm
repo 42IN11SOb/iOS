@@ -96,32 +96,6 @@ int getMode(int array[], int size){
 }
 
 
-+ (NSDictionary*) calculateFromThree: (int)x y:(int)y img:(cv::Mat)img {
-    int red, green, blue;
-    int numberOfPixels = 3;
-    NSDictionary *colorValues = [[NSDictionary alloc] init];
-    
-    for(int i=0; i < numberOfPixels; i++){
-        cv::Vec3b intensity = img.at<cv::Vec3b>((y-1)+i, (x-1)+i);
-        red += intensity.val[0];
-        green += intensity.val[1];
-        blue += intensity.val[2];
-    }
-    
-    int avgRed, avgGreen, avgBlue;
-    avgRed = red/numberOfPixels;
-    avgGreen = green/numberOfPixels;
-    avgBlue = blue/numberOfPixels;
-    colorValues = @{
-                    @"r": [NSNumber numberWithInt:avgRed],
-                    @"g": [NSNumber numberWithInt:avgGreen],
-                    @"b": [NSNumber numberWithInt:avgBlue],};
-    
-    return colorValues;
-}
-
-
-
 + (UIImage*) processWithOpenCVImage1:(UIImage*)inputImage1 image2:(UIImage*)inputImage2;
 {
    

@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-// Colors still need to be determined.
 
 let yellowColor     = UIColor(red: 255/255, green: 213/255, blue: 0/255, alpha: 1)
 let greenColor     = UIColor.greenColor()
