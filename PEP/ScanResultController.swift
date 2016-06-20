@@ -32,8 +32,9 @@ class ScanResultViewController: UIViewController{
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        resultTitleLabel.text =  NSLocalizedString("Result", comment:"Result text")
+        resultTitleLabel.text =  NSLocalizedString("RESULT", comment:"Result text")
         configureView()
+        
     }
     
     override func didReceiveMemoryWarning() {
