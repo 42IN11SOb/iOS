@@ -194,12 +194,14 @@ class MainController : UIViewController, UIScrollViewDelegate {
                             passColor.passport_id = pass.id
                             DatabaseController.sharedControl.savePassColor(passColor)
                             DatabaseController.sharedControl.addColorToPassport( passColor)
+                            
                         }
+                        
+                        completion(loaded: true)
                     }
                     
                 }
                 
-                completion(loaded: true)
             } else {
                 completion(loaded: false)
             }

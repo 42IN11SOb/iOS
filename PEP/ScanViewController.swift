@@ -225,7 +225,9 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                 for color in self.colors{
 
                     let margin: Float = 30.0
-                    if(color.redColor > (re - margin) && color.redColor < (re + margin) && color.greenColor > (gr - margin) && color.greenColor < (gr + margin) && color.blueColor > (bl - margin) && color.blueColor < (bl+margin)){
+                    if(color.redColor > (re - margin) && color.redColor < (re + margin)
+                        && color.greenColor > (gr - margin) && color.greenColor < (gr + margin)
+                        && color.blueColor > (bl - margin) && color.blueColor < (bl+margin)){
                         
 //                        print("----------------------------------")
 //                        print(color.name)
@@ -244,7 +246,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                             self.resetButton()
                             self.scanning = false
                         }
- 
                     }
                 }
             }
@@ -287,6 +288,8 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             controller.navigationItem.backBarButtonItem?.title = " "
             if(self.result){
                 controller.resultColor = resultColor
+            } else {
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
             }
             
         }

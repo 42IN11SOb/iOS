@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ScanResultViewController: UIViewController{
     
@@ -54,6 +55,8 @@ class ScanResultViewController: UIViewController{
             self.resultLabel.text =  NSLocalizedString("NOCOLORHASBEENFOUND", comment:"No matching color has been found") + "!"
             self.colorLabel.text = " "
             self.resultColorView.backgroundColor = UIColor.clearColor()
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            
         }
     }
     

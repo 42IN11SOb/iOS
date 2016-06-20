@@ -10,6 +10,7 @@ import UIKit
 
 class NewsViewController: UIViewController, UIScrollViewDelegate {
     
+    // MARK: Variables
     var user: User!
     var news: News = News()
     var newsItemView = UIView()
@@ -18,6 +19,7 @@ class NewsViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    // MARK: -
     override func loadView() {
         super.loadView()
         
@@ -25,6 +27,8 @@ class NewsViewController: UIViewController, UIScrollViewDelegate {
         user.getUserInformation()
         
     }
+    
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,24 +61,48 @@ class NewsViewController: UIViewController, UIScrollViewDelegate {
    
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.contentSize = CGSize(width: SCREENWIDTH - 40, height: stackContentView.frame.height + 40)
     }
     
+    func getNews(completion: (loaded: Bool) ->()){
+        
+        RequestController.getNews { (result, error) in
+            
+            if(result != nil){
+                if ((result?.objectForKey("success")) != nil) {
+                    let success = result?.objectForKey("success") as! Bool
+                    if success {
+                        let data = result?.objectForKey("data") as! NSArray
+                        
+                        for newItem in data {
+                            
+                            let newsItem: NewsItem = NewsItem()
+                            newsItem.title = newItem.objectForKey("title") as! String
+                            newsItem.content = newItem.objectForKey("content") as! String
+                            newsItem.publish = newItem.objectForKey("publish") as! Bool
+                            
+                            self.news.newsItems.append(newsItem)
+                        }
+                        completion(loaded: true)
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+
+    
+      // MARK: - News sub view creation
+    
     func createNewsViews(){
         var counter: CGFloat = 0
         
         for newsItem in self.news.newsItems {
-            print(newsItem.publish)
             if(newsItem.publish){
                 let viewInside : UIStackView = UIStackView()
                 viewInside.spacing = 0
@@ -110,35 +138,6 @@ class NewsViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    func getNews(completion: (loaded: Bool) ->()){
-        
-        RequestController.getNews { (result, error) in
-      
-            if(result != nil){
-                if ((result?.objectForKey("success")) != nil) {
-                    let success = result?.objectForKey("success") as! Bool
-                    if success {
-                        let data = result?.objectForKey("data") as! NSArray
-                        
-                        for newItem in data {
-                            
-                            let newsItem: NewsItem = NewsItem()
-                            newsItem.title = newItem.objectForKey("title") as! String
-                            newsItem.content = newItem.objectForKey("content") as! String
-                            newsItem.publish = newItem.objectForKey("publish") as! Bool
-                            
-                            self.news.newsItems.append(newsItem)
-                        }
-                        completion(loaded: true)
-                    }
-                    
-                }
-                
-            }
-            
-        }
-
-    }
 
     func clickedOnArticle(sender:UITapGestureRecognizer){
         

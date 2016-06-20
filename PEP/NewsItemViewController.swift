@@ -59,19 +59,10 @@ class NewsItemViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
     
     func configureView(){
         
-        self.title = self.newsItem!.title
+        self.navigationItem.title = self.newsItem!.title
         
     }
     

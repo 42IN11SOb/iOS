@@ -42,8 +42,6 @@
             blue = 0;
             int xpos = ((inputImage.size.width / 5) * j) + (inputImage.size.width / 5);
             int ypos = ((inputImage.size.height/ 5) * i) + (inputImage.size.height/ 5);
-//            int xpos = (pos_x - 50) + (j * 10);
-//            int ypos = (pos_y - 50) + (i * 10);
             
             cv::Vec3b intensity = img.at<cv::Vec3b>(ypos, xpos);
             red = intensity.val[0];
