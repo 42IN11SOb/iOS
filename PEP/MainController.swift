@@ -28,6 +28,14 @@ class MainController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var informationHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var newsHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var scannerLabel: UILabel!
+    @IBOutlet weak var scannerSubText: UILabel!
+    @IBOutlet weak var passportLabel: UILabel!
+    @IBOutlet weak var newsLabel: UILabel!
+    @IBOutlet weak var settingsLabel: UILabel!
+    @IBOutlet weak var miscLabel: UILabel!
+    
+    
     var user: User!
     
     override func loadView() {
@@ -46,6 +54,13 @@ class MainController : UIViewController, UIScrollViewDelegate {
         self.mainView.backgroundColor = backgroundColor
         self.contentView.backgroundColor = backgroundColor
         self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        self.scannerLabel.isAccessibilityElement = false
+        self.scannerSubText.isAccessibilityElement = false
+        self.passportLabel.isAccessibilityElement = false
+        self.newsLabel.isAccessibilityElement = false
+        self.settingsLabel.isAccessibilityElement = false
+        self.miscLabel.isAccessibilityElement = false
         
         let logoutItem: UIBarButtonItem = UIBarButtonItem(
             title: NSLocalizedString("LOGOUT", comment:"Logout text"),

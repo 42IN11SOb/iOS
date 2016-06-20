@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AI7-6j-SE8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AI7-6j-SE8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -361,19 +361,25 @@
                         <barButtonItem key="backBarButtonItem" title="  " id="QaI-uF-2Kt"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="ScannerLabel" destination="Ks8-2I-Q8l" id="SQ3-2P-pZa"/>
+                        <outlet property="ScannerSubText" destination="42V-Eg-c6d" id="q54-qO-jTg"/>
                         <outlet property="contentView" destination="WuG-Qm-w2Z" id="kaE-Zm-hWw"/>
                         <outlet property="contentViewHeightConstraint" destination="gZG-dq-DDx" id="sIQ-a8-uvF"/>
                         <outlet property="informationHeightConstraint" destination="eua-KS-Yog" id="Kpu-qc-jxK"/>
                         <outlet property="informationViewButton" destination="dqt-oU-qDD" id="ExJ-fT-MTh"/>
                         <outlet property="mainView" destination="1lA-rF-TI4" id="C5I-06-fxD"/>
+                        <outlet property="miscLabel" destination="jjl-Tc-caN" id="hiX-AR-57X"/>
                         <outlet property="newsHeightConstraint" destination="li0-mm-mxG" id="cEi-c0-oc0"/>
+                        <outlet property="newsLabel" destination="GOT-vW-1tH" id="UZt-KV-kcm"/>
                         <outlet property="newsViewButton" destination="DZF-wc-mTx" id="Fic-qe-mLT"/>
                         <outlet property="passportHeightConstraint" destination="swJ-0y-sLD" id="dwe-61-7Nm"/>
+                        <outlet property="passportLabel" destination="MST-ya-5z2" id="MNT-EC-H1C"/>
                         <outlet property="passportViewButton" destination="4ma-qb-enQ" id="fY1-om-CcN"/>
                         <outlet property="scanViewButton" destination="yaa-A5-r40" id="O32-QK-PsL"/>
                         <outlet property="scanViewHeightContstraint" destination="JCv-Ho-4rr" id="a0J-3D-PR9"/>
                         <outlet property="scrollView" destination="Wsf-S8-q5Z" id="EhT-XG-4lo"/>
                         <outlet property="settingsHeightConstraint" destination="hOY-xd-0gA" id="JZO-9Z-XS7"/>
+                        <outlet property="settingsLabel" destination="wA1-wT-wux" id="TMU-HD-atc"/>
                         <outlet property="settingsViewButton" destination="Mnf-HH-3Hg" id="sS4-tf-Zj7"/>
                     </connections>
                 </viewController>
