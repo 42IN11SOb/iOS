@@ -6,7 +6,7 @@
 "3vv-we-ZsJ.normalTitle" = "Logout";
 
 /* Class = "UILabel"; text = "Uw persoonlijke assistent bij het herkennen van de kleur."; ObjectID = "42V-Eg-c6d"; */
-"42V-Eg-c6d.text" = "Your personal assistant for recognising a color that matches your color profile.";
+"42V-Eg-c6d.text" = "Your personal assistant for recognising a color matching your color profile.";
 
 /* Class = "UITextField"; placeholder = "wachtwoord"; ObjectID = "46X-fd-YB6"; */
 "46X-fd-YB6.placeholder" = "Password";
@@ -24,7 +24,7 @@
 "9lg-Uc-PM6.placeholder" = "Name";
 
 /* Class = "UILabel"; text = "Uw collectie van samengestelde kleuren."; ObjectID = "GMV-1F-Mwg"; */
-"GMV-1F-Mwg.text" = "Your collection off customized colors.";
+"GMV-1F-Mwg.text" = "Your collection of customized colors.";
 
 /* Class = "UILabel"; text = "Nieuws"; ObjectID = "GOT-vW-1tH"; */
 "GOT-vW-1tH.text" = "News";

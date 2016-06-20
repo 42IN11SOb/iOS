@@ -31,5 +31,12 @@
 //Scan View Controller
 "ColorIsInSchemeTitle" = "Its a match!";
 "ColorIsInSchemeMessage" = "The color you've scanned is inside your color palette!";
-
 "LOGOUT"= "Logout";
+"DONT" = "Dont";
+"DO"= "Do";
+
+"MATCHFOUND" = "Match found";
+"MATCHNOTFOUND" = "Match not found";
+
+"COLORHASBEENFOUND" = "The following color has been found";
+"NOCOLORHASBEENFOUND" = "No matching color has been found";

@@ -113,8 +113,8 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="XGm-Fb-Cus"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Paspoort" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MST-ya-5z2">
-                                                        <rect key="frame" x="27" y="119" width="226" height="23"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paspoort" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MST-ya-5z2">
+                                                        <rect key="frame" x="105" y="119" width="70" height="23"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -471,6 +471,75 @@
             </objects>
             <point key="canvasLocation" x="1285" y="756"/>
         </scene>
+        <!--Scan Result View Controller-->
+        <scene sceneID="IXc-so-cvr">
+            <objects>
+                <viewController id="fjs-Sm-3qN" customClass="ScanResultViewController" customModule="PEP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4pr-GP-7bV"/>
+                        <viewControllerLayoutGuide type="bottom" id="B69-fy-THX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tew-pq-8vV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De gevonden kleur is: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyE-Ql-hg6">
+                                <rect key="frame" x="20" y="140" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kuiken geel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nll-sp-BVo">
+                                <rect key="frame" x="253" y="190" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTI-1Y-4Kj">
+                                <rect key="frame" x="20" y="254" width="560" height="313"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBn-QN-Lpu">
+                                <rect key="frame" x="270" y="106" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resultaat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-WD-707">
+                                <rect key="frame" x="20" y="104" width="72" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="oyE-Ql-hg6" secondAttribute="leading" id="0ch-hY-U3t"/>
+                            <constraint firstItem="gwD-WD-707" firstAttribute="top" secondItem="4pr-GP-7bV" secondAttribute="bottom" constant="40" id="4zO-3J-bx3"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gwD-WD-707" secondAttribute="leading" id="5Q7-tz-Htx"/>
+                            <constraint firstItem="oyE-Ql-hg6" firstAttribute="top" secondItem="gwD-WD-707" secondAttribute="bottom" constant="15" id="7sg-0X-mnh"/>
+                            <constraint firstItem="Nll-sp-BVo" firstAttribute="top" secondItem="oyE-Ql-hg6" secondAttribute="bottom" constant="29" id="I3G-NU-rDF"/>
+                            <constraint firstItem="B69-fy-THX" firstAttribute="top" secondItem="fTI-1Y-4Kj" secondAttribute="bottom" constant="33" id="Llt-Ci-l97"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fTI-1Y-4Kj" secondAttribute="trailing" id="ews-Up-dSB"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fTI-1Y-4Kj" secondAttribute="leading" id="h8O-4C-M5H"/>
+                            <constraint firstItem="fTI-1Y-4Kj" firstAttribute="top" secondItem="Nll-sp-BVo" secondAttribute="bottom" constant="43" id="jvI-L4-Jvc"/>
+                            <constraint firstItem="Nll-sp-BVo" firstAttribute="centerX" secondItem="Tew-pq-8vV" secondAttribute="centerX" id="rQl-c5-Rzv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oyE-Ql-hg6" secondAttribute="trailing" id="w6m-3C-6DF"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="jBn-QN-Lpu"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="colorLabel" destination="Nll-sp-BVo" id="7rE-Fp-S6x"/>
+                        <outlet property="resultColorView" destination="fTI-1Y-4Kj" id="fa8-kf-biF"/>
+                        <outlet property="resultLabel" destination="oyE-Ql-hg6" id="fSf-cZ-nEc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0y-el-lF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2056" y="-1178"/>
+        </scene>
         <!--Style View Controller-->
         <scene sceneID="WHx-Sv-Xpf">
             <objects>
@@ -586,6 +655,9 @@
                                 <state key="normal" title="SCAN">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="scanButtonClicked:" destination="mB7-h6-DpO" eventType="touchUpInside" id="pOk-WJ-fUV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -596,6 +668,7 @@
                     </view>
                     <connections>
                         <outlet property="scanButton" destination="sXv-AW-x7c" id="cmN-Eg-mJO"/>
+                        <segue destination="fjs-Sm-3qN" kind="show" identifier="scanResultSegue" id="jrO-W4-3eW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jwA-aA-jJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
