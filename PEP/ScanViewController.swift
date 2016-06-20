@@ -206,7 +206,6 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                         
                         if(self.scanning){
                             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
-                            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                             
                             self.resultColor = color
                             self.result = true
@@ -258,10 +257,10 @@ class ScanViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
             controller.scanResult = self.result
             controller.navigationItem.backBarButtonItem?.title = " "
             if(self.result){
-                controller.title = "Match found!"
+                controller.title = NSLocalizedString("MATCHFOUND", comment:"Match found title") + "!"
                 controller.resultColor = resultColor
             } else {
-                controller.title = "No Match found!"
+                controller.title = NSLocalizedString("MATCHNOTFOUND", comment:"Match not found title") + "!"
             }
             
             

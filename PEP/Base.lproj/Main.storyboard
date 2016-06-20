@@ -718,6 +718,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="person_style_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="qRw-wL-hJP">
+                                        <rect key="frame" x="25" y="38" width="75" height="75"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="bOK-0S-CJW"/>
+                                            <constraint firstAttribute="height" constant="75" id="ikD-2Q-qna"/>
+                                        </constraints>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpX-ud-1th">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="150"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -728,13 +735,6 @@
                                             <segue destination="tie-aQ-T1Y" kind="show" id="cxZ-iA-xLX"/>
                                         </connections>
                                     </button>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="person_style_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="qRw-wL-hJP">
-                                        <rect key="frame" x="25" y="38" width="75" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="bOK-0S-CJW"/>
-                                            <constraint firstAttribute="height" constant="75" id="ikD-2Q-qna"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>

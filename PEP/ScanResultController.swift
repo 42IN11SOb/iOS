@@ -30,19 +30,17 @@ class ScanResultViewController: UIViewController{
     }
     
     
-    
     // MARK: - Setting results
     
     func configureView(){
         
         if(scanResult){
-            
             self.colorLabel.text = resultColor?.name
             self.resultColorView.backgroundColor = resultColor?.getColorFromRGB()
-            self.resultLabel.text = "The following color has been found:"
-            
+            self.resultLabel.text =  NSLocalizedString("COLORHASBEENFOUND", comment:"The following color has been found") + ":"
         } else {
-            self.resultLabel.text = "No matching color has been found"
+            self.view.backgroundColor = redColor
+            self.resultLabel.text =  NSLocalizedString("NOCOLORHASBEENFOUND", comment:"No matching color has been found") + "!"
             self.colorLabel.text = " "
             self.resultColorView.backgroundColor = UIColor.clearColor()
         }

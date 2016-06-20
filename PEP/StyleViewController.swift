@@ -99,7 +99,7 @@ class StyleViewController: UIViewController {
     func addDoLines(){
         
         let doTitle = UILabel()
-        doTitle.text = "Do"
+        doTitle.text = NSLocalizedString("DO", comment:"Do title")
 
         doTitle.font = UIFont.boldSystemFontOfSize(16.0)
         
@@ -130,7 +130,7 @@ class StyleViewController: UIViewController {
     func addDontLines(){
         
         let dontTitle = UILabel()
-        dontTitle.text = "Don't"
+        dontTitle.text = NSLocalizedString("DONT", comment:"Dont title")
         dontTitle.font = UIFont.boldSystemFontOfSize(16.0)
 
         stackContentView.addArrangedSubview(dontTitle)
